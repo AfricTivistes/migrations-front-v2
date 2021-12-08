@@ -9,7 +9,13 @@ module.exports = {
         // Add theme options here. Check documentation for available options.
         siteUrl: process.env.URL || process.env.VERCEL_URL
       }
-    }
+    },
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        url: `https://migration.africtivistes.org/graphql`,
+      },
+    },
   ],
   // Customize your site metadata:
   siteMetadata: {
