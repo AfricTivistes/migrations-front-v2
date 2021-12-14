@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from "gatsby"
 import { Layout, Stack, Main, Sidebar } from '@layout'
 import PageTitle from '@components/PageTitle'
 import Divider from '@components/Divider'
@@ -7,17 +8,18 @@ import ContactForm from '@widgets/ContactForm'
 import ContactInfo from '@widgets/ContactInfo'
 import Commitment from '@widgets/Commitment'
 
-const PageContact = props => (
-  <Layout {...props}>
+const PageContact = props => {
+
+const {title, content} = props.data.allWpPage.nodes[0]
+
+return (<Layout {...props}>
     <Seo title='Contact' />
     <Divider />
     <Stack>
       <Main>
         <PageTitle
-          header="Contactez-nous"
-          subheader='FlexiBlog theme comes with a pre-made contact form component.
-					You can integrate this form with serverless services such as Formspree, Getform,
-					FormKeep and others to receive form submissions via email.'
+          header={title}
+          subheader={content}
         />
         <Divider />
         <ContactForm />
@@ -29,6 +31,17 @@ const PageContact = props => (
       </Sidebar>
     </Stack>
   </Layout>
-)
+)}
 
 export default PageContact
+
+export const query = graphql`
+query {
+  allWpPage(filter: {slug: {eq: "contact"}}) {
+    nodes {
+      title
+      content
+    }
+  }
+}
+`

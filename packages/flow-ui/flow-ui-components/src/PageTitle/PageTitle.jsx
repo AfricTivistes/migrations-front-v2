@@ -30,9 +30,7 @@ const PageTitle = ({ header, subheader, running, totalCount }) => {
         )}
       </Heading>
       {subheader && (
-        <Text variant='h3' sx={styles.subheader}>
-          {subheader}
-        </Text>
+        <Text variant='h3' sx={styles.subheader} dangerouslySetInnerHTML={{ __html: subheader }}/>
       )}
       {running && (
         <Text variant='h4' sx={styles.runninghead}>
