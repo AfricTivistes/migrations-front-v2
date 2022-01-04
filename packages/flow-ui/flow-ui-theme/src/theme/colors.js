@@ -14,7 +14,8 @@ const indigo = {
   300: '#a3bffa',
   500: '#667eea',
   600: '#5a67d8',
-  800: '#434190'
+  800: '#434190',
+  900: '#1a5474'
 }
 const purple = {
   100: '#faf5ff',
@@ -29,14 +30,15 @@ const green = {
 }
 const red = {
   100: '#fff5f5',
-  500: '#f56565'
+  500: '#f56565',
+  900: '#87311b'
 }
 
 //Primary
 const alpha = {
   alphaLighter: indigo[100],
-  alphaLight: indigo[300],
-  alpha: indigo[500],
+  alphaLight: red[900],
+  alpha: indigo[900],
   alphaDark: indigo[600],
   alphaDarker: indigo[800]
 }
@@ -45,7 +47,7 @@ const alpha = {
 const beta = {
   betaLighter: purple[100],
   betaLight: purple[300],
-  beta: purple[500],
+  beta: purple[900],
   betaDark: purple[600],
   betaDarker: purple[800]
 }
@@ -66,9 +68,9 @@ const omega = {
 }
 
 export default {
-  text: gray[600],
-  article: gray[700],
-  heading: gray[800],
+  text: indigo[900],
+  article: indigo[900],
+  heading: red[800],
 
   ...alpha,
   ...beta,
