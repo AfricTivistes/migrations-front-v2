@@ -50,11 +50,19 @@ module.exports = {
         slug: '/'
       },
       {
-        name: 'Notre Équipe',
+        name: 'Actualités',
+        slug: '/'
+      },
+      {
+        name: 'Espace dialogue',
+        slug: '/'
+      },
+      {
+        name: 'Migrations et médias',
         slug: '/authors'
       },
       {
-        name: 'Contact',
+        name: 'Guide du voyageur',
         slug: '/contact'
       }
     ],
