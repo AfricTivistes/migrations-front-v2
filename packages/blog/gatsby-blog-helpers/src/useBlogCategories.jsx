@@ -13,6 +13,9 @@ const categoriesQuery = graphql`
     allArticleCategory {
       nodes {
         ...ArticleCategory
+        ... on CategoriesJson {
+          widget
+        }
       }
     }
   }

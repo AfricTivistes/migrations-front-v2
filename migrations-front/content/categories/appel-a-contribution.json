@@ -1,7 +1,7 @@
 {
-  "name": "Lifestyle",
-  "icon": "lifestyle.svg",
-  "color": "#805ad5",
+  "name": "Appel à contribution",
+  "icon": "contribution.svg",
+  "color": "#d53f8c",
   "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
-  "widget": false
+  "widget": true
 }

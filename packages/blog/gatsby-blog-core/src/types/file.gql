@@ -50,6 +50,7 @@ type CategoriesJson implements Node & ArticleCategory @dontInfer {
   description: String
   color: String
   icon: String @fileByRelativePath @proxyResolver(on: "File", to: "publicURL")
+  widget: Boolean
 }
 
 ############################################
