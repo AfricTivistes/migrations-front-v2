@@ -3,6 +3,7 @@ import { Container, Box, Flex } from 'theme-ui'
 import { FooterLogo } from './Footer.Logo'
 import { FooterMenu } from './Footer.Menu'
 import { FooterSocial } from './Footer.Social'
+import PoweredByGatsby from '@components/PoweredByGatsby'
 
 const styles = {
   wrapper: {
@@ -23,6 +24,9 @@ export const Footer = () => (
         <Box>
           <FooterSocial />
         </Box>
+      </Flex>
+      <Flex variant='layout.footerEnd'>
+        <PoweredByGatsby />
       </Flex>
     </Container>
   </Box>

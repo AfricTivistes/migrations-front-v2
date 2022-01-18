@@ -70,35 +70,35 @@ module.exports = {
     //Footer Menu Items (2 Sets)
     footerMenu: [
       {
-        title: 'Quick Links',
+        title: 'Liens Rapides',
         items: [
           {
-            name: 'Advertise with us',
+            name: 'À propos',
             slug: '/contact'
           },
           {
-            name: 'About Us',
+            name: 'Lexique',
             slug: '/about'
           },
           {
-            name: 'Contact Us',
+            name: 'Faq',
+            slug: '/about'
+          },
+          {
+            name: 'Contact',
             slug: '/contact'
           }
         ]
       },
       {
-        title: 'Legal Stuff',
+        title: 'Légal',
         items: [
           {
-            name: 'Privacy Notice',
+            name: 'Condition de confidentialité',
             slug: '/'
           },
           {
-            name: 'Cookie Policy',
-            slug: '/'
-          },
-          {
-            name: 'Terms Of Use',
+            name: 'Mentions légales',
             slug: '/'
           }
         ]
