@@ -39,7 +39,7 @@ module.exports = {
       },
       {
         name: 'Instagram',
-        url: 'https://www.instagram.com'
+        url: 'https://www.instagram.com/dialoguemigration'
       }
     ],
 
@@ -62,7 +62,11 @@ module.exports = {
         slug: '/authors'
       },
       {
-        name: 'Guide du voyageur',
+        name: 'Lexique',
+        slug: '/authors'
+      },
+      {
+        name: 'Fact checking',
         slug: '/contact'
       }
     ],
