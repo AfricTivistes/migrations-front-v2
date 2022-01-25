@@ -31,11 +31,11 @@ module.exports = {
     social: [
       {
         name: 'Facebook',
-        url: 'https://www.facebook.com/africtivistes'
+        url: 'https://www.facebook.com/dialoguemigration/'
       },
       {
         name: 'Twitter',
-        url: 'https://twitter.com/AFRICTIVISTES'
+        url: 'https://twitter.com/DialogMigration'
       },
       {
         name: 'Instagram',
