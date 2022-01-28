@@ -3,7 +3,7 @@ import { Container, Box, Flex } from 'theme-ui'
 import pageContextProvider from '@helpers/pageContextProvider'
 import { HeaderLogo } from './Header.Logo'
 import { HeaderMenu } from './Header.Menu'
-import { HeaderColorMode } from './Header.ColorMode'
+import { HeaderLanguage } from './Header.Language'
 
 const styles = {
   wrapper: {
@@ -31,7 +31,7 @@ const styles = {
 export const Header = ({ children }) => {
   const context = useContext(pageContextProvider)
 
-  const { mobileMenu, darkMode } = context.pageContext
+  const { mobileMenu } = context.pageContext
 
   return (
     <Box sx={styles.wrapper}>
@@ -44,7 +44,7 @@ export const Header = ({ children }) => {
             <HeaderMenu mobileMenu={mobileMenu} />
           </Box>
           <Box sx={styles.colorModeContainer}>
-            {darkMode && <HeaderColorMode />}
+            <HeaderLanguage />
           </Box>
         </Flex>
       </Container>
