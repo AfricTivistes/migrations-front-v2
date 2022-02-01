@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from "gatsby-plugin-react-intl"
 import { Link } from 'theme-ui'
 import Svg from 'react-inlinesvg'
 import africtivistesSVG from '../../assets/africtivistes-logo.svg'
@@ -30,7 +31,7 @@ const PoweredByGatsby = () => (
       rel='noopener'
       sx={styles.link}
     >
-      Propulsé par
+      <FormattedMessage id="propulse" />
       {africtivistesSVG && <Svg src={africtivistesSVG} />}
     </Link>
     <Link
@@ -41,7 +42,7 @@ const PoweredByGatsby = () => (
       rel='noopener'
       sx={styles.link}
     >
-      En partenariat avec
+      <FormattedMessage id="partenariat" />
       {cfiSVG && <Svg src={cfiSVG} />}
     </Link>
   </nav>

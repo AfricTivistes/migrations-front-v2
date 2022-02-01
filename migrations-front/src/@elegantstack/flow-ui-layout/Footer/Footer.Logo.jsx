@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box } from 'theme-ui'
+import { FormattedMessage } from "gatsby-plugin-react-intl"
 import { HeaderLogo } from '../Header/Header.Logo'
 
 const styles = {
@@ -20,7 +21,7 @@ export const FooterLogo = () => (
       <HeaderLogo grayscale />
     </Box>
     <Box sx={styles.copyright}>
-      © {new Date().getFullYear()}, Tous droits réservés.
+      © {new Date().getFullYear()}, <FormattedMessage id="copyright" />
     </Box>
   </>
 )

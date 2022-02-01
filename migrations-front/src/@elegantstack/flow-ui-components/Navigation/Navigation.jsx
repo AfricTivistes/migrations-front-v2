@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { useIntl, Link } from "gatsby-plugin-react-intl"
+import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
 import { Flex, NavLink, IconButton, Heading, Divider } from 'theme-ui'
 import hashCode from '@components/utils/hashCode'
 import buildResponsiveVariant from '@components/utils/buildResponsiveVariant'
@@ -80,7 +80,7 @@ const Navigation = ({
 
   const wrapperVariant = buildResponsiveVariant('lists.links', variant)
   const linkVariant = buildResponsiveVariant('links', variant)
-
+  
   const navKey = `${hashCode(
     items.map(node => node.title || node.name).join()
   )}-nav`
@@ -91,12 +91,12 @@ const Navigation = ({
   }
 
   const hasGroupedItems = Array.isArray(items[0].items)
-
+  
   return hasGroupedItems ? (
     items.map((node, i) => (
       <Fragment key={`nav-menu-${i}`}>
         <NavigationDivider index={i} />
-        <Heading {...headingProps}>{node.title}</Heading>
+        <Heading {...headingProps}><FormattedMessage id={node.title} /></Heading>
         <NavigationList
           navKey={navKey}
           wrapperProps={wrapperProps}

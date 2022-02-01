@@ -94,35 +94,35 @@ module.exports = {
     //Footer Menu Items (2 Sets)
     footerMenu: [
       {
-        title: 'Liens Rapides',
+        title: 'rapides',
         items: [
           {
-            name: 'À propos',
+            name: 'apropos',
             slug: '/contact'
           },
           {
-            name: 'Lexique',
+            name: 'lexique',
             slug: '/about'
           },
           {
-            name: 'Faq',
+            name: 'faq',
             slug: '/about'
           },
           {
-            name: 'Contact',
+            name: 'contact',
             slug: '/contact'
           }
         ]
       },
       {
-        title: 'Légal',
+        title: 'legal',
         items: [
           {
-            name: 'Condition de confidentialité',
+            name: 'confidentialite',
             slug: '/'
           },
           {
-            name: 'Mentions légales',
+            name: 'mentions',
             slug: '/'
           }
         ]

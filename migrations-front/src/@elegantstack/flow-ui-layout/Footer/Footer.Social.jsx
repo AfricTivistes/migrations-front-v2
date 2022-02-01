@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from "gatsby-plugin-react-intl"
 import { Heading } from 'theme-ui'
 import Navigation from '@components/Navigation'
 import useSiteMetadata from '@helpers-blog/useSiteMetadata'
@@ -19,7 +20,7 @@ export const FooterSocial = () => {
   return (
     <>
       <Heading variant='h4' as='p' sx={styles.navHeader}>
-        Social Media
+        <FormattedMessage id="social" />
       </Heading>
       <Navigation
         items={attachSocialIcons(social)}
