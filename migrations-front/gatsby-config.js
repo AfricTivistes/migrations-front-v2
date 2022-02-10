@@ -98,7 +98,7 @@ module.exports = {
         items: [
           {
             name: 'apropos',
-            slug: '/contact'
+            slug: '/apropos'
           },
           {
             name: 'lexique',
