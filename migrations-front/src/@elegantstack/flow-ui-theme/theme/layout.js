@@ -1,4 +1,4 @@
-export default {
+const Layout = {
   layout: {
     flexDirection: 'column',
     height: `100vh`
@@ -71,3 +71,5 @@ export default {
     top: 4
   }
 }
+
+export default Layout
