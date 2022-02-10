@@ -75,7 +75,7 @@ module.exports = {
       },
       {
         name: 'espaceDialogue',
-        slug: '/'
+        slug: '/espacedialogue'
       },
       {
         name: 'migrationsMedias',
