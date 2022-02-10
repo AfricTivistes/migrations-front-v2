@@ -119,11 +119,11 @@ module.exports = {
         items: [
           {
             name: 'confidentialite',
-            slug: '/'
+            slug: '/confidentialite'
           },
           {
             name: 'mentions',
-            slug: '/'
+            slug: '/mentions'
           }
         ]
       }
