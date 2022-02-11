@@ -1,7 +1,8 @@
 const withDefaults = require('./utils/default.options')
-const createPostsPage = require('./pages/_posts')
-const createPostPage = require('./pages/_post')
-const createCollectionPage = require('./pages/_collection')
+const createPostsPage = require('./Pages/_posts')
+const createPostPage = require('./Pages/_post')
+const createPages = require('./Pages/_page')
+const createCollectionPage = require('./Pages/_collection')
 
 module.exports = async (helpers, pluginOptions) => {
   pluginOptions = withDefaults(pluginOptions)
@@ -18,6 +19,13 @@ module.exports = async (helpers, pluginOptions) => {
    */
   await createPostPage(helpers, pluginOptions, {
     template: require.resolve('./templates/post')
+  })
+
+  /**
+   * Single post pages
+   */
+  await createPages(helpers, pluginOptions, {
+    template: require.resolve('./templates/page')
   })
 
   /**
