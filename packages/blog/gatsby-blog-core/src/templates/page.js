@@ -1,17 +1,20 @@
 import { graphql } from 'gatsby'
 import { IntlContextConsumer } from "gatsby-plugin-react-intl"
 import Page from '../containers/Page'
+import NotFound from '../Pages/404'
 
-export default function Template({ data }) {
+export default ({data, ...props}) => {
+  
+  const langue = data.page.nodes[0].language.slug
+
   return (
     <IntlContextConsumer>
       {({ language: currentLocale }) =>
-        currentLocale === 'en' && <Page data={data} />
+        currentLocale === langue ? <Page {...props} data={data} /> : <NotFound {...props}/>
       }
     </IntlContextConsumer>
   )
 }
-
 
 export const pageQ = graphql`
   query PostPageQ(

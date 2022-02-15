@@ -15,5 +15,9 @@
   "mentions": "Mentions légales",
   "social": "Réseaux sociaux",
   "propulse":"Propulsé par",
-  "partenariat":"En partenariat avec"
+  "partenariat":"En partenariat avec",
+  "404titre": "Page Non Trouvée",
+  "404header": "Désolé, cette page n'est pas disponible.",
+  "404subheader": "Vous avez peut-être mal tapé l'adresse ou la page a peut-être été déplacée.",
+  "404button": "Aller à la page d'accueil"
 }

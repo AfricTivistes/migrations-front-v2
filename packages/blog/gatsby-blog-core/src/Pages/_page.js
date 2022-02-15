@@ -42,9 +42,8 @@ module.exports = async (
  
   pages.forEach(node => {
     const { id, slug, teplateName } = node
-    // if (link) return //skip creating pages for nodes linking to external sites
+    
     const component = teplateName.templateName !== 'Default' ? require.resolve(`../templates/${teplateName.templateName}`) : template
-    console.log(`Creating page for ${slug} with ${teplateName.templateName}`)
     
     createPage({
       path: slug,
