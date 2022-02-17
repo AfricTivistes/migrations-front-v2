@@ -1,8 +1,9 @@
 import React from 'react'
-import { useIntl } from "gatsby-plugin-react-intl"
+import { IntlContextConsumer } from "gatsby-plugin-react-intl"
 import { Box } from 'theme-ui'
-import Navigation from '@components/Navigation'
-import useSiteMetadata from '@helpers-blog/useSiteMetadata'
+import Navigation from '@components/Navigation/Menu'
+import useMenuFooterFR from '@helpers-blog/useMenuFooterFR'
+import useMenuFooterEN from '@helpers-blog/useMenuFooterEN'
 
 const styles = {
   navHeader: {
@@ -10,21 +11,25 @@ const styles = {
   }
 }
 
-export const FooterMenu = () => {
-  const { footerMenu } = useSiteMetadata()
-  const intl = useIntl()
+const MenuBox = ({menu}) => (
+  <Box key={`footer-menu-${menu.label}`}>
+    <Navigation
+      variant={[`horizontal`, `vertical`]}
+      headingProps={{ variant: 'h4', as: 'p', sx: styles.navHeader }}
+      nodes={[menu]}
+    />
+  </Box>
+)
 
+export const FooterMenu = () => {
+  
+  const { nodes: nodesFR  } = useMenuFooterFR()
+  const { nodes: nodesEN  } = useMenuFooterEN()
+  
   return (
-    <>
-      {footerMenu.map(menu => (
-        <Box key={`footer-menu-${intl.formatMessage({ id: menu.title })}`}>
-          <Navigation
-            variant={[`horizontal`, `vertical`]}
-            headingProps={{ variant: 'h4', as: 'p', sx: styles.navHeader }}
-            items={[menu]}
-          />
-        </Box>
-      ))}
-    </>
+    <IntlContextConsumer>
+      {({ language: currentLocale }) =>
+        currentLocale === 'fr' ? nodesFR.map(menu => <MenuBox menu={menu}/>) : nodesEN.map(menu => <MenuBox menu={menu}/>)}
+    </IntlContextConsumer>
   )
 }
