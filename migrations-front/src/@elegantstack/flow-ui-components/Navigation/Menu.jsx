@@ -11,10 +11,10 @@ const styles = {
   }
 }
 
-const NavigationList = ({ navKey, wrapperProps, items, ...props }) =>
-  items ? (
+const NavigationList = ({ navKey, wrapperProps, nodes, ...props }) =>
+  nodes ? (
     <Flex {...wrapperProps}>
-      {items.map((menuItem, index) => (
+      {nodes.map((menuItem, index) => (
         <NavigationItem key={`${navKey}-${index}`} {...menuItem} {...props} />
       ))}
     </Flex>
@@ -24,8 +24,8 @@ const NavigationDivider = ({ index }) =>
   index !== 0 && <Divider sx={styles.divider} />
 
 const NavigationItem = ({
-  name,
-  slug,
+  label,
+  path,
   url,
   Icon,
   color,
@@ -47,40 +47,40 @@ const NavigationItem = ({
     }
   }
   //Internal link
-  if (slug) {
+  if (path) {
     linkProps = {
       ...linkProps,
       as: Link,
-      to: slug
+      to: path
     }
   }
 
   return iconOnly ? (
-    <IconButton {...linkProps} title={name}>
+    <IconButton {...linkProps} title={label}>
       {Icon && <Icon color={color} />}
     </IconButton>
   ) : (
     <NavLink {...linkProps}>
       {Icon && <Icon color={color} />}
-      {name}
+      {label}
     </NavLink>
   )
 }
 
 const Navigation = ({
-  items,
+  nodes,
   variant,
   headingProps,
   wrapperStyle,
   ...props
 }) => {
-  if (!items || !items.length) return null
+  if (!nodes || !nodes.length) return null
 
   const wrapperVariant = buildResponsiveVariant('lists.links', variant)
   const linkVariant = buildResponsiveVariant('links', variant)
   
   const navKey = `${hashCode(
-    items.map(node => node.title || node.name).join()
+    nodes.map(node => node.title || node.name).join()
   )}-nav`
 
   const wrapperProps = {
@@ -88,17 +88,17 @@ const Navigation = ({
     key: navKey
   }
 
-  const hasGroupedItems = Array.isArray(items[0].items)
+  const hasGroupedItems = Array.isArray(nodes)
   
   return hasGroupedItems ? (
-    items.map((node, i) => (
+    nodes.map((node, i) => (
       <Fragment key={`nav-menu-${i}`}>
         <NavigationDivider index={i} />
-        <Heading {...headingProps}>{node.title}</Heading>
+        <Heading {...headingProps}>{node.label}</Heading>
         <NavigationList
           navKey={navKey}
           wrapperProps={wrapperProps}
-          items={node.items}
+          nodes={node.childItems.nodes}
           variant={linkVariant}
           {...props}
         />
@@ -108,7 +108,7 @@ const Navigation = ({
     <NavigationList
       navKey={navKey}
       wrapperProps={wrapperProps}
-      items={items}
+      nodes={nodes.childItems.nodes}
       variant={linkVariant}
       {...props}
     />
