@@ -12,7 +12,7 @@ const styles = {
 }
 
 const MenuBox = ({menu}) => (
-  <Box key={`footer-menu-${menu.label}`}>
+  <Box>
     <Navigation
       variant={[`horizontal`, `vertical`]}
       headingProps={{ variant: 'h4', as: 'p', sx: styles.navHeader }}
@@ -29,7 +29,7 @@ export const FooterMenu = () => {
   return (
     <IntlContextConsumer>
       {({ language: currentLocale }) =>
-        currentLocale === 'fr' ? nodesFR.map(menu => <MenuBox menu={menu}/>) : nodesEN.map(menu => <MenuBox menu={menu}/>)}
+        currentLocale === 'fr' ? nodesFR.map((data,index) => <MenuBox menu={data} key={`fr-${index}`} />) : nodesEN.map((data,index) => <MenuBox menu={data} key={`en-${index}`}/>)}
     </IntlContextConsumer>
   )
 }

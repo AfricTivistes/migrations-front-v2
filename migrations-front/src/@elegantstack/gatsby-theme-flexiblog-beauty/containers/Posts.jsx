@@ -9,6 +9,7 @@ import Seo from '@widgets/Seo'
 import NewsletterExpanded from '@widgets/NewsletterExpanded'
 import Sponsor from '@widgets/Sponsor'
 import Categories from '@widgets/Categories'
+import BannerWide from '@widgets/BannerWide'
 import { useBlogCategories } from '@helpers-blog'
 
 const styles = {
@@ -65,6 +66,7 @@ const Posts = ({
           </Box>
         </Container>
       </Hero>
+      <BannerWide />
       <Divider />
       <Stack>
         <Main>

@@ -40,7 +40,7 @@ module.exports = {
   // Customize your site metadata:
   siteMetadata: {
     //General Site Metadata
-    title: 'Dialogue Migrations',
+    title: 'Dialogue Migration',
     name: 'Migrations',
     description: 'Plateforme d’informations sur les migrations',
     address: 'Dakar, Sénégal',
