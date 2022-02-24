@@ -8,8 +8,6 @@ import Commitment from '@widgets/Commitment'
 
 const PageContact = ({ data: { page }, ...props }) => {
 
-// console.log(data)
-
 const {title, content} = page.nodes[0]
 
   return(<Layout {...props}>

@@ -76,6 +76,19 @@ function create_custom_post_type(){
     )
   );
 
+  register_taxonomy('competence', 'auteur',
+  array(
+    'label' => 'Compétences',
+    'labels' => array(
+      'name' => 'Compétences',
+      'singular_name' => 'Compétence',
+    ),
+    'hierarchical' => false,
+    'show_in_graphql' => true,
+    'graphql_single_name' => 'competence',
+    'graphql_plural_name' => 'competences',
+  ));
+
 }
 
 add_action('init', 'create_custom_post_type');

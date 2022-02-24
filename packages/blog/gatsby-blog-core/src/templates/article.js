@@ -1,64 +1,48 @@
 import { graphql } from 'gatsby'
-import { IntlContextConsumer } from "gatsby-plugin-react-intl"
-import Collection from '../containers/Collection.Article'
-import NotFound from '../Pages/404'
+import PostPage from '../containers/Article'
 
-export default ({ data, ...props }) => {
-  
-  const langue = data.collectionInfo.nodes[0].language.slug
-
-  return (
-    <IntlContextConsumer>
-      {({ language: currentLocale }) =>
-        currentLocale === langue ? <Collection {...props} data={data} /> : <NotFound {...props} />
-      }
-    </IntlContextConsumer>
-  )
-}
+export default PostPage
 
 export const pageQuery = graphql`
-  query allArticleByCategoryQ(
-    $skip: Int!
-    $limit: Int!
-    $slug: String!
-    $includeExcerpt: Boolean!
+  query ArticlePageQuery(
+    $id: String!
+    $previousId: String
+    $nextId: String
+    # $categoryId: String
+    # $tagsIds: [String]
+    # $hasTags: Boolean!
+    # $includeExcerpt: Boolean!
     # $includeTimeToRead: Boolean!
+    # $includeTableOfContents: Boolean!
     $imageQuality: Int!
   ) {
-    collectionInfo: allWpCategory(filter: {slug: {eq: $slug}}) {
-    nodes {
-      id
-      name
-      slug
-      description
-      language {
-        slug
-      }
-    }
-  }
-
-    posts: allWpPost(
-      filter: {
-        categories: {nodes: {elemMatch: {slug: {eq: $slug}}}}
-        status: {eq: "publish"}
-      }
-      sort: { fields: date, order: DESC }
-      limit: $limit
-      skip: $skip
-    ) {
+    post: allWpPost(filter: {id: {eq: $id}}) {
       nodes {
-      id
-      title
-      slug
-      excerpt @include(if: $includeExcerpt)
-      # timeToRead @include(if: $includeTimeToRead)
-      date(formatString: "MMMM DD, YYYY")
-      author: redactions {
+        id
+        title
+        slug
+        link
+        excerpt
+        date(formatString: "MMMM DD, YYYY")
+        body: content
+        author: redactions {
           auteur {
             ... on WpAuteur {
               id
               slug
               title
+              excerpt
+              content
+              competences {
+                nodes {
+                  name
+                }
+              }
+              social{
+								facebook
+                twitter
+                instagram
+              }
               featuredImage {
               node {
                 localFile {
@@ -89,7 +73,7 @@ export const pageQuery = graphql`
             }
           }
         }
-      featuredImage {
+        featuredImage {
         node {
           localFile {
             childImageSharp {
@@ -114,24 +98,53 @@ export const pageQuery = graphql`
           }
         }
       }
-      categories {
-        nodes {
-          id
-          name
-          slug
-          affichage {
-            color
+        categories {
+          nodes {
+            id
+            name
+            slug
+            affichage {
+              color
+            }
+          }
+        }
+        tags {
+          nodes {
+            id
+            name
+            slug
           }
         }
       }
     }
-    pageInfo {
-      pageCount
-      hasPreviousPage
-      hasNextPage
-      currentPage
+
+    previous: allWpPost(filter: {id: {eq: $previousId}}) {
+      nodes {
+        id
+        slug
+        title
+        categories {
+          nodes {
+            id
+            slug
+          }
+        }
+      }
     }
-    totalCount
+
+    next: allWpPost(filter: {id: {eq: $nextId}}) {
+      nodes {
+        id
+        slug
+        title
+        categories {
+          nodes {
+            id
+            slug
+          }
+        }
+      }
     }
+    
   }
 `

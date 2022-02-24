@@ -31,7 +31,7 @@ const PageCollection = ({ data: { posts, collectionInfo }, ...props }) => {
             columns={[1, 2, 3, 3]}
             omitCategory={
               props.pageContext &&
-              props.pageContext.collectionType === 'category'
+              props.pageContext.collectionType === 'categories'
             }
           />
         )}
