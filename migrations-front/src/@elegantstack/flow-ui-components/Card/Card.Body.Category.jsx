@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link } from 'gatsby-plugin-react-intl'
 import { Box, Badge, css } from 'theme-ui'
 import rv from '@components/utils/buildResponsiveVariant'
 import getReadableColor from '@components/utils/getReadableColor'
@@ -10,21 +10,21 @@ const styles = {
   }
 }
 
-const CardBodyCategory = ({ variant, category, omitCategory }) =>
-  !omitCategory && category && category.slug ? (
+const CardBodyCategory = ({ variant, categories, omitCategory }) =>
+  !omitCategory && categories && categories.nodes[0].slug ? (
     <Box css={css(styles.badge)} sx={{ variant: rv(variant, 'category') }}>
       <Badge
         variant='tag'
         as={Link}
-        to={category.slug}
+        to={`/${categories.nodes[0].slug}`}
         sx={
-          category.color && {
-            bg: category.color,
-            color: getReadableColor(category.color)
+          categories.nodes[0].affichage.color && {
+            bg: categories.nodes[0].affichage.color,
+            color: getReadableColor(categories.nodes[0].affichage.color)
           }
         }
       >
-        {category.name}
+        {categories.nodes[0].name}
       </Badge>
     </Box>
   ) : null

@@ -20,7 +20,6 @@ module.exports = async (
         nodes {
           id
           slug
-          link
           teplateName: template {
             templateName
           }
