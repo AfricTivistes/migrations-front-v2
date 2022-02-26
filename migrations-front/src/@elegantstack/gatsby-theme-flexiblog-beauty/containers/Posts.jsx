@@ -10,6 +10,8 @@ import NewsletterExpanded from '@widgets/NewsletterExpanded'
 import Sponsor from '@widgets/Sponsor'
 import Categories from '@widgets/Categories'
 import BannerWide from '@widgets/BannerWide'
+import HeroCard from '@widgets/HeroCard'
+import HorizontalCard from '@widgets/HorizontalCard'
 import { useBlogCategories } from '@helpers-blog'
 
 const styles = {
@@ -32,37 +34,16 @@ const Posts = ({
 }) => {
   const { pageContext: { services = {} } = {} } = props
   const categories = useBlogCategories()
-  const sliderRef = React.useRef()
   const intl = useIntl()
 
   return (
     <Layout {...props}>
       <Seo title={intl.formatMessage({ id: "accueil" })} />
       <Hero full sx={{ position: `relative` }}>
-        <CardList
-          nodes={featuredPosts.nodes}
-          limit={3}
-          variant='horizontal-cover-hero'
-          omitFooter
-          slider
-          autoPlay
-          fade
-          dots={false}
-          arrows={false}
-          ref={sliderRef}
-          loading='eager'
-        />
+        <HeroCard />
         <Container sx={styles.heroThumbsContainer}>
           <Box sx={styles.heroThumbsInner}>
-            <CardList
-              nodes={featuredPosts.nodes}
-              limit={3}
-              variant='horizontal-aside'
-              imageVariant='hero'
-              omitCategory
-              asNavFor={sliderRef}
-              loading='eager'
-            />
+            <HorizontalCard />
           </Box>
         </Container>
       </Hero>
