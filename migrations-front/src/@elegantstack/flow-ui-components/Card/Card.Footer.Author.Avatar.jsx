@@ -21,7 +21,7 @@ const CardFooterAuthorAvatar = ({ variant, omitAuthor, author }) => {
   )
 
   return visibility ? (
-    author.auteur && author.auteur[0].featuredImage.node.localFile.childImageSharp ? (
+    author && author.auteur && author.auteur[0].featuredImage.node.localFile.childImageSharp ? (
       <Link
         as={GLink}
         to={author.auteur[0].slug}
