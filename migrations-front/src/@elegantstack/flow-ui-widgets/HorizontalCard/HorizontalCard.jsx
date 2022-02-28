@@ -7,7 +7,7 @@ import useHeroEN from '@helpers-blog/useHero/EN'
 const Card = ({data}) => {
   
   const sliderRef = React.useRef()
-  console.log(data)
+  
   return(<CardList
     nodes={data}
     limit={3}

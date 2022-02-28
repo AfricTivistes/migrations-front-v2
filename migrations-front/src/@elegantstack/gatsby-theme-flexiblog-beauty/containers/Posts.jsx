@@ -12,6 +12,8 @@ import Categories from '@widgets/Categories'
 import BannerWide from '@widgets/BannerWide'
 import HeroCard from '@widgets/HeroCard'
 import HorizontalCard from '@widgets/HorizontalCard'
+import LastNews from '@widgets/LastNews'
+
 import { useBlogCategories } from '@helpers-blog'
 
 const styles = {
@@ -51,15 +53,7 @@ const Posts = ({
       <Divider />
       <Stack>
         <Main>
-          <CardList
-            nodes={featuredPosts.nodes}
-            limit={4}
-            skip={3}
-            columns={[1, 2, 1, 2]}
-            variant={['horizontal-md', 'vertical']}
-            omitMedia
-            title='Controversial News'
-          />
+          <LastNews />
         </Main>
         <Sidebar pl={4}>
           <Categories categories={categories} />
