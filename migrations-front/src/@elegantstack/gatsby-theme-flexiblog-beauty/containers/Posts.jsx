@@ -14,8 +14,6 @@ import HeroCard from '@widgets/HeroCard'
 import HorizontalCard from '@widgets/HorizontalCard'
 import LastNews from '@widgets/LastNews'
 
-import { useBlogCategories } from '@helpers-blog'
-
 const styles = {
   heroThumbsContainer: {
     left: `50%`,
@@ -35,7 +33,6 @@ const Posts = ({
   ...props
 }) => {
   const { pageContext: { services = {} } = {} } = props
-  const categories = useBlogCategories()
   const intl = useIntl()
 
   return (
@@ -56,7 +53,7 @@ const Posts = ({
           <LastNews />
         </Main>
         <Sidebar pl={4}>
-          <Categories categories={categories} />
+          <Categories />
           <Divider />
           <Sponsor />
         </Sidebar>

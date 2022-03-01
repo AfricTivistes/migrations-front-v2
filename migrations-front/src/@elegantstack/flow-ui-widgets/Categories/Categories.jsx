@@ -1,8 +1,11 @@
 import React from 'react'
+import { useIntl, IntlContextConsumer } from "gatsby-plugin-react-intl"
 import { Box } from 'theme-ui'
 import { FaArchive } from 'react-icons/fa'
 import IconButton from '@components/IconButton'
 import Section from '@components/Section'
+import useCategoriesFR from '@helpers-blog/useCategories/FR'
+import useCategoriesEN from '@helpers-blog/useCategories/EN'
 
 const styles = {
   horizontal: {
@@ -20,29 +23,44 @@ const styles = {
   }
 }
 
-const Categories = ({ variant, categories, ...props }) => (
-  <Section aside={variant === 'vertical'} title='Espace Dialogue' {...props}>
+const Categories = ({ variant, categories, icons, ...props }) => { 
+
+  const intl = useIntl()
+
+  return (<Section aside={variant === 'vertical'} title={intl.formatMessage({ id: "espacedialogue" })} {...props}>
     <Box sx={styles[variant]}>
       {categories &&
-        categories.filter(category => category.widget).map(({ id, name, slug, totalCount, icon }) => {
+        categories.map(({ id, name, slug, totalCount, affichage }) => {
           const buttonProps = {
             key: id,
             name,
             number: totalCount,
             to: slug,
-            iconPath: icon,
-            Icon: !icon && FaArchive,
+            iconPath: icons.filter(icon => icon.name === name)[0].icon,
+            Icon: !icons.filter(icon => icon.name === name)[0].icon && FaArchive,
             variant
           }
-
-          return totalCount !== 0 && <IconButton {...buttonProps} />
+          return totalCount && totalCount !== 0 && <IconButton {...buttonProps} />
         })}
     </Box>
   </Section>
-)
+)}
 
-export default Categories
+const CategoriesBox = () => {
+  
+  const { nodes: nodesFR, categories: categoriesFR  } = useCategoriesFR()
+  const { nodes: nodesEN, categories: categoriesEN  } = useCategoriesEN()
 
-Categories.defaultProps = {
+  return (
+    <IntlContextConsumer>
+      {({ language: currentLocale }) =>
+        currentLocale === 'fr' ? <Categories variant={'vertical'} categories={nodesFR} icons={categoriesFR}  /> : <Categories variant={'vertical'} categories={nodesEN} icons={categoriesEN} />}
+    </IntlContextConsumer>
+  )
+}
+
+export default CategoriesBox
+
+CategoriesBox.defaultProps = {
   variant: 'vertical'
 }
