@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link as GLink } from 'gatsby'
+import { useIntl, Link as GLink, FormattedMessage } from "gatsby-plugin-react-intl"
 import { GatsbyImage as Img, getImage } from 'gatsby-plugin-image'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Link, css } from 'theme-ui'
@@ -23,14 +23,15 @@ const styles = {
 const Sponsor = props => {
   const data = useStaticQuery(sponsorQuery)
   const image = getImage(data.banner)
+  const intl = useIntl()
 
   return (
-    <Section aside title='Our Sponsor' {...props}>
+    <Section aside title={intl.formatMessage({ id: "nospartenaires" })} {...props}>
       <Link href='/' target='_blank'>
         <Img image={image} css={css(styles.image)} alt='Sponsor' />
       </Link>
       <Link variant='mute' as={GLink} to='/contact' sx={styles.caption}>
-        ADVERTISE WITH US
+        <FormattedMessage id="noussoutenir" />
       </Link>
     </Section>
   )
