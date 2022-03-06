@@ -13,6 +13,7 @@ import BannerWide from '@widgets/BannerWide'
 import HeroCard from '@widgets/HeroCard'
 import HorizontalCard from '@widgets/HorizontalCard'
 import LastNews from '@widgets/LastNews'
+import TopCard from '@widgets/TopCard'
 
 const styles = {
   heroThumbsContainer: {
@@ -61,16 +62,7 @@ const Posts = ({
       <Divider />
       <Hero wide sx={{ bg: `contentBg`, pb: [3, 5], pt: [4, 5] }}>
         <Box sx={{ position: `relative`, zIndex: 2 }}>
-          <CardList
-            nodes={featuredPosts.nodes}
-            limit={4}
-            skip={3}
-            columns={[1, 2, 2, 4]}
-            variant={['vertical-cover']}
-            omitCategory
-            title='Our Top Pick This Month'
-            aside
-          />
+          <TopCard />
         </Box>
         <MemphisPattern />
       </Hero>
