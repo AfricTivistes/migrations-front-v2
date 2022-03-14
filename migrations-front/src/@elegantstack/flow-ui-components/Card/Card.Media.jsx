@@ -24,6 +24,7 @@ const CardMedia = ({
   title,
   slug,
   link,
+  categories,
   ...props
 }) => {
   const context = useThemeUI()
@@ -50,7 +51,7 @@ const CardMedia = ({
       }
     : {
         as: GLink,
-        to: slug
+        to: categories ? `/${categories.nodes[0].slug}/${slug}` : slug
       }
 
   return (
