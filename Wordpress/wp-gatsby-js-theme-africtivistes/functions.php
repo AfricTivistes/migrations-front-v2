@@ -76,6 +76,10 @@ function create_custom_post_type(){
     )
   );
 
+  add_post_type_support('lexique', array(
+		'thumbnail'
+  ));
+
   register_taxonomy('competence', 'auteur',
   array(
     'label' => 'Compétences',
