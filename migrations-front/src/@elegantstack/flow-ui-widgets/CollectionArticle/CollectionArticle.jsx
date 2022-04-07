@@ -1,8 +1,11 @@
 import React from 'react'
 import { IntlContextConsumer } from "gatsby-plugin-react-intl"
 import CardList from '@components/CardList'
-import { Stack, Main } from '@layout'
+import { Box,  } from 'theme-ui'
+import { Stack, Main, Hero } from '@layout'
+import MemphisPattern from '@components/MemphisPattern'
 import Divider from '@components/Divider'
+import Lexique from '../Lexique'
 import useCollectionArticleFR from '@helpers-blog/useCollectionArticle/FR'
 import useCollectionArticleEN from '@helpers-blog/useCollectionArticle/EN'
 
@@ -78,26 +81,13 @@ const Card = ({data}) => {
             )}
             {index === 1 && (
               <>
-                {/* <Divider />
+                <Divider />
                 <Hero wide sx={{ pb: [3, 5], pt: [4, 5] }}>
                   <Box sx={{ position: `relative`, zIndex: 2 }}>
-                    <CardList
-                      nodes={featuredPosts.nodes}
-                      limit={2}
-                      skip={7}
-                      columns={[1, 1, 1, 2]}
-                      variant={[
-                        'horizontal-md',
-                        'horizontal',
-                        'horizontal',
-                        'horizontal-lg'
-                      ]}
-                      title='Trending Now'
-                      aside
-                    />
+                    <Lexique />
                   </Box>
                   <MemphisPattern />
-                </Hero> */}
+                </Hero>
               </>
             )}
             {index !== data.length - 1 && <Divider />}
