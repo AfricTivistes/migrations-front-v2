@@ -11,7 +11,7 @@ const styles = {
 }
 
 const CardBodyCategory = ({ variant, categories, omitCategory }) =>
-  !omitCategory && categories && categories.nodes[0].slug ? (
+  !omitCategory && categories && (categories.nodes[0].slug && categories.nodes[0].affichage) ? (
     <Box css={css(styles.badge)} sx={{ variant: rv(variant, 'category') }}>
       <Badge
         variant='tag'
