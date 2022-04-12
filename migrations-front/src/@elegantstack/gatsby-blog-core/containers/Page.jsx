@@ -28,5 +28,4 @@ const {title, content} = page.nodes[0]
     </Stack>
   </Layout>)
 }
-
 export default PageContact
