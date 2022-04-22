@@ -1,0 +1,12 @@
+[build]
+  base = "/"
+  publish = "migrations-front/public/"
+  command = "cd migrations-front && yarn build"
+
+[[plugins]]
+  # Installs the Lighthouse Build Plugin for all deploy contexts
+  package = "@netlify/plugin-gatsby"
+
+[functions]
+  directory = "functions/"
+  
