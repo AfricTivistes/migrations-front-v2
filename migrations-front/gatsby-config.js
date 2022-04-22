@@ -16,6 +16,37 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         url: `https://migration.africtivistes.org/graphql`,
+        presets: [
+          {
+            presetName: `DEVELOP`,
+            useIf: () => process.env.NODE_ENV === `development`,
+            options: {
+              develop: {
+                nodeUpdateInterval: 60000, // Update nodes every 60 seconds 
+                hardCacheMediaFiles: true,
+                hardCacheData: false,
+              },
+              type: {
+                MediaItem: {
+                  localFile: {
+                    requestConcurrency: 10, // Amount of images to download concurrently. Try lowering this if wordpress server crashes on import.
+                  },
+                },
+              },
+            },
+          },
+          {
+            presetName: `PRODUCTION`,
+            useIf: () => process.env.NODE_ENV === `production`,
+            options: {
+              production: {
+                hardCacheMediaFiles: true,
+                allow404Images: true,
+                allow401Images: true,
+              },
+            },
+          },
+        ],
       },
     },
     {
@@ -36,7 +67,8 @@ module.exports = {
         // option to fallback to the defined language instead of the `defaultLanguage` if the user langauge is not in the list
         fallbackLanguage: `fr`,
       },
-    }
+    },
+    'gatsby-plugin-netlify'
   ],
   // Customize your site metadata:
   siteMetadata: {

@@ -24,8 +24,6 @@ const CollectionArticle = () => {
   const { nodes: nodesFR  } = useLexiqueFR()
   const { nodes: nodesEN  } = useLexiqueEN()
 
-  console.log('nodesFR', nodesFR);
-  
   return (
     <IntlContextConsumer>
       {({ language: currentLocale }) =>
