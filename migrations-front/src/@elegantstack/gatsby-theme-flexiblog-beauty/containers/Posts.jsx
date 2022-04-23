@@ -29,10 +29,7 @@ const styles = {
   }
 }
 
-const Posts = ({
-  data: { posts = {}, featuredPosts = {}, recentPosts = {} },
-  ...props
-}) => {
+const Posts = ({...props}) => {
   const { pageContext: { services = {} } = {} } = props
   const intl = useIntl()
   

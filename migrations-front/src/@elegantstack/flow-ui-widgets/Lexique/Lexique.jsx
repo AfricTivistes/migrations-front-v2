@@ -7,9 +7,15 @@ import useLexiqueEN from '@helpers-blog/useLexique/EN'
 const Card = ({data}) => {
   
   const intl = useIntl()
+  const lexiques = data.map(lexique => ({
+    'id': lexique.id,
+    'slug': `/lexique/#${lexique.slug}`,
+    'title': lexique.title,
+    'featuredImage': lexique.featuredImage,
+  })).sort( () => Math.random() - 0.5)
 
   return (<CardList
-    nodes={data}
+    nodes={lexiques}
     limit={5}
     variant='vertical-cover'
     title={intl.formatMessage({ id: "lexique" })}
@@ -24,8 +30,6 @@ const CollectionArticle = () => {
   const { nodes: nodesFR  } = useLexiqueFR()
   const { nodes: nodesEN  } = useLexiqueEN()
 
-  console.log('nodesFR', nodesFR);
-  
   return (
     <IntlContextConsumer>
       {({ language: currentLocale }) =>
