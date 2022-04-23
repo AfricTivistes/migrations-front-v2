@@ -40,14 +40,6 @@ module.exports = async (helpers, pluginOptions) => {
   /**
    * Category posts pages
    */
-  await createCollectionPage(helpers, pluginOptions, {
-    template: require.resolve('./templates/collection.category'),
-    slugField: 'category___slug'
-  })
-
-  /**
-   * Category posts pages
-   */
   await createCollectionArticle(helpers, pluginOptions, {
     template: require.resolve('./templates/collection.article'),
     slugField: 'categories___nodes___slug'
