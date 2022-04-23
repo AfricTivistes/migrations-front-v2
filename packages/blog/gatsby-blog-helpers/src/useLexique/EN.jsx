@@ -12,13 +12,11 @@ const lexiqueENQuery = graphql`
     allWpLexique(
     filter: {status: {eq: "publish"}, language: {code: {eq: EN}}}
     sort: {fields: [date], order: DESC}
-    limit: 7
   ) {
     nodes {
       id
       slug
       title
-      date
       featuredImage {
         node {
           localFile {
