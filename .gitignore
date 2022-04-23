@@ -80,3 +80,4 @@ yarn-error.log
 .netlify
 # Wordpress cache
 .wordpress-cache
+migrations-front/.wordpress-cache
