@@ -93,6 +93,145 @@ function create_custom_post_type(){
     'graphql_plural_name' => 'competences',
   ));
 
+  register_post_type('formulaire',
+    array(
+      'labels' => array(
+        'name' =>  __('Soumission de formulaire'),
+        'singular_name' => __('soumission de formulaire'),
+      ),
+      'public' => true,
+      'show_in_graphql' => true,
+      'hierarchical' => true,
+      'graphql_single_name' => 'formulaire',
+      'graphql_plural_name' => 'formulaires',
+    )
+  );
+
+  register_taxonomy('type', 'formulaire',
+  array(
+    'label' => 'Type',
+    'labels' => array(
+      'name' => 'Types',
+      'singular_name' => 'Type',
+    ),
+    'hierarchical' => true,
+    'show_in_graphql' => true,
+    'graphql_single_name' => 'type',
+    'graphql_plural_name' => 'types',
+  ));
+
+  register_graphql_mutation('createSubmission',[
+    'inputFields' => [
+      'type' => [
+        'type' => 'String',
+        'description' => 'Type du formulaire',
+      ],
+      'name' => [
+        'type' => 'String',
+        'description' => 'Nom du formulaire',
+      ],
+      'organization' => [
+        'type' => 'String',
+        'description' => 'Organisation du formulaire',
+      ],
+      'email' => [
+        'type' => 'String',
+        'description' => 'Email du formulaire',
+      ],
+      'phone' => [
+        'type' => 'String',
+        'description' => 'Téléphone du formulaire',
+      ],
+      'subject' => [
+        'type' => 'String',
+        'description' => 'Sujet du formulaire',
+      ],
+      'message' => [
+        'type' => 'String',
+        'description' => 'Message du formulaire',
+      ],
+    ],  // inputFields
+    'outputFields' => [
+      'success' => [
+        'type' => 'Boolean',
+        'description' => 'Whether or not data was stored successfully',
+        'resolve' => function($payload, $args, $context, $info) {
+          return isset($payload['success']) ? $payload['success'] : false;
+        }
+      ],
+      'data' => [
+        'type' => 'String',
+        'description' => 'Playload of submission fields',
+        'resolve' => function($payload, $args, $context, $info) {
+          return isset($payload['data']) ? $payload['data'] : null;
+        }
+      ],
+    ],  // outputFields
+    'mutateAndGetPayload' => function($input, $context, $info){
+
+      if (!class_exists('ACF')) return [
+        'success' => false,
+        'data' => 'ACF plugin not found',
+      ];
+
+      $sanitized_data = [];
+      $errors = [];
+      $acceptable_fields = [
+        'type' => 'field_6264448ecd34f',
+        'name' => 'field_6264451ecd350',
+        'organization' => 'field_62644539cd351',
+        'email' => 'field_62644551cd352',
+        'phone' => 'field_6264456dcd353',
+        'subject' => 'field_626445a6cd354',
+        'message' => 'field_62644633cd355',
+      ];
+
+      foreach ($acceptable_fields as $field_key => $acf_key) {
+        if (!empty($input[$field_key])) {
+          $sanitized_data[$field_key] = sanitize_text_field($input[$field_key]);
+        } else {
+          $errors[] = $field_key . ' was not filled out';
+        }
+      }
+
+      if (!empty($errors)) {
+        return [
+          'success' => false,
+          'data' => $errors,
+        ];
+      }
+
+      $form_submission = wp_insert_post([
+        'post_type' => 'formulaire',
+        'post_status' => 'publish',
+        'post_title' => $sanitized_data['subject'],
+        'post_content' => $sanitized_data['message'],
+      ], true);
+
+      if (is_wp_error($form_submission)) return [
+        'success' => false,
+        'data' => $form_submission->get_error_message(),
+      ];
+
+      foreach ($acceptable_fields as $field_key => $acf_key) {
+        update_field($acf_key, $sanitized_data[$field_key], $form_submission);
+      }
+
+      return [
+        'success' => true,
+        'data' => json_encode($sanitized_data),
+      ];
+
+    }
+  ]);
+
 }
 
+// function create_grqphql_mutation(){
+
+  
+
+// }
+
 add_action('init', 'create_custom_post_type');
+// add_action('graphql_register_types', 'create_grqphql_mutation');
