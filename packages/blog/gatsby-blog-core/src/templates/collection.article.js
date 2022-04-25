@@ -31,6 +31,11 @@ export const pageQuery = graphql`
       name
       slug
       description
+      affichage {
+        color
+        icon
+        widget
+      }
       language {
         slug
       }
