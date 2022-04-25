@@ -33,9 +33,9 @@ const Categories = ({ variant, categories, icons, ...props }) => {
         categories.map(({ id, name, slug, totalCount, affichage }) => {
           const buttonProps = {
             key: id,
-            name,
+            name:`${intl.formatMessage({ id: "callfor" })} ${name}`,
             number: totalCount,
-            to: slug,
+            to: `/${intl.formatMessage({ id: "callforslug" })}${slug}`,
             iconPath: icons.filter(icon => icon.name === name)[0].icon,
             Icon: !icons.filter(icon => icon.name === name)[0].icon && FaArchive,
             variant

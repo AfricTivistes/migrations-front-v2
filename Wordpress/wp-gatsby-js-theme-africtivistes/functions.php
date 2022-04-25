@@ -133,6 +133,7 @@ function create_custom_post_type(){
       'organization' => [
         'type' => 'String',
         'description' => 'Organisation du formulaire',
+        'isNullable' => true,
       ],
       'email' => [
         'type' => 'String',
@@ -141,6 +142,7 @@ function create_custom_post_type(){
       'phone' => [
         'type' => 'String',
         'description' => 'Téléphone du formulaire',
+        'isNullable' => true,
       ],
       'subject' => [
         'type' => 'String',
@@ -150,6 +152,15 @@ function create_custom_post_type(){
         'type' => 'String',
         'description' => 'Message du formulaire',
       ],
+      'country' => [
+        'type' => 'String',
+        'description' => 'Pays du formulaire',
+        'isNullable' => true,
+      ],
+      'language' => [
+        'type' => 'String',
+        'description' => 'Langue du formulaire',
+      ]
     ],  // inputFields
     'outputFields' => [
       'success' => [
@@ -184,6 +195,8 @@ function create_custom_post_type(){
         'phone' => 'field_6264456dcd353',
         'subject' => 'field_626445a6cd354',
         'message' => 'field_62644633cd355',
+        'country' => 'field_626643248f307',
+        'language' => 'field_626643618f308'
       ];
 
       foreach ($acceptable_fields as $field_key => $acf_key) {
