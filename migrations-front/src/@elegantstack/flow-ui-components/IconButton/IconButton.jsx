@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from "gatsby-plugin-react-intl"
-import SVG from 'react-inlinesvg'
+import Svg from 'react-inlinesvg'
 import { Button, Box, Heading } from 'theme-ui'
 
 const styles = {
@@ -84,7 +84,7 @@ export const IconButton = ({
   <Button variant='none' as={to && Link} to={to} sx={styles.button[variant]}>
     {(Icon || iconPath) && (
       <Box sx={styles.icon[variant]}>
-        {iconPath && <SVG src={iconPath} />}
+        {iconPath && <Svg src={iconPath} />}
         {Icon && <Icon color={iconColor} />}
       </Box>
     )}
