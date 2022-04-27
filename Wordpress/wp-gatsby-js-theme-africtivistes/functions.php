@@ -160,7 +160,12 @@ function create_custom_post_type(){
       'language' => [
         'type' => 'String',
         'description' => 'Langue du formulaire',
-      ]
+      ],
+      'contact' => [
+        'type' => 'String',
+        'description' => 'Coordonnées de la personne a contacté',
+        'isNullable' => true,
+      ],
     ],  // inputFields
     'outputFields' => [
       'success' => [
@@ -196,7 +201,8 @@ function create_custom_post_type(){
         'subject' => 'field_626445a6cd354',
         'message' => 'field_62644633cd355',
         'country' => 'field_626643248f307',
-        'language' => 'field_626643618f308'
+        'language' => 'field_626643618f308',
+        'contact' => 'field_62688db1ce20e',
       ];
 
       foreach ($acceptable_fields as $field_key => $acf_key) {
