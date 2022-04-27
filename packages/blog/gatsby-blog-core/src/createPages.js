@@ -1,9 +1,11 @@
 const withDefaults = require('./utils/default.options')
 const createPostsPage = require('./Pages/_posts')
 const createArticlePage = require('./Pages/_article')
+const createRessourcesPage = require('./Pages/_ressources')
 const createPages = require('./Pages/_page')
 const createCollectionPage = require('./Pages/_collection')
 const createCollectionArticle = require('./Pages/_collectionArticle')
+const createCollectionRessources = require('./Pages/_collectionRessources')
 
 module.exports = async (helpers, pluginOptions) => {
   pluginOptions = withDefaults(pluginOptions)
@@ -23,6 +25,13 @@ module.exports = async (helpers, pluginOptions) => {
   })
 
   /**
+   * Single article pages
+   */
+  await createRessourcesPage(helpers, pluginOptions, {
+    template: require.resolve('./templates/ressources')
+  })
+
+  /**
    * Single post pages
    */
   await createPages(helpers, pluginOptions, {
@@ -35,6 +44,14 @@ module.exports = async (helpers, pluginOptions) => {
   await createCollectionArticle(helpers, pluginOptions, {
     template: require.resolve('./templates/collection.article'),
     slugField: 'categories___nodes___slug'
+  })
+
+  /**
+   * Category ressources pages
+   */
+  await createCollectionRessources(helpers, pluginOptions, {
+    template: require.resolve('./templates/collection.ressources'),
+    slugField: 'ressourcesType___nodes___slug'
   })
 
   /**
