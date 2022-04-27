@@ -6,8 +6,8 @@ import PropTypes from 'prop-types'
 import { Box, Label, Input, Textarea, Button, Message, Spinner } from 'theme-ui'
 
 const CONTACT_MUTATION = gql`
-  mutation CreateSubmissionMutation($clientMutationId: String!, $email: String!, $message: String!, $name: String!, $organization: String!, $phone: String!, $subject: String!, $type: String!, $country: String!, $language: String!) {
-    createSubmission(input: {clientMutationId: $clientMutationId, email: $email, message: $message, name: $name, organization: $organization, phone: $phone, subject: $subject, type: $type, country: $country, language: $language}) {
+  mutation CreateSubmissionMutation($clientMutationId: String!, $email: String!, $message: String!, $name: String!, $organization: String!, $phone: String!, $subject: String!, $type: String!, $country: String!, $language: String!, $contact: String!) {
+    createSubmission(input: {clientMutationId: $clientMutationId, email: $email, message: $message, name: $name, organization: $organization, phone: $phone, subject: $subject, type: $type, country: $country, language: $language, contact: $contact}) {
       data
       success
     }
@@ -49,6 +49,7 @@ const FactcheckingForm = () => {
               type: 'factchecking',
               country: countryValue,
               language: language,
+              contact: ' '
             },
           })
           setSubmitting(true)
@@ -70,10 +71,10 @@ const FactcheckingForm = () => {
           </Message>
         )}
         <Box variant='forms.row'>
-          <Label htmlFor='contact-form-name'><FormattedMessage id="name" /></Label>
+          <Label htmlFor='factchecking-form-name'><FormattedMessage id="name" /></Label>
           <Input
             type='text'
-            id='contact-form-name'
+            id='factchecking-form-name'
             name='name'
             required
             value={nameValue}
@@ -82,20 +83,20 @@ const FactcheckingForm = () => {
         </Box>
         <Box variant='forms.row'>
           <Box variant='forms.column'>
-            <Label htmlFor='contact-form-organization'><FormattedMessage id="media" /></Label>
+            <Label htmlFor='factchecking-form-organization'><FormattedMessage id="media" /></Label>
             <Input 
               type='text'
-              id='contact-form-organization'
+              id='factchecking-form-organization'
               name='organization'
               value={organizationValue}
               onChange={event => {setOrganizationValue(event.target.value)}}
             />
           </Box>
           <Box variant='forms.column'>
-            <Label htmlFor='contact-form-country'><FormattedMessage id="country" /></Label>
+            <Label htmlFor='factchecking-form-country'><FormattedMessage id="country" /></Label>
             <Input 
               type='text'
-              id='contact-form-country'
+              id='factchecking-form-country'
               name='country'
               required
               value={countryValue}
@@ -105,11 +106,11 @@ const FactcheckingForm = () => {
         </Box>
         <Box variant='forms.row'>
           <Box variant='forms.column'>
-            <Label htmlFor='contact-form-email'><FormattedMessage id="email" /></Label>
+            <Label htmlFor='factchecking-form-email'><FormattedMessage id="email" /></Label>
             <Input
               type='email'
               placeholder='email@example.com'
-              id='contact-form-email'
+              id='factchecking-form-email'
               name='email'
               required
               value={emailValue}
@@ -117,11 +118,11 @@ const FactcheckingForm = () => {
             />
           </Box>
           <Box variant='forms.column'>
-            <Label htmlFor='contact-form-phone'><FormattedMessage id="phone" /></Label>
+            <Label htmlFor='factchecking-form-phone'><FormattedMessage id="phone" /></Label>
             <Input
               type='text'
               placeholder='(xxx) xxx-xxxx'
-              id='contact-form-phone'
+              id='factchecking-form-phone'
               name='phone'
               value={phoneValue}
               onChange={event => {setPhoneValue(event.target.value)}}
@@ -129,10 +130,10 @@ const FactcheckingForm = () => {
           </Box>
         </Box>
         <Box variant='forms.row'>
-          <Label htmlFor='contact-form-subject'><FormattedMessage id="subject2" /></Label>
+          <Label htmlFor='factchecking-form-subject'><FormattedMessage id="subject2" /></Label>
           <Input
             type='text'
-            id='contact-form-subject'
+            id='factchecking-form-subject'
             name='subject'
             required
             value={subjectValue}
@@ -140,10 +141,10 @@ const FactcheckingForm = () => {
           />
         </Box>
         <Box variant='forms.row'>
-          <Label htmlFor='contact-form-message'><FormattedMessage id="message" /></Label>
+          <Label htmlFor='factchecking-form-message'><FormattedMessage id="message" /></Label>
           <Textarea 
             name='message'
-            id='contact-form-message'
+            id='factchecking-form-message'
             rows='15'
             required
             value={messageValue}
