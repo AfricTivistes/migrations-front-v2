@@ -14,7 +14,7 @@ const CONTACT_MUTATION = gql`
   }
 `
 
-const ContactForm = () => {
+const ContributionForm = () => {
 
   // const intl = useIntl()
   const [emailValue, setEmailValue] = useState('')
@@ -23,6 +23,7 @@ const ContactForm = () => {
   const [organizationValue, setOrganizationValue] = useState('')
   const [phoneValue, setPhoneValue] = useState('')
   const [subjectValue, setSubjectValue] = useState('')
+  const [countryValue, setCountryValue] = useState('')
   const [submitting, setSubmitting] = useState(false)
   
   return(<IntlContextConsumer>
@@ -33,20 +34,20 @@ const ContactForm = () => {
         method="POST"
         data-netlify-recaptcha="true"
         data-netlify="true"
-        name="contact"
+        name="contribution"
         onSubmit={async event => {
           event.preventDefault()
           createSubmission({
             variables: {
-              clientMutationId: 'contact-form',
+              clientMutationId: 'contribution-form',
               email: emailValue,
               message: messageValue,
               name: nameValue,
               organization: organizationValue || ' ',
               phone: phoneValue || ' ',
               subject: subjectValue,
-              type: 'contact',
-              country: ' ',
+              type: 'contribution',
+              country: countryValue,
               language: language,
               contact: ' '
             },
@@ -56,7 +57,7 @@ const ContactForm = () => {
       >
         { data && (
           <Message variant='success'>
-            <FormattedMessage id="contactSuccess" />
+            <FormattedMessage id="contactSuccess2" />
           </Message>
         )}
         { error && (
@@ -70,35 +71,46 @@ const ContactForm = () => {
           </Message>
         )}
         <Box variant='forms.row'>
+          <Label htmlFor='contribution-form-name'><FormattedMessage id="name" /></Label>
+          <Input
+            type='text'
+            id='contribution-form-name'
+            name='name'
+            required
+            value={nameValue}
+            onChange={event => {setNameValue(event.target.value)}}
+          />
+        </Box>
+        <Box variant='forms.row'>
           <Box variant='forms.column'>
-            <Label htmlFor='contact-form-name'><FormattedMessage id="name" /></Label>
-            <Input
-              type='text'
-              id='contact-form-name'
-              name='name'
-              required
-              value={nameValue}
-              onChange={event => {setNameValue(event.target.value)}}
-            />
-          </Box>
-          <Box variant='forms.column'>
-            <Label htmlFor='contact-form-organization'><FormattedMessage id="organization" /></Label>
+            <Label htmlFor='contribution-form-organization'><FormattedMessage id="media" /></Label>
             <Input 
               type='text'
-              id='contact-form-organization'
+              id='contribution-form-organization'
               name='organization'
               value={organizationValue}
               onChange={event => {setOrganizationValue(event.target.value)}}
             />
           </Box>
+          <Box variant='forms.column'>
+            <Label htmlFor='contribution-form-country'><FormattedMessage id="country" /></Label>
+            <Input 
+              type='text'
+              id='contribution-form-country'
+              name='country'
+              required
+              value={countryValue}
+              onChange={event => {setCountryValue(event.target.value)}}
+            />
+          </Box>
         </Box>
         <Box variant='forms.row'>
           <Box variant='forms.column'>
-            <Label htmlFor='contact-form-email'><FormattedMessage id="email" /></Label>
+            <Label htmlFor='contribution-form-email'><FormattedMessage id="email" /></Label>
             <Input
               type='email'
               placeholder='email@example.com'
-              id='contact-form-email'
+              id='contribution-form-email'
               name='email'
               required
               value={emailValue}
@@ -106,11 +118,11 @@ const ContactForm = () => {
             />
           </Box>
           <Box variant='forms.column'>
-            <Label htmlFor='contact-form-phone'><FormattedMessage id="phone" /></Label>
+            <Label htmlFor='contribution-form-phone'><FormattedMessage id="phone" /></Label>
             <Input
               type='text'
               placeholder='(xxx) xxx-xxxx'
-              id='contact-form-phone'
+              id='contribution-form-phone'
               name='phone'
               value={phoneValue}
               onChange={event => {setPhoneValue(event.target.value)}}
@@ -118,10 +130,10 @@ const ContactForm = () => {
           </Box>
         </Box>
         <Box variant='forms.row'>
-          <Label htmlFor='contact-form-subject'><FormattedMessage id="subject" /></Label>
+          <Label htmlFor='contribution-form-subject'><FormattedMessage id="subject3" /></Label>
           <Input
             type='text'
-            id='contact-form-subject'
+            id='contribution-form-subject'
             name='subject'
             required
             value={subjectValue}
@@ -129,17 +141,18 @@ const ContactForm = () => {
           />
         </Box>
         <Box variant='forms.row'>
-          <Label htmlFor='contact-form-message'><FormattedMessage id="message" /></Label>
+          <Label htmlFor='contribution-form-message'><FormattedMessage id="message" /></Label>
           <Textarea 
             name='message'
-            id='contact-form-message'
+            id='contribution-form-message'
+            rows='15'
             required
             value={messageValue}
             onChange={event => {setMessageValue(event.target.value)}}
           />
         </Box>
         <Box variant='forms.row'>
-          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="form-name" value="contribution" />
           <div data-netlify-recaptcha="true"></div>
         </Box>
         <Button
@@ -155,9 +168,9 @@ const ContactForm = () => {
   </Mutation>)}
   </IntlContextConsumer>)}
 
-export default ContactForm
+export default ContributionForm
 
-ContactForm.propTypes = {
+ContributionForm.propTypes = {
   handleSubmit: PropTypes.func,
   submitting: PropTypes.bool,
   success: PropTypes.bool

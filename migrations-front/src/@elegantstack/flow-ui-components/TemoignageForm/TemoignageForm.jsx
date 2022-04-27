@@ -14,7 +14,7 @@ const CONTACT_MUTATION = gql`
   }
 `
 
-const ContactForm = () => {
+const TemoignageForm = () => {
 
   // const intl = useIntl()
   const [emailValue, setEmailValue] = useState('')
@@ -23,6 +23,8 @@ const ContactForm = () => {
   const [organizationValue, setOrganizationValue] = useState('')
   const [phoneValue, setPhoneValue] = useState('')
   const [subjectValue, setSubjectValue] = useState('')
+  const [countryValue, setCountryValue] = useState('')
+  const [contactValue, setContactValue] = useState('')
   const [submitting, setSubmitting] = useState(false)
   
   return(<IntlContextConsumer>
@@ -33,22 +35,22 @@ const ContactForm = () => {
         method="POST"
         data-netlify-recaptcha="true"
         data-netlify="true"
-        name="contact"
+        name="temoignage"
         onSubmit={async event => {
           event.preventDefault()
           createSubmission({
             variables: {
-              clientMutationId: 'contact-form',
+              clientMutationId: 'temoignage-form',
               email: emailValue,
               message: messageValue,
               name: nameValue,
               organization: organizationValue || ' ',
               phone: phoneValue || ' ',
               subject: subjectValue,
-              type: 'contact',
-              country: ' ',
+              type: 'temoignage',
+              country: countryValue,
               language: language,
-              contact: ' '
+              contact: contactValue || ' '
             },
           })
           setSubmitting(true)
@@ -56,7 +58,7 @@ const ContactForm = () => {
       >
         { data && (
           <Message variant='success'>
-            <FormattedMessage id="contactSuccess" />
+            <FormattedMessage id="contactSuccess2" />
           </Message>
         )}
         { error && (
@@ -70,35 +72,46 @@ const ContactForm = () => {
           </Message>
         )}
         <Box variant='forms.row'>
+          <Label htmlFor='temoignage-form-name'><FormattedMessage id="name" /></Label>
+          <Input
+            type='text'
+            id='temoignage-form-name'
+            name='name'
+            required
+            value={nameValue}
+            onChange={event => {setNameValue(event.target.value)}}
+          />
+        </Box>
+        <Box variant='forms.row'>
           <Box variant='forms.column'>
-            <Label htmlFor='contact-form-name'><FormattedMessage id="name" /></Label>
-            <Input
-              type='text'
-              id='contact-form-name'
-              name='name'
-              required
-              value={nameValue}
-              onChange={event => {setNameValue(event.target.value)}}
-            />
-          </Box>
-          <Box variant='forms.column'>
-            <Label htmlFor='contact-form-organization'><FormattedMessage id="organization" /></Label>
+            <Label htmlFor='temoignage-form-organization'><FormattedMessage id="media" /></Label>
             <Input 
               type='text'
-              id='contact-form-organization'
+              id='temoignage-form-organization'
               name='organization'
               value={organizationValue}
               onChange={event => {setOrganizationValue(event.target.value)}}
             />
           </Box>
+          <Box variant='forms.column'>
+            <Label htmlFor='temoignage-form-country'><FormattedMessage id="country" /></Label>
+            <Input 
+              type='text'
+              id='temoignage-form-country'
+              name='country'
+              required
+              value={countryValue}
+              onChange={event => {setCountryValue(event.target.value)}}
+            />
+          </Box>
         </Box>
         <Box variant='forms.row'>
           <Box variant='forms.column'>
-            <Label htmlFor='contact-form-email'><FormattedMessage id="email" /></Label>
+            <Label htmlFor='temoignage-form-email'><FormattedMessage id="email" /></Label>
             <Input
               type='email'
               placeholder='email@example.com'
-              id='contact-form-email'
+              id='temoignage-form-email'
               name='email'
               required
               value={emailValue}
@@ -106,11 +119,11 @@ const ContactForm = () => {
             />
           </Box>
           <Box variant='forms.column'>
-            <Label htmlFor='contact-form-phone'><FormattedMessage id="phone" /></Label>
+            <Label htmlFor='temoignage-form-phone'><FormattedMessage id="phone" /></Label>
             <Input
               type='text'
               placeholder='(xxx) xxx-xxxx'
-              id='contact-form-phone'
+              id='temoignage-form-phone'
               name='phone'
               value={phoneValue}
               onChange={event => {setPhoneValue(event.target.value)}}
@@ -118,10 +131,10 @@ const ContactForm = () => {
           </Box>
         </Box>
         <Box variant='forms.row'>
-          <Label htmlFor='contact-form-subject'><FormattedMessage id="subject" /></Label>
+          <Label htmlFor='temoignage-form-subject'><FormattedMessage id="subject4" /></Label>
           <Input
             type='text'
-            id='contact-form-subject'
+            id='temoignage-form-subject'
             name='subject'
             required
             value={subjectValue}
@@ -129,17 +142,28 @@ const ContactForm = () => {
           />
         </Box>
         <Box variant='forms.row'>
-          <Label htmlFor='contact-form-message'><FormattedMessage id="message" /></Label>
+          <Label htmlFor='temoignage-form-message'><FormattedMessage id="message" /></Label>
           <Textarea 
             name='message'
-            id='contact-form-message'
+            id='temoignage-form-message'
+            rows='6'
             required
             value={messageValue}
             onChange={event => {setMessageValue(event.target.value)}}
           />
         </Box>
         <Box variant='forms.row'>
-          <input type="hidden" name="form-name" value="contact" />
+          <Label htmlFor='temoignage-form-contact'><FormattedMessage id="ContactForm" /></Label>
+          <Textarea 
+            name='Contact'
+            id='temoignage-form-contact'
+            rows='4'
+            value={contactValue}
+            onChange={event => {setContactValue(event.target.value)}}
+          />
+        </Box>
+        <Box variant='forms.row'>
+          <input type="hidden" name="form-name" value="temoignage" />
           <div data-netlify-recaptcha="true"></div>
         </Box>
         <Button
@@ -155,9 +179,9 @@ const ContactForm = () => {
   </Mutation>)}
   </IntlContextConsumer>)}
 
-export default ContactForm
+export default TemoignageForm
 
-ContactForm.propTypes = {
+TemoignageForm.propTypes = {
   handleSubmit: PropTypes.func,
   submitting: PropTypes.bool,
   success: PropTypes.bool
