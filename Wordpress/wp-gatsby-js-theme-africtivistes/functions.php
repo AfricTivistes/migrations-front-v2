@@ -93,6 +93,39 @@ function create_custom_post_type(){
     'graphql_plural_name' => 'competences',
   ));
 
+  register_post_type('ressources',
+    array(
+      'labels' => array(
+        'name' =>  __('Ressources & Données'),
+        'singular_name' => __('Ressources & Données')
+      ),
+      'public' => true,
+      'show_in_graphql' => true,
+      'hierarchical' => true,
+      'graphql_single_name' => 'ressource',
+      'graphql_plural_name' => 'ressources',
+    )
+  );
+	
+  add_post_type_support('ressources', array(
+		'thumbnail',
+    'excerpt'
+  ));
+
+
+  register_taxonomy('ressource', 'ressources',
+  array(
+    'label' => 'Type',
+    'labels' => array(
+      'name' => 'Types',
+      'singular_name' => 'Type',
+    ),
+    'hierarchical' => true,
+    'show_in_graphql' => true,
+    'graphql_single_name' => 'ressourceType',
+    'graphql_plural_name' => 'ressourcesType',
+  ));
+
   register_post_type('formulaire',
     array(
       'labels' => array(
