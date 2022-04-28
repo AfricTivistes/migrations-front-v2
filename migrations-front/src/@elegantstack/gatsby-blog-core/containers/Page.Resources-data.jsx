@@ -3,8 +3,10 @@ import { Box } from 'theme-ui'
 import { Layout, Hero } from '@layout'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
+import MemphisPattern from '@components/MemphisPattern'
 import HeroRessources from '@widgets/HeroRessources'
 import RessourcesType from '@widgets/RessourcesType'
+import Lexique from '@widgets/Lexique'
 
 const PageContact = ({ data: { page }, ...props }) => {
 
@@ -33,6 +35,12 @@ const PageContact = ({ data: { page }, ...props }) => {
       </Box>
     </Hero>
     <Divider />
+    <Hero wide sx={{ pb: [3, 5], pt: [4, 5] }}>
+      <Box sx={{ position: `relative`, zIndex: 2 }}>
+        <Lexique />
+      </Box>
+      <MemphisPattern />
+    </Hero>
   </Layout>)
 }
 
