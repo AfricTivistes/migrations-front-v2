@@ -36,9 +36,9 @@ const styles = {
 }
 
 const PageApropos = ({ data: { page }, ...props }) => {
-  const {title, avatar} = page.nodes[0]
-  const image = getImage(avatar)
-
+  const {title, content, avatar, wpChildren} = page.nodes[0]
+  const image = getImage(avatar.node.localFile)
+  let last = wpChildren.nodes.length - 1
   return (
     <Layout {...props}>
       <Seo title={title} />
@@ -47,7 +47,7 @@ const PageApropos = ({ data: { page }, ...props }) => {
         <Main>
           <PageTitle
             header={title}
-            subheader='The future belongs to those who believe in the beauty of their dreams.'
+            subheader={content}
           />
           <Divider />
           <Box sx={styles.imageWrapper}>
@@ -57,71 +57,16 @@ const PageApropos = ({ data: { page }, ...props }) => {
           <Divider />
           <Flex sx={styles.grid}>
             <Box sx={styles.column}>
-              <Section title='My Story'>
-                <Text variant='p'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                  ac elit nec felis faucibus pellentesque in sit amet neque.
-                </Text>
-                <Text variant='p'>
-                  Nulla est elit, feugiat et lacinia nec, aliquam sit amet est.
-                  Ut in consequat ipsum, in sagittis felis.
-                </Text>
-                <Text variant='p'>
-                  Phasellus arcu mauris, fermentum ac dui quis, blandit pharetra
-                  orci. lacus et eros suscipit malesuada. Suspendisse hendrerit
-                  leo vitae. Sed in ipsum porttitor. Pellentesque sollicitudin
-                  pharetra.
-                </Text>
-                <Text variant='p'>
-                  Sed rutrum odio eu sapien aliquam, quis blandit mi lobortis.
-                  Vivamus venenatis sem eu ante laoreet facilisis:
-                </Text>
-                <Text variant='p'>
-                  <ul>
-                    <li>Cotidieque reformidans</li>
-                    <li>Mucius sensibus</li>
-                    <li>Sit primis iudicabit</li>
-                  </ul>
-                </Text>
-                <Text variant='p'>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s. Fusce odio dolor,
-                  rhoncus ac purus id, bibendum malesuada neque.
-                </Text>
-
-                <Text variant='p'>
-                  At sit consul aperiri omittam ullum. Usu ut option tibique
-                  maluisset, ornatus cum ad, pri tale cotidieque reformidans ut.
-                </Text>
-                <Text variant='p'>
-                  Eum ludus iudico ne. Vel labitur habemus vituperata vix!
-                </Text>
+              <Section title={wpChildren.nodes[last].title}>
+                <Text variant='div' dangerouslySetInnerHTML={{ __html: wpChildren.nodes[last].content }} />
               </Section>
             </Box>
             <Box sx={styles.column}>
-              <Section title='Art Directing'>
-                <Card variant='paper'>
-                  During the brainstorming process, art directors, co-workers,
-                  and clients are engaged in imagining what the finished piece
-                  or scene might look like.
-                </Card>
+              {wpChildren.nodes.slice(0, last).reverse().map((data, index) => (
+                <><Section title={data.title}>
+                <Card variant='paper' dangerouslySetInnerHTML={{ __html: data.content }} />
               </Section>
-              <Divider />
-              <Section title='Digital Marketing'>
-                <Card variant='paper'>
-                  Digital marketing channels are systems based on the Internet
-                  that can create, accelerate, and transmit product value from
-                  producer to a consumer terminal, through digital networks
-                </Card>
-              </Section>
-              <Divider />
-              <Section title='Creative Designing'>
-                <Card variant='paper'>
-                  A core responsibility of the designer's job is to present
-                  information in a way that is both accessible and memorable.
-                </Card>
-              </Section>
+              <Divider /></>))}
             </Box>
           </Flex>
         </Main>
