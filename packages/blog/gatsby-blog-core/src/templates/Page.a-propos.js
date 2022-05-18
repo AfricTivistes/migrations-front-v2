@@ -28,6 +28,17 @@ export const pageQAp = graphql`
           language {
             slug
           }
+          wpChildren {
+            nodes {
+              id
+              slug
+              ... on WpPage {
+                id
+                title
+                content
+              }
+            }
+          }
           avatar: featuredImage {
             node {
               localFile {
