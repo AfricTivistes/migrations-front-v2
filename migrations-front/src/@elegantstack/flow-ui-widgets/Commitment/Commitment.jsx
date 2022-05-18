@@ -10,7 +10,7 @@ const Banner = ({data, ...props}) => {
   
   return(<Section aside title={title} {...props}>
     <Card variant='paper'>
-      <Text variant='p' dangerouslySetInnerHTML={{ __html: content }} />
+      <Text variant='div' dangerouslySetInnerHTML={{ __html: content }} />
     </Card>
   </Section>
 )}
