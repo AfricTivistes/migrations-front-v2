@@ -39,5 +39,8 @@
   "404titre": "Page Non Trouvée",
   "404header": "Désolé, cette page n'est pas disponible.",
   "404subheader": "Vous avez peut-être mal tapé l'adresse ou la page a peut-être été déplacée.",
-  "404button": "Aller à la page d'accueil"
+  "404button": "Aller à la page d'accueil",
+  "accept": "Accepter",
+  "decline": "Refuser",
+  "cookieconsent": "Dialogue Migration utilise des cookies afin de mesurer l'audience de nos contenus et de vous proposer une meilleure expérience. Vous pouvez exprimer votre consentement en cliquant sur le bouton «Accepter», ou «Refuser»."
 }

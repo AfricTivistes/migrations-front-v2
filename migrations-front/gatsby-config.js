@@ -76,9 +76,7 @@ module.exports = {
       options: {
         googleAnalytics: {
           trackingId: 'G-70G0D1SK48', // leave empty if you want to disable the tracker
-          cookieName: 'dialogue-migration-google-analytics', // default
           anonymize: true, // default
-          allowAdFeatures: false // default
         },
         // defines the environments where the tracking should be available  - default is ["production"]
         environments: ['production', 'development']
