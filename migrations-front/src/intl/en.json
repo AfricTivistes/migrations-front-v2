@@ -39,5 +39,8 @@
   "404titre": "Page Not Found",
   "404header": "Sorry, this page isn't available.",
   "404subheader": "You may have mistyped the address or the page may have moved.",
-  "404button": "Go to homepage"
+  "404button": "Go to homepage",
+  "accept": "Accept",
+  "decline": "Decline",
+  "cookieconsent": "Dialogue Migration uses cookies to measure the audience of our content and to offer you a better experience. You can express your consent by clicking on the «Accept» or «Decline» button."
 }

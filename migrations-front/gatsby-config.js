@@ -70,7 +70,18 @@ module.exports = {
         fallbackLanguage: `fr`,
       },
     },
-    'gatsby-plugin-netlify'
+    'gatsby-plugin-netlify',
+    {
+      resolve: `gatsby-plugin-gdpr-cookies`,
+      options: {
+        googleAnalytics: {
+          trackingId: 'G-70G0D1SK48', // leave empty if you want to disable the tracker
+          anonymize: true, // default
+        },
+        // defines the environments where the tracking should be available  - default is ["production"]
+        environments: ['production', 'development']
+      },
+    },
   ],
   // Customize your site metadata:
   siteMetadata: {
