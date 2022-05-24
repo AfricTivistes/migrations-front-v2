@@ -42,5 +42,8 @@
   "404button": "Aller à la page d'accueil",
   "accept": "Accepter",
   "decline": "Refuser",
-  "cookieconsent": "Dialogue Migration utilise des cookies afin de mesurer l'audience de nos contenus et de vous proposer une meilleure expérience. Vous pouvez exprimer votre consentement en cliquant sur le bouton «Accepter», ou «Refuser»."
+  "cookieconsent": "Dialogue Migration utilise des cookies afin de mesurer l'audience de nos contenus et de vous proposer une meilleure expérience. Vous pouvez exprimer votre consentement en cliquant sur le bouton «Accepter», ou «Refuser».",
+  "searchPlaceholder": "Découvrez des nouvelles et plus encore...",
+  "searchWhat": "Que cherchez-vous?",
+  "searchNo": "Aucun résultat pour"
 }
