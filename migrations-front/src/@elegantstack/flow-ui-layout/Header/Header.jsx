@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Container, Box, Flex } from 'theme-ui'
 import pageContextProvider from '@helpers/pageContextProvider'
+import Search from '@widgets/Search'
 import { HeaderLogo } from './Header.Logo'
 import { HeaderMenu } from './Header.Menu'
 import { HeaderLanguage } from './Header.Language'
@@ -15,7 +16,13 @@ const styles = {
     zIndex: 10
   },
   logoContainer: {
-    flexBasis: [`full`, null, `1/4`]
+    flexBasis: [`full`, null, `1/5`]
+  },
+  searchContainer: {
+    flexBasis: [`auto`, null, `1/5`],
+    minWidth: `auto`,
+    order: [3, null, `unset`],
+    mx: 3
   },
   menuContainer: {
     flexBasis: [`auto`, null, `auto`],
@@ -31,7 +38,9 @@ const styles = {
 export const Header = ({ children }) => {
   const context = useContext(pageContextProvider)
 
-  const { mobileMenu } = context.pageContext
+  const { services, mobileMenu } = context.pageContext
+
+  const algolia = services && services.algolia
 
   return (
     <Box sx={styles.wrapper}>
@@ -40,6 +49,7 @@ export const Header = ({ children }) => {
           <Box sx={styles.logoContainer}>
             <HeaderLogo />
           </Box>
+          <Box sx={styles.searchContainer}>{algolia && <Search />}</Box>
           <Box sx={styles.menuContainer}>
             <HeaderMenu mobileMenu={mobileMenu} />
           </Box>

@@ -1,21 +1,22 @@
 const postQuery = `{
-  posts: allArticle(
+  articles: allWpPost(
     filter: {
-      private: {ne: true}
-      draft: {ne: true}
+      status: {eq: "publish"}
     }
   ) {
-    edges {
-      node {
-        objectID: id
-				title
+    nodes {
+      objectID: id
+      title
+      slug
+      excerpt
+      categories {
+        nodes {
+          name
+          slug
+        }
+      }
+      language {
         slug
-        link
-				excerpt(pruneLength: 5000)
-				category {
-					name
-					slug
-				}
       }
     }
   }
@@ -23,7 +24,10 @@ const postQuery = `{
 `
 
 const flatten = arr =>
-  arr.map(({ node: { ...rest } }) => ({
+  arr.map(({ ...rest }) => ({
+    category: { name: rest.categories.nodes[0].name},
+    link: `/${rest.language.slug}/${rest.categories.nodes[0].slug}/${rest.slug}`,
+    excerpt: rest.excerpt.replace(/(<([^>]+)>)/gi, ""),
     ...rest
   }))
 
@@ -34,10 +38,10 @@ const settings = {
 
 const queries = [
   {
-    indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME || 'Posts',
+    indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME || 'Articles',
     query: postQuery,
     settings,
-    transformer: ({ data }) => flatten(data.posts.edges)
+    transformer: ({ data }) => flatten(data.articles.nodes)
   }
 ]
 
