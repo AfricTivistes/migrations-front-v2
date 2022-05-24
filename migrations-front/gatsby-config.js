@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   flags: {
     FAST_DEV: true,
@@ -12,6 +14,9 @@ module.exports = {
         darkMode: false,
         includeTimeToRead: false,
         imageQuality: 80,
+        services: {
+          algolia: true,
+        },
       }
     },
     {
@@ -81,6 +86,15 @@ module.exports = {
         // defines the environments where the tracking should be available  - default is ["production"]
         environments: ['production', 'development']
       },
+    },
+    {
+      resolve: 'gatsby-plugin-algolia',
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        chunkSize: 10000,
+        queries: require('@elegantstack/gatsby-blog-algolia/src/queries')
+      }
     },
   ],
   // Customize your site metadata:
