@@ -12,6 +12,9 @@ module.exports = {
         darkMode: false,
         includeTimeToRead: false,
         imageQuality: 80,
+        services: {
+          algolia: true,
+        },
       }
     },
     {
