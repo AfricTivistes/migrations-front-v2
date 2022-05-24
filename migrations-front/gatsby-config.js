@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   flags: {
     FAST_DEV: true,
@@ -88,8 +90,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-algolia',
       options: {
-        appId: process.env.ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_API_KEY,
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
         chunkSize: 10000,
         queries: require('@elegantstack/gatsby-blog-algolia/src/queries')
       }
