@@ -45,5 +45,10 @@
   "cookieconsent": "Dialogue Migration utilise des cookies afin de mesurer l'audience de nos contenus et de vous proposer une meilleure expérience. Vous pouvez exprimer votre consentement en cliquant sur le bouton «Accepter», ou «Refuser».",
   "searchPlaceholder": "Découvrez des nouvelles et plus encore...",
   "searchWhat": "Que cherchez-vous?",
-  "searchNo": "Aucun résultat pour"
+  "searchNo": "Aucun résultat pour",
+  "download": "Télécharger",
+  "link": "Lien",
+  "file": "Fichier",
+  "contactMe": "Contactez moi",
+  "contactMeLink": "/fr/contact"
 }
