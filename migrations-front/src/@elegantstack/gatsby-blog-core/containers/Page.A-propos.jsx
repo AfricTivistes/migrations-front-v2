@@ -1,4 +1,6 @@
 import React from 'react'
+import { useIntl,  FormattedMessage } from "gatsby-plugin-react-intl"
+import { navigate } from "gatsby"
 import { GatsbyImage as Img, getImage } from 'gatsby-plugin-image'
 import { Box, Text, Card, Flex, Button } from 'theme-ui'
 import { Layout, Stack, Main } from '@layout'
@@ -39,6 +41,7 @@ const PageApropos = ({ data: { page }, ...props }) => {
   const {title, content, avatar, wpChildren} = page.nodes[0]
   const image = getImage(avatar.node.localFile)
   let last = wpChildren.nodes.length - 1
+  const intl = useIntl()
   return (
     <Layout {...props}>
       <Seo title={title} />
@@ -52,7 +55,7 @@ const PageApropos = ({ data: { page }, ...props }) => {
           <Divider />
           <Box sx={styles.imageWrapper}>
             <Img image={image} />
-            <Button sx={styles.button}>Contact Me</Button>
+            <Button sx={styles.button} onClick={()=>{navigate(intl.formatMessage({ id: "contactMeLink" }))}}><FormattedMessage id="contactMe" /></Button>
           </Box>
           <Divider />
           <Flex sx={styles.grid}>

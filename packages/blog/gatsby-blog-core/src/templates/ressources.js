@@ -24,6 +24,12 @@ export const pageQuery = graphql`
         link
         excerpt
         date(formatString: "MMMM DD, YYYY")
+        ressource {
+          lienVersRessource
+          ajouterUnDocumentTLCharger {
+            link
+          }
+        }
         body: content
         featuredImage {
         node {
