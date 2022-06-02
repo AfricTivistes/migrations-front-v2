@@ -4,6 +4,7 @@ import { Layout, Stack, Main } from '@layout'
 import Card from '@components/Card'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
+import TableOfDownloadExpanded from '@widgets/TableOfDownloadExpanded'
 import {
   ArticleBody,
 } from '@widgets/Post'
@@ -27,6 +28,8 @@ const Post = ({
       <Divider space={3} />
       <Stack effectProps={{ fraction: 0 }}>
         <Main>
+          <TableOfDownloadExpanded {...post.nodes[0]} />
+          <Divider />
           <CardComponent variant='paper-lg'>
             <ArticleBody {...post.nodes[0]} />
           </CardComponent>
