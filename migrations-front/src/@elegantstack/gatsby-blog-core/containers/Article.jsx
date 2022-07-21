@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card as CardComponent } from 'theme-ui'
 import { Layout, Stack, Main, Sidebar, Hero } from '@layout'
-// import CardList from '@components/CardList'
+import CardList from '@components/CardList'
 import Card from '@components/Card'
 import Divider from '@components/Divider'
 import Sticky from '@components/Sticky'
@@ -27,7 +27,7 @@ const Post = ({
   //   ...(categoryPosts ? categoryPosts.nodes : [])
   // ]
   const { pageContext: { services = {}, siteUrl } = {} } = props
-  
+
   return (
     <Layout {...props}>
       <Seo {...post.nodes[0]} siteUrl={siteUrl} />
@@ -47,6 +47,11 @@ const Post = ({
             )}
             <ArticleFooter previous={previous.nodes[0]} next={next.nodes[0]} />
           </CardComponent>
+          <CardList
+            title='Tags'
+            nodes={tagPosts ? tagPosts.nodes : []}
+            variant='horizontal-aside'
+          />
         </Main>
         <Sidebar>
           <AuthorArticle author={post.nodes[0].author} omitTitle />
