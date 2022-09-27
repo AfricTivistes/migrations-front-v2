@@ -11,7 +11,6 @@ const Card = ({data}) => {
   return(<CardList
       nodes={data}
       limit={4}
-      skip={3}
       columns={[1, 2, 1, 2]}
       variant={['horizontal-md', 'vertical']}
       omitMedia
