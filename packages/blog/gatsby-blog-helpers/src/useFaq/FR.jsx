@@ -10,7 +10,7 @@ const useFaqFR = () => {
 const faqFRQuery = graphql`
   query faqFRQuery {
   allWpFaq(
-    filter: {status: {eq: "publish"}, language: {slug: {eq: "en"}}}
+    filter: {status: {eq: "publish"}, language: {slug: {eq: "fr"}}}
     sort: {fields: [date], order: DESC}
     limit: 10
   ) {

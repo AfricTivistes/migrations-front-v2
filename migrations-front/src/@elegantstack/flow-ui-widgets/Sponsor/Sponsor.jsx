@@ -27,9 +27,7 @@ const Sponsor = props => {
 
   return (
     <Section aside title={intl.formatMessage({ id: "nospartenaires" })} {...props}>
-      <Link href='/' target='_blank'>
         <Img image={image} css={css(styles.image)} alt='Sponsor' />
-      </Link>
       <Link variant='mute' as={GLink} to='/contact' sx={styles.caption}>
         <FormattedMessage id="noussoutenir" />
       </Link>
