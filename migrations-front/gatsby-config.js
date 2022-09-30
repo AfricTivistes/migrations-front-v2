@@ -87,6 +87,7 @@ module.exports = {
         environments: ['production', 'development']
       },
     },
+    /*
     {
       resolve: 'gatsby-plugin-algolia',
       options: {
@@ -95,7 +96,7 @@ module.exports = {
         chunkSize: 10000,
         queries: require('@elegantstack/gatsby-blog-algolia/src/queries')
       }
-    },
+    },*/
   ],
   // Customize your site metadata:
   siteMetadata: {
