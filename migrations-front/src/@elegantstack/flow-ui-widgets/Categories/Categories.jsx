@@ -40,7 +40,7 @@ const Categories = ({ variant, categories, icons, ...props }) => {
             Icon: !icons.filter(icon => icon.name === name)[0].icon && FaArchive,
             variant
           }
-          return totalCount && totalCount !== 0 && <IconButton {...buttonProps} />
+          return <IconButton {...buttonProps} />
         })}
     </Box>
   </Section>
