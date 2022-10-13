@@ -111,15 +111,15 @@ module.exports = {
     social: [
       {
         name: 'Facebook',
-        url: 'https://www.facebook.com/dialoguemigration/'
+        url: 'https://www.facebook.com/DialMigration'
       },
       {
         name: 'Twitter',
-        url: 'https://twitter.com/DialogMigration'
+        url: 'https://twitter.com/DialMigration'
       },
       {
         name: 'Instagram',
-        url: 'https://www.instagram.com/dialoguemigration'
+        url: 'https://www.instagram.com/dialogue_migration/'
       }
     ],
 
