@@ -42,6 +42,7 @@ export const pageQuery = graphql`
 								facebook
                 twitter
                 instagram
+                linkedin
               }
               featuredImage {
               node {
