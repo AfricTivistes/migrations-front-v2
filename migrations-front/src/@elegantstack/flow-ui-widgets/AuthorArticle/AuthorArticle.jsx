@@ -51,7 +51,8 @@ const AuthorArticle = ({ author, omitSocial, ...props }) => {
               items={attachSocialIcons([
                 {'name': 'facebook', 'url': author.social.facebook},
                 {'name': 'twitter', 'url': author.social.twitter},
-                {'name': 'instagram', 'url': author.social.instagram}
+                {'name': 'instagram', 'url': author.social.instagram},
+                {'name': 'linkedin', 'url': author.social.linkedin}
               ])}
               iconOnly
             />
