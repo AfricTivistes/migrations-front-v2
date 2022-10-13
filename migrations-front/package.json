@@ -14,7 +14,7 @@
 		"apollo-boost": "^0.4.9",
 		"cross-env": "^7.0.3",
 		"dotenv": "^16.0.1",
-		"gatsby": "^4.1.4",
+		"gatsby": "^4.24.0",
 		"gatsby-plugin-algolia": "^0.26.0",
 		"gatsby-plugin-gdpr-cookies": "^2.0.9",
 		"gatsby-plugin-react-intl": "^3.0.2",
