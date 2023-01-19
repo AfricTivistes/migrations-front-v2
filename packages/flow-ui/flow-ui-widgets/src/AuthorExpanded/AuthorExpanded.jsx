@@ -5,7 +5,6 @@ import MemphisPattern from '@components/MemphisPattern'
 import Avatar from '@components/Avatar'
 import Navigation from '@components/Navigation'
 import attachSocialIcons from '@helpers/attachSocialIcons'
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const styles = {
   card: {
@@ -54,6 +53,7 @@ const styles = {
     top: 10,
     right: 10,
     zIndex: 3
+    
   },
   pattern: {
     borderRadius: `lg`
@@ -80,25 +80,18 @@ const Subheader = ({ children }) => (
   </Heading>
 )
 
-const AuthorAvatar = ({ name, thumbnail, slug }) =>
-  thumbnail ? (
+const AuthorAvatar = ({ name, featuredImage, slug }) =>
+  featuredImage ? (
     <Box>
       <Link as={GLink} to={slug} aria-label={name}>
-        <Avatar avatar={thumbnail} alt={name} />
+      <Avatar
+        avatar={featuredImage.node.localFile.childImageSharp}
+        alt={name}
+        withPattern
+      />
       </Link>
     </Box>
   ) : null
-
-const AuthorImage = ({name, featuredImage, slug}) => {
-  const image = getImage(featuredImage.node.localFile);
-  return (
-    <Box>
-      <Link  as={GLink} to={slug} aria-label={name}>
-        <GatsbyImage image={image} alt={name} />
-      </Link>
-    </Box>
-  )
-}
 
 
 const AuthorName = ({ name, slug }) => (
@@ -164,7 +157,7 @@ const AuthorExpanded = ({ author, withLink }) => {
     <Card variant='paper' sx={styles.card}>
       <Flex sx={styles.wrapper}>
         <Box sx={styles.avatarColumn}>
-          <AuthorImage {...author} />
+          <AuthorAvatar {...author} />
         </Box>
 
         <Box sx={styles.infoColumnLeft}>
@@ -172,7 +165,7 @@ const AuthorExpanded = ({ author, withLink }) => {
             <Box sx={styles.innerBox}>
               <AuthorBio {...author} />
             </Box>
-          
+
         </Box>
         <Box sx={styles.infoColumnRight}>
               <Box sx={styles.innerBox}>
