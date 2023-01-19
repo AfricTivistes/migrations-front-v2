@@ -18,80 +18,53 @@ const authorsQuery = graphql`
   }
 `
 const authorsq = graphql`
-  query MyQuery  {
-  allWpAuteur (filter: {language: {slug: {eq: "fr"}}}){
+query MyQuery  {
+  allWpAuteur (filter: {language: {slug: {eq: "fr"}}} sort: {fields: excerpt, order: DESC}){
     nodes {
-    id
-    slug
-    name: title
-    content
-    excerpt
-    social {
-      facebook
-      instagram
-      linkedin
-      twitter
-    }
-    featuredImage {
-        node {
-          localFile {
-            childImageSharp {
-              __typename
-              ... on ImageSharp {
-                ImageSharp_small: gatsbyImageData(
-          width: 48
-          height: 48
-          layout: FIXED
-          transformOptions: { cropFocus: NORTH }
-          placeholder: TRACED_SVG
-          quality: 75
-        )
-        ImageSharp_regular: gatsbyImageData(
-          width: 150
-          height: 150
-          layout: FIXED
-          transformOptions: { cropFocus: NORTH }
-          placeholder: TRACED_SVG
-          quality: 80
-        )
-      }
-      ... on ContentfulAsset {
-        ContentfulAsset_small: gatsbyImageData(
-          width: 48
-          height: 48
-          layout: FIXED
-          cropFocus: TOP
-          resizingBehavior: THUMB
-          quality: 75
-        )
-        ContentfulAsset_regular: gatsbyImageData(
-          width: 150
-          height: 150
-          layout: FIXED
-          cropFocus: TOP
-          resizingBehavior: THUMB
-          quality: 80
-        )
-      }
-      ... on SanityImageAsset {
-        SanityImageAsset_small: gatsbyImageData(
-          width: 48
-          height: 48
-          layout: FIXED
-          placeholder: NONE
-          fit: CLIP
-        )
-        SanityImageAsset_regular: gatsbyImageData(
-          width: 150
-          height: 150
-          layout: FIXED
-          placeholder: NONE
-          fit: CLIP
-        )
+              id
+              slug
+              name: title
+              excerpt
+              content
+              competences {
+                nodes {
+                  name
+                }
+              }
+              social{
+								facebook
+                twitter
+                instagram
+                linkedin
+              }
+              featuredImage {
+              node {
+                localFile {
+                  childImageSharp {
+                    __typename
+                    ... on ImageSharp {
+                      ImageSharp_small: gatsbyImageData(
+                        width: 48
+                        height: 48
+                        layout: FIXED
+                        transformOptions: { cropFocus: NORTH }
+                        placeholder: TRACED_SVG
+                        quality: 75
+                      )
+                      ImageSharp_regular: gatsbyImageData(
+                        width: 150
+                        height: 150
+                        layout: FIXED
+                        transformOptions: { cropFocus: NORTH }
+                        placeholder: TRACED_SVG
+                        quality: 80
+                      )
+                    }
+                  }
+                }
               }
             }
-          }
-  }
+            }
   }
 }
 `
