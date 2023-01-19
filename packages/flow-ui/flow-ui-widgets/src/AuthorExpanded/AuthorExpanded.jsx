@@ -5,6 +5,7 @@ import MemphisPattern from '@components/MemphisPattern'
 import Avatar from '@components/Avatar'
 import Navigation from '@components/Navigation'
 import attachSocialIcons from '@helpers/attachSocialIcons'
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const styles = {
   card: {
@@ -16,11 +17,16 @@ const styles = {
     zIndex: 3
   },
   avatarColumn: {
-    flexBasis: `1/3`
+    flexBasis: `1/5`,
+    minWidth: `150px`,
   },
-  infoColumn: {
-    flexBasis: `2/3`
+  infoColumnLeft: {
+    flexBasis: `3/5`
   },
+  infoColumnRight: {
+    flexBasis: `1/5`
+  },
+
   innerBox: {
     flexBasis: `1/2`,
     flexGrow: 1,
@@ -83,6 +89,18 @@ const AuthorAvatar = ({ name, thumbnail, slug }) =>
     </Box>
   ) : null
 
+const AuthorImage = ({name, featuredImage, slug}) => {
+  const image = getImage(featuredImage.node.localFile);
+  return (
+    <Box>
+      <Link  as={GLink} to={slug} aria-label={name}>
+        <GatsbyImage image={image} alt={name} />
+      </Link>
+    </Box>
+  )
+}
+
+
 const AuthorName = ({ name, slug }) => (
   <Box sx={styles.name}>
     <Heading variant='h3'>
@@ -93,12 +111,14 @@ const AuthorName = ({ name, slug }) => (
   </Box>
 )
 
-const AuthorBio = ({ title, description }) => (
+const AuthorBio = ({ excerpt, content }) => 
+content  ? (
   <Box sx={styles.bio}>
-    <Subheader>{title}</Subheader>
-    <Text>{description}</Text>
+    <Subheader>{excerpt.replace(/<[^>]+>/g, '')}</Subheader>
+    <Text> {content.replace(/<[^>]+>/g, '').substring(0, 200)}...</Text>
   </Box>
-)
+): null
+
 
 const AuthorSkills = ({ skills }) =>
   skills ? (
@@ -110,17 +130,30 @@ const AuthorSkills = ({ skills }) =>
     </Box>
   ) : null
 
-const AuthorSocialMedia = ({ social }) =>
-  social ? (
+const AuthorSocialMedia = ({ social }) => {
+  if (!social) return null;
+
+  const socialLinks = [
+    social.facebook ? { name: 'facebook', url: social.facebook } : null,
+    social.twitter ? { name: 'twitter', url: social.twitter } : null,
+    social.instagram ? { name: 'instagram', url: social.instagram } : null,
+    social.linkedin ? { name: 'linkedin', url: social.linkedin } : null
+  ];
+
+  const filteredSocialLinks = socialLinks.filter(link => link);
+
+  if (filteredSocialLinks.length === 0) return null;
+
+  return (
     <Box sx={styles.innerBox}>
       <Subheader>Social Media</Subheader>
       <Navigation
         variant='vertical'
-        items={attachSocialIcons(social)}
-        wrapperStyle={styles.socialList}
+        items={attachSocialIcons(filteredSocialLinks)}
       />
     </Box>
-  ) : null
+  );
+};
 
 const AuthorExpanded = ({ author, withLink }) => {
   if (!author) return null
@@ -131,24 +164,23 @@ const AuthorExpanded = ({ author, withLink }) => {
     <Card variant='paper' sx={styles.card}>
       <Flex sx={styles.wrapper}>
         <Box sx={styles.avatarColumn}>
-          <AuthorAvatar {...author} />
+          <AuthorImage {...author} />
         </Box>
-        <Box sx={styles.infoColumn}>
+
+        <Box sx={styles.infoColumnLeft}>
           <AuthorName {...author} />
-          <Flex sx={styles.wrapper}>
             <Box sx={styles.innerBox}>
               <AuthorBio {...author} />
             </Box>
-            {(social || skills) && (
-              <Box sx={styles.innerBox}>
-                <Flex>
-                  <AuthorSkills {...author} />
-                  <AuthorSocialMedia {...author} />
-                </Flex>
-              </Box>
-            )}
-          </Flex>
+          
         </Box>
+        <Box sx={styles.infoColumnRight}>
+              <Box sx={styles.innerBox}>
+                  <AuthorSocialMedia {...author} />
+              </Box>
+
+        </Box>
+
       </Flex>
       {withLink && (
         <Badge variant='tag' as={GLink} to={author.slug} sx={styles.link}>
