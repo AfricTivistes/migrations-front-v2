@@ -24,7 +24,8 @@ const styles = {
     flexBasis: `3/5`
   },
   infoColumnRight: {
-    flexBasis: `1/5`
+    flexBasis: `1/5`,
+    textAlign: [`center`, `left`]
   },
 
   innerBox: {
