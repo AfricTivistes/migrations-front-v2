@@ -50,5 +50,8 @@
   "link": "Link",
   "file": "File",
   "contactMe": "Contact us",
-  "contactMeLink": "/en/contact-us"
+  "contactMeLink": "/en/contact-us",
+  "team": "Our Team",
+  "members": "Team members",
+  "ViewPosts":"View Posts"
 }
