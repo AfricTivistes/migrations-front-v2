@@ -6,11 +6,15 @@ import Seo from '@widgets/Seo'
 import AuthorExpanded from '@widgets/AuthorExpanded'
 import { useBlogAuthors } from '@helpers-blog'
 import { useIntl } from "gatsby-plugin-react-intl"
+import useTeamFR from '../../../gatsby-blog-helpers/src/useTeam/FR'
+import useTeamEN from '../../../gatsby-blog-helpers/src/useTeam/EN'
 
 
 const PageAuthors = props => {
   const authors = useBlogAuthors()
   const intl = useIntl()
+  const { nodes: nodesFR  } = useTeamFR()
+  const { nodes: nodesEN } = useTeamEN()
 
   return (
     <Layout {...props}>
