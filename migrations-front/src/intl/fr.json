@@ -50,5 +50,8 @@
   "link": "Lien",
   "file": "Fichier",
   "contactMe": "Contactez nous",
-  "contactMeLink": "/fr/contact"
+  "contactMeLink": "/fr/contact",
+  "team": "Notre Équipe",
+  "members": "Membres de l'équipe",
+  "ViewPosts":"Voir Articles"
 }
