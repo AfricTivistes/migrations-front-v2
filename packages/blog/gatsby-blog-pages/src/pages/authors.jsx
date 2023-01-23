@@ -5,18 +5,20 @@ import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
 import AuthorExpanded from '@widgets/AuthorExpanded'
 import { useBlogAuthors } from '@helpers-blog'
+import { useIntl } from "gatsby-plugin-react-intl"
+
 
 const PageAuthors = props => {
   const authors = useBlogAuthors()
+  const intl = useIntl()
 
   return (
     <Layout {...props}>
-      <Seo title='Notre Équipe' />
+      <Seo title={intl.formatMessage({ id: "team" })} />
       <Divider />
       <Stack effectProps={{ effect: 'fadeInDown' }}>
         <PageTitle
-          header="Membres de l'équipe"
-          subheader='FlexiBlog theme comes with a pre-made contact form component. You can integrate this form with serverless services such as Formspree, Getform, FormKeep and others to receive form submissions via email.'
+          header={intl.formatMessage({ id: "members" })}
         />
       </Stack>
       <Stack>
