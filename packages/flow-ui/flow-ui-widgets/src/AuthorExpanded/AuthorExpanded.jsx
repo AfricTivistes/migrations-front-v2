@@ -6,6 +6,7 @@ import Avatar from '@components/Avatar'
 import Navigation from '@components/Navigation'
 import attachSocialIcons from '@helpers/attachSocialIcons'
 
+
 const styles = {
   card: {
     position: `relative`
@@ -107,8 +108,8 @@ const AuthorName = ({ name, slug }) => (
 const AuthorBio = ({ excerpt, content }) => 
 content  ? (
   <Box sx={styles.bio}>
-    <Subheader>{excerpt.replace(/<[^>]+>/g, '')}</Subheader>
-    <Text> {content.replace(/<[^>]+>/g, '').substring(0, 200)}...</Text>
+    <Subheader><div dangerouslySetInnerHTML={{ __html: excerpt }} /></Subheader>
+    <Text> <div dangerouslySetInnerHTML={{ __html: content.substring(0,250) }} />...</Text>
   </Box>
 ): null
 
