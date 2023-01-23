@@ -5,6 +5,7 @@ import MemphisPattern from '@components/MemphisPattern'
 import Avatar from '@components/Avatar'
 import Navigation from '@components/Navigation'
 import attachSocialIcons from '@helpers/attachSocialIcons'
+import { FormattedMessage } from "gatsby-plugin-react-intl"
 
 
 const styles = {
@@ -179,7 +180,7 @@ const AuthorExpanded = ({ author, withLink }) => {
       </Flex>
       {withLink && (
         <Badge variant='tag' as={GLink} to={author.slug} sx={styles.link}>
-          View Posts
+          <FormattedMessage id="ViewPosts" />
         </Badge>
       )}
       <Box sx={styles.gradient} />
