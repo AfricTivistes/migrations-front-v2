@@ -12,7 +12,7 @@ const useTeamFR = () => {
 }
 
 const teamFRQuery = graphql`
-  query TeamENQuery  {
+  query TeamFRQuery  {
   allWpAuteur (filter: {language: {slug: {eq: "fr"}}} sort: {fields: excerpt, order: DESC}){
     nodes {
               id
