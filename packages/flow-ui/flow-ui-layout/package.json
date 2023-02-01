@@ -1,5 +1,5 @@
 {
-  "name": "@elegantstack/flow-ui-layout",
+  "name": "@africtivistes/flow-ui-layout",
   "version": "3.0.3",
   "main": "index.js",
   "private": true,
@@ -10,10 +10,10 @@
     "theme-ui": "^0.3.4"
   },
   "peerDependencies": {
-    "@elegantstack/flow-ui-components": "^2.0.0",
-    "@elegantstack/flow-ui-theme": "^2.0.0",
-    "@elegantstack/flow-ui-widgets": "^2.0.0",
-    "@elegantstack/gatsby-common-helpers": "^2.0.0",
-    "@elegantstack/gatsby-plugin-alias-imports": "^3.0.0"
+    "@africtivistes/flow-ui-components": "^2.0.0",
+    "@africtivistes/flow-ui-theme": "^2.0.0",
+    "@africtivistes/flow-ui-widgets": "^2.0.0",
+    "@africtivistes/gatsby-common-helpers": "^2.0.0",
+    "@africtivistes/gatsby-plugin-alias-imports": "^3.0.0"
   }
 }

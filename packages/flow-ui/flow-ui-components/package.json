@@ -1,12 +1,12 @@
 {
-  "name": "@elegantstack/flow-ui-components",
+  "name": "@africtivistes/flow-ui-components",
   "version": "3.2.0",
   "main": "index.js",
   "private": true,
   "author": "ElegantStack Team",
   "license": "",
   "dependencies": {
-    "@elegantstack/gatsby-plugin-alias-imports": "^3.0.0",
+    "@africtivistes/gatsby-plugin-alias-imports": "^3.0.0",
     "@loadable/component": "^5.15.0",
     "@theme-ui/prism": "^0.3.4",
     "dedupe": "^3.0.2",

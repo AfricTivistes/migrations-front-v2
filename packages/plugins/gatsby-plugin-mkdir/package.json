@@ -1,5 +1,5 @@
 {
-  "name": "@elegantstack/gatsby-plugin-mkdir",
+  "name": "@africtivistes/gatsby-plugin-mkdir",
   "version": "3.0.0",
   "main": "index.js",
   "private": true,

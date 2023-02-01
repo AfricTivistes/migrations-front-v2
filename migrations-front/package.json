@@ -1,5 +1,5 @@
 {
-	"name": "@elegantstack/gatsby-starter-flexiblog-beauty",
+	"name": "@africtivistes/migrations-front",
 	"private": true,
 	"version": "3.8.0",
 	"scripts": {
@@ -10,7 +10,7 @@
 		"serve": "gatsby serve"
 	},
 	"dependencies": {
-		"@elegantstack/gatsby-theme-flexiblog-beauty": "*",
+		"@africtivistes/gatsby-theme-flexiblog-beauty": "*",
 		"apollo-boost": "^0.4.9",
 		"cross-env": "^7.0.3",
 		"dotenv": "^16.0.1",

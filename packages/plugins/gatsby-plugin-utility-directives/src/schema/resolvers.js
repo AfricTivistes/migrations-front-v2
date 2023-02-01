@@ -28,7 +28,7 @@ const makeSlug =
     const plugin = await context.nodeModel.findOne({
       query: {
         filter: {
-          name: { eq: '@elegantstack/gatsby-plugin-utility-directives' }
+          name: { eq: '@africtivistes/gatsby-plugin-utility-directives' }
         }
       },
       type: 'SitePlugin'

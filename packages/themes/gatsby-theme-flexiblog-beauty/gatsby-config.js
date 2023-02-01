@@ -1,4 +1,4 @@
-const overrideFonts = require('./src/@elegantstack/flow-ui-theme/theme/typography-fonts.json')
+const overrideFonts = require('./src/@africtivistes/flow-ui-theme/theme/typography-fonts.json')
 
 module.exports = options => {
   options = {
@@ -9,35 +9,35 @@ module.exports = options => {
   return {
     plugins: [
       {
-        resolve: '@elegantstack/gatsby-blog-core',
+        resolve: '@africtivistes/gatsby-blog-core',
         options
       },
       {
-        resolve: '@elegantstack/gatsby-blog-pages',
+        resolve: '@africtivistes/gatsby-blog-pages',
         options
       },
       {
-        resolve: '@elegantstack/gatsby-blog-helpers',
+        resolve: '@africtivistes/gatsby-blog-helpers',
         options
       },
       {
-        resolve: '@elegantstack/gatsby-common-helpers',
+        resolve: '@africtivistes/gatsby-common-helpers',
         options
       },
       {
-        resolve: '@elegantstack/flow-ui-components',
+        resolve: '@africtivistes/flow-ui-components',
         options
       },
       {
-        resolve: '@elegantstack/flow-ui-theme',
+        resolve: '@africtivistes/flow-ui-theme',
         options
       },
       {
-        resolve: '@elegantstack/flow-ui-layout',
+        resolve: '@africtivistes/flow-ui-layout',
         options
       },
       {
-        resolve: '@elegantstack/flow-ui-widgets',
+        resolve: '@africtivistes/flow-ui-widgets',
         options
       }
     ]

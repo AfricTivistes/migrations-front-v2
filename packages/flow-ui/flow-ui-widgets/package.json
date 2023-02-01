@@ -1,5 +1,5 @@
 {
-  "name": "@elegantstack/flow-ui-widgets",
+  "name": "@africtivistes/flow-ui-widgets",
   "sideEffects": false,
   "version": "3.7.0",
   "main": "index.js",
@@ -7,8 +7,8 @@
   "author": "ElegantStack Team",
   "license": "",
   "dependencies": {
-    "@elegantstack/gatsby-blog-helpers": "^3.2.0",
-    "@elegantstack/gatsby-plugin-alias-imports": "^3.0.0",
+    "@africtivistes/gatsby-blog-helpers": "^3.2.0",
+    "@africtivistes/gatsby-plugin-alias-imports": "^3.0.0",
     "@loadable/component": "^5.15.0",
     "algoliasearch": "^4.10.5",
     "gatsby-plugin-disqus": "^1.2.3",
@@ -24,9 +24,9 @@
     "theme-ui": "^0.3.4"
   },
   "peerDependencies": {
-    "@elegantstack/flow-ui-components": "^2.0.0",
-    "@elegantstack/flow-ui-layout": "^2.0.0",
-    "@elegantstack/flow-ui-theme": "^2.0.0",
-    "@elegantstack/gatsby-common-helpers": "^2.0.0"
+    "@africtivistes/flow-ui-components": "^2.0.0",
+    "@africtivistes/flow-ui-layout": "^2.0.0",
+    "@africtivistes/flow-ui-theme": "^2.0.0",
+    "@africtivistes/gatsby-common-helpers": "^2.0.0"
   }
 }

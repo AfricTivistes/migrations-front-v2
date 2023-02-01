@@ -1,5 +1,5 @@
 {
-  "name": "@elegantstack/gatsby-plugin-alias-imports",
+  "name": "@africtivistes/gatsby-plugin-alias-imports",
   "version": "3.0.0",
   "main": "index.js",
   "private": true,

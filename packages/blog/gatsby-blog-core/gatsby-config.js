@@ -11,19 +11,19 @@ module.exports = options => {
 
   const plugins = [
     {
-      resolve: '@elegantstack/gatsby-plugin-proxy-directives',
+      resolve: '@africtivistes/gatsby-plugin-proxy-directives',
       options
     },
     {
-      resolve: '@elegantstack/gatsby-plugin-proxy-schema',
+      resolve: '@africtivistes/gatsby-plugin-proxy-schema',
       options
     },
     {
-      resolve: '@elegantstack/gatsby-plugin-utility-directives',
+      resolve: '@africtivistes/gatsby-plugin-utility-directives',
       options
     },
     {
-      resolve: '@elegantstack/gatsby-plugin-mkdir',
+      resolve: '@africtivistes/gatsby-plugin-mkdir',
       options
     },
     {
