@@ -1,10 +1,10 @@
 module.exports = {
   plugins: [
     {
-      resolve: '@elegantstack/gatsby-plugin-alias-imports',
+      resolve: '@africtivistes/gatsby-plugin-alias-imports',
       options: {
         alias: {
-          '@helpers-blog': '@elegantstack/gatsby-blog-helpers/src'
+          '@helpers-blog': '@africtivistes/gatsby-blog-helpers/src'
         },
         extensions: ['js', 'jsx']
       }

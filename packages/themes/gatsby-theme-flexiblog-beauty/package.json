@@ -1,19 +1,19 @@
 {
-  "name": "@elegantstack/gatsby-theme-flexiblog-beauty",
+  "name": "@africtivistes/gatsby-theme-flexiblog-beauty",
   "version": "3.8.0",
   "main": "index.js",
   "private": true,
   "author": "ElegantStack Team",
   "license": "",
   "dependencies": {
-    "@elegantstack/flow-ui-components": "^3.2.0",
-    "@elegantstack/flow-ui-layout": "^3.0.3",
-    "@elegantstack/flow-ui-theme": "^3.3.0",
-    "@elegantstack/flow-ui-widgets": "^3.7.0",
-    "@elegantstack/gatsby-blog-core": "^3.9.0",
-    "@elegantstack/gatsby-blog-helpers": "^3.2.0",
-    "@elegantstack/gatsby-blog-pages": "^3.1.1",
-    "@elegantstack/gatsby-common-helpers": "^3.1.0"
+    "@africtivistes/flow-ui-components": "^3.2.0",
+    "@africtivistes/flow-ui-layout": "^3.0.3",
+    "@africtivistes/flow-ui-theme": "^3.3.0",
+    "@africtivistes/flow-ui-widgets": "^3.7.0",
+    "@africtivistes/gatsby-blog-core": "^3.9.0",
+    "@africtivistes/gatsby-blog-helpers": "^3.2.0",
+    "@africtivistes/gatsby-blog-pages": "^3.1.1",
+    "@africtivistes/gatsby-common-helpers": "^3.1.0"
   },
   "peerDependencies": {
     "gatsby": "^4.1.0",

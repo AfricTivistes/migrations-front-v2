@@ -7,7 +7,7 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: '@elegantstack/gatsby-theme-flexiblog-beauty',
+      resolve: '@africtivistes/gatsby-theme-flexiblog-beauty',
       options: {
         // Add theme options here. Check documentation for available options.
         siteUrl: process.env.URL || process.env.VERCEL_URL,
@@ -36,7 +36,7 @@ module.exports = {
               type: {
                 MediaItem: {
                   localFile: {
-                    requestConcurrency: 10, // Amount of images to download concurrently. Try lowering this if wordpress server crashes on import.
+                    requestConcurrency: 5, // Amount of images to download concurrently. Try lowering this if wordpress server crashes on import.
                   },
                 },
               },
@@ -87,15 +87,15 @@ module.exports = {
         environments: ['production', 'development']
       },
     },
-    {
-      resolve: 'gatsby-plugin-algolia',
-      options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_ADMIN_KEY,
-        chunkSize: 10000,
-        queries: require('@elegantstack/gatsby-blog-algolia/src/queries')
-      }
-    },
+    // {
+    //   resolve: 'gatsby-plugin-algolia',
+    //   options: {
+    //     appId: process.env.GATSBY_ALGOLIA_APP_ID,
+    //     apiKey: process.env.ALGOLIA_ADMIN_KEY,
+    //     chunkSize: 10000,
+    //     queries: require('@africtivistes/gatsby-blog-algolia/src/queries')
+    //   }
+    // },
   ],
   // Customize your site metadata:
   siteMetadata: {

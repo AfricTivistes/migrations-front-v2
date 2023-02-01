@@ -1,7 +1,7 @@
 import React from 'react'
 import { Global } from '@emotion/core'
 import { ThemeProvider, Flex, Box, css } from 'theme-ui'
-import theme from '@elegantstack/flow-ui-theme/src/theme'
+import theme from '@africtivistes/flow-ui-theme/src/theme'
 import pageContextProvider from '@helpers/pageContextProvider'
 import { Header } from '../Header/Header'
 import { Footer } from '../Footer/Footer'

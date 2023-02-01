@@ -1,5 +1,5 @@
 {
-  "name": "@elegantstack/gatsby-blog-algolia",
+  "name": "@africtivistes/gatsby-blog-algolia",
   "version": "3.0.0",
   "main": "index.js",
   "private": true,

@@ -1,10 +1,10 @@
 module.exports = {
   plugins: [
     {
-      resolve: '@elegantstack/gatsby-plugin-alias-imports',
+      resolve: '@africtivistes/gatsby-plugin-alias-imports',
       options: {
         alias: {
-          '@layout': '@elegantstack/flow-ui-layout/src'
+          '@layout': '@africtivistes/flow-ui-layout/src'
         },
         extensions: ['js', 'jsx']
       }

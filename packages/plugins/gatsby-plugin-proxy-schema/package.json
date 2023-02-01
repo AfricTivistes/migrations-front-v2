@@ -1,5 +1,5 @@
 {
-  "name": "@elegantstack/gatsby-plugin-proxy-schema",
+  "name": "@africtivistes/gatsby-plugin-proxy-schema",
   "version": "3.0.1",
   "main": "index.js",
   "private": true,

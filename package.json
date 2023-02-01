@@ -1,5 +1,5 @@
 {
-  "name": "elegantstack",
+  "name": "@africtivistes/migrations",
   "private": true,
   "license": "",
   "workspaces": ["packages/**", "migrations-front"],
