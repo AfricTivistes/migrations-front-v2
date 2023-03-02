@@ -86,7 +86,7 @@ const Subheader = ({ children }) => (
 const AuthorAvatar = ({ name, featuredImage, slug }) =>
   featuredImage ? (
     <Box>
-      <Link as={GLink} to={slug} aria-label={name}>
+      <Link as={GLink} to='#' aria-label={name}>
       <Avatar
         avatar={featuredImage.node.localFile.childImageSharp}
         alt={name}
@@ -100,7 +100,7 @@ const AuthorAvatar = ({ name, featuredImage, slug }) =>
 const AuthorName = ({ name, slug }) => (
   <Box sx={styles.name}>
     <Heading variant='h3'>
-      <Link as={GLink} to={slug}>
+      <Link as={GLink} to='#'>
         {name}
       </Link>
     </Heading>
@@ -179,7 +179,7 @@ const AuthorExpanded = ({ author, withLink }) => {
 
       </Flex>
       {withLink && (
-        <Badge variant='tag' as={GLink} to={author.slug} sx={styles.link}>
+        <Badge variant='tag' as={GLink} to='#'sx={styles.link}>
           <FormattedMessage id="ViewPosts" />
         </Badge>
       )}
