@@ -30,7 +30,6 @@ const styles = {
 }
 
 const Posts = ({...props}) => {
-  const { pageContext: { services = {} } = {} } = props
   const intl = useIntl()
   
   return (
@@ -67,12 +66,8 @@ const Posts = ({...props}) => {
       <CollectionArticle />
       <Stack>
         <Main>
-          {services.mailchimp && (
-            <>
-              <Divider />
-              <NewsletterExpanded simple />
-            </>
-          )}
+           <Divider />
+           <NewsletterExpanded/>
         </Main>
       </Stack>
     </Layout>
