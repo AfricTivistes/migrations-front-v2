@@ -1,8 +1,8 @@
 import React from 'react'
 import { css } from 'theme-ui'
-import { Card, Text, Heading, Box } from 'theme-ui'
+import { Card, Heading, Box } from 'theme-ui'
 import NewsletterForm from '@components/NewsletterForm'
-import useMailChimp from '@helpers/useMailChimp'
+import { FormattedMessage } from 'gatsby-plugin-react-intl'
 import { FaRegPaperPlane, FaWind } from 'react-icons/fa'
 
 const styles = {
@@ -18,8 +18,8 @@ const styles = {
   icons: {
     display: [`none`, null, `block`],
     position: `absolute`,
-    top: `-3rem`,
-    left: `5rem`,
+    top: `0rem`,
+    left: `3rem`,
     svg: {
       display: `block`
     }
@@ -43,13 +43,6 @@ const styles = {
 }
 
 const NewsletterExpanded = ({ simple }) => {
-  const {
-    handleSubmit,
-    canSubmit,
-    submitting,
-    message,
-    success
-  } = useMailChimp()
 
   return (
     <Card variant='paper' sx={styles.card}>
@@ -60,28 +53,16 @@ const NewsletterExpanded = ({ simple }) => {
             <FaWind css={css(styles.wind)} />
           </Box>
         )}
-        <Heading variant='h2'>Subscribe to our newsletter!</Heading>
-        <Text variant='p'>
-          We'll send you the best of our blog just once a month. We promise.
-        </Text>
+        <Heading variant='h2'>
+          <FormattedMessage id='newsletterTitle'/>
+        </Heading>
         <Box sx={styles.form}>
-          <NewsletterForm
-            {...{
-              handleSubmit,
-              canSubmit,
-              submitting,
-              message,
-              success
-            }}
-          />
+          <NewsletterForm/>
         </Box>
       </Box>
     </Card>
   )
 }
 
-NewsletterExpanded.defaultProps = {
-  simple: false
-}
 
 export default NewsletterExpanded

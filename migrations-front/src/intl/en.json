@@ -53,5 +53,8 @@
   "contactMeLink": "/en/contact-us",
   "team": "Our Team",
   "members": "Team members",
-  "ViewPosts":"View Posts"
+  "ViewPosts":"View Posts",
+  "subscribe": "Subscribe",
+  "newsletterTitle": "Subscribe to our newsletter!",
+  "newsletterText": "Make sure to subscribe to our newsletter and be the first to know the news"
 }
