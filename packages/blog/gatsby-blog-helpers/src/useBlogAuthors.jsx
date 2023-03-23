@@ -19,7 +19,10 @@ const authorsQuery = graphql`
 `
 const authorsq = graphql`
 query MyQuery  {
-  allWpAuteur (filter: {language: {slug: {eq: "fr"}}} sort: {fields: excerpt, order: DESC}){
+    allWpAuteur(
+              sort: {fields: date, order: ASC}
+              filter: {language: {slug: {eq: "fr"}}}
+  ){
     nodes {
               id
               slug
