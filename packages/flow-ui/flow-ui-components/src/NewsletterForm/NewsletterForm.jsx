@@ -1,6 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Box, Input, Button, Message, Spinner } from 'theme-ui'
+import { Box, Input, Button } from 'theme-ui'
+import { FormattedMessage } from 'gatsby-plugin-react-intl'
 
 const styles = {
   msg: {
@@ -12,51 +12,37 @@ const styles = {
   }
 }
 
-const NewsletterForm = ({
-  handleSubmit,
-  canSubmit,
-  submitting,
-  message,
-  success
-}) => (
-  <form onSubmit={handleSubmit}>
-    {message && (
-      <Message
-        variant={success ? 'success' : 'error'}
-        sx={styles.msg}
-        dangerouslySetInnerHTML={{ __html: message }}
-      />
-    )}
-    {canSubmit && (
+const NewsletterForm = () => (
+  <form 
+      method="post"
+      action="https://newsletter.infomaniak.com/external/submit"
+      target="_blank" >
       <>
         <Box variant='forms.row'>
           <Input
-            name='email'
             type='email'
+            name="inf[1]"
             placeholder='Email Address'
             aria-label='Email Address'
             required
           />
         </Box>
-        <Button
-          type='submit'
-          variant={success || submitting ? 'disabled' : 'primary'}
-          disabled={success || submitting}
-          sx={styles.button}
-        >
-          Subscribe {submitting && <Spinner size='20' />}
-        </Button>
+          <Input 
+            type="hidden" 
+            name="key" value="eyJpdiI6Ik15akZSa1wvbGFDVUtHcWFmNFBVT2RZTVwvenpMaHNFbnBOS25cL09WZFpITTg9IiwidmFsdWUiOiJ4ZXcrOGJqM2V2dE9QSHErSEM1V2hsZ1huYzk3bjhCRXJyRTB4dEpKQkVvPSIsIm1hYyI6IjAwNDg1ZmMyM2E3YjZiZjA2YTZiNWNlYjZlZjBkZDRlY2RlNzM3NTY1YmU2NGFmMWY3NDMzMDI2ZmUzODJmOTEifQ=="/>
+          <Input 
+            type="hidden" 
+            name="webform_id" 
+            value={14052}
+          />
+          <Button
+              type='submit'
+              sx={styles.button}>
+              <FormattedMessage id="subscribe" />
+          </Button>
       </>
-    )}
   </form>
+  
 )
 
 export default NewsletterForm
-
-NewsletterForm.propTypes = {
-  handleSubmit: PropTypes.func,
-  canSubmit: PropTypes.bool,
-  submitting: PropTypes.bool,
-  message: PropTypes.string,
-  success: PropTypes.bool
-}

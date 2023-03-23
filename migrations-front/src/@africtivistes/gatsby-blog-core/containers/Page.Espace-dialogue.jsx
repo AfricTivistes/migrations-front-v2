@@ -13,10 +13,10 @@ import LastNewsCol from '@widgets/LastNewsCol'
 import TopDialogue from '@widgets/TopDialogue'
 import HeroDialogue from '@widgets/HeroDialogue'
 import { useBlogTags } from '@helpers-blog'
+import NewsletterExpanded from '@widgets/NewsletterExpanded'
 
 const PageContact = ({ data: { page }, ...props }) => {
 
-  const { pageContext: { services = {} } = {} } = props
   const {title} = page.nodes[0]
   const tags = useBlogTags()
 
@@ -29,6 +29,8 @@ const PageContact = ({ data: { page }, ...props }) => {
         <Divider />
         <TopDialogue />
         <CollectionDialogue />
+        <Divider space={3}/>
+        <NewsletterExpanded/>
       </Main>
       <Sidebar>
         <LastNewsCol />
@@ -41,12 +43,6 @@ const PageContact = ({ data: { page }, ...props }) => {
         <Divider />
         <Sticky>
           <Categories />
-          {services.mailchimp && (
-            <>
-              <Divider />
-              <NewsletterCompact />
-            </>
-          )}
         </Sticky>
       </Sidebar>
     </Stack>
