@@ -30,18 +30,18 @@ const AuthorArticle = ({ author, omitSocial, ...props }) => {
         <Box sx={styles.wrapper}>
           {author.featuredImage && (
             <Box sx={styles.avatarWrapper}>
-              <Link as={GLink} to={`/auteur/${author.slug}`} aria-label={author.title}>
+              
                 <Avatar
                   avatar={author.featuredImage.node.localFile.childImageSharp}
                   alt={author.title}
                   withPattern
                 />
-              </Link>
+              
             </Box>
           )}
-          <Link as={GLink} to={`/auteur/${author.slug}`}>
+          
             <Heading variant='h3'>{author.title}</Heading>
-          </Link>
+          
           <Heading variant='h4' sx={styles.title}>
             <p dangerouslySetInnerHTML={{ __html: author.excerpt }} />
           </Heading>
