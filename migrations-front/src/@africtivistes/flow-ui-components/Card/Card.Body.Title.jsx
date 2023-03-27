@@ -7,7 +7,6 @@ const CardBodyTitle = ({ variant, title, slug, link, categories }) => {
   const linkProps = link
     ? {
         as: 'a',
-        href: link,
         target: '_blank',
         rel: 'noopener noreferrer'
       }
