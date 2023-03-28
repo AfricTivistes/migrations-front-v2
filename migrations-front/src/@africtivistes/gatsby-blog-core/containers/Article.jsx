@@ -7,6 +7,8 @@ import Divider from '@components/Divider'
 import Sticky from '@components/Sticky'
 import Seo from '@widgets/Seo'
 import AuthorArticle from '@widgets/AuthorArticle'
+import NewsletterExpanded from '@widgets/NewsletterExpanded'
+import LastNewsCol from '@widgets/LastNewsCol'
 // import TableOfContentsCompact from '@widgets/TableOfContentsCompact'
 import {
   ArticleBody,
@@ -56,6 +58,7 @@ const Post = ({
         <Sidebar>
           <AuthorArticle author={post.nodes[0].author} omitTitle />
           <Divider />
+          <LastNewsCol/>
           <Sticky>
             {/* {post.tableOfContents?.items && (
               <>
@@ -76,6 +79,8 @@ const Post = ({
               />
             )} */}
           </Sticky>
+          <Divider/>
+          <NewsletterExpanded  simple/>
         </Sidebar>
       </Stack>
     </Layout>
