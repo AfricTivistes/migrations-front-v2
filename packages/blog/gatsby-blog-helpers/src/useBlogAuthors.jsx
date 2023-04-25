@@ -21,7 +21,7 @@ const authorsq = graphql`
 query MyQuery  {
     allWpAuteur(
               sort: {fields: date, order: ASC}
-              filter: {language: {slug: {eq: "fr"}}}
+              filter: {language: {slug: {eq: "fr"}}, nom_type: {type: {eq: "equipe"}}}
   ){
     nodes {
               id
