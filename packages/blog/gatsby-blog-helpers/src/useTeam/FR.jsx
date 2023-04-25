@@ -5,7 +5,7 @@ import dedupe from 'dedupe'
 const useTeamFR = () => {
 
   const { allWpAuteur } = useStaticQuery(teamFRQuery)
-  
+
   return allWpAuteur.nodes
     ? dedupe(allWpAuteur.nodes, node => node.slug)
     : null
@@ -13,7 +13,9 @@ const useTeamFR = () => {
 
 const teamFRQuery = graphql`
   query TeamFRQuery  {
-  allWpAuteur (filter: {language: {slug: {eq: "fr"}}} sort: {fields: excerpt, order: DESC}){
+  allWpAuteur (
+          filter: {language: {slug: {eq: "fr"}}, nom_type: {type: {eq: "equipe"}}} 
+          sort: {fields: excerpt, order: DESC}){
     nodes {
               id
               slug
