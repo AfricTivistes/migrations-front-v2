@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 const useLastFR = () => {
 
   const { allWpPost } = useStaticQuery(lastFRQuery)
-  
+
   return allWpPost
 }
 
@@ -19,6 +19,7 @@ const lastFRQuery = graphql`
       slug
       title
       date
+      excerpt
       categories {
           nodes {
             id
