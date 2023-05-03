@@ -10,7 +10,7 @@ const Card = ({data}) => {
   
   return(<CardList
       nodes={data}
-      limit={4}
+      limit={6}
       columns={[1, 2, 1, 2]}
       variant={['horizontal-md', 'vertical']}
       omitMedia
