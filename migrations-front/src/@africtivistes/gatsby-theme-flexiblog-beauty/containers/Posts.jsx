@@ -6,6 +6,7 @@ import Divider from '@components/Divider'
 import MemphisPattern from '@components/MemphisPattern'
 import Seo from '@widgets/Seo'
 import NewsletterExpanded from '@widgets/NewsletterExpanded'
+import NewsletterCompact from '@widgets/NewsletterCompact'
 import Sponsor from '@widgets/Sponsor'
 import Categories from '@widgets/Categories'
 import BannerWide from '@widgets/BannerWide'
@@ -14,6 +15,7 @@ import HorizontalCard from '@widgets/HorizontalCard'
 import LastNews from '@widgets/LastNews'
 import TopCard from '@widgets/TopCard'
 import CollectionArticle from '@widgets/CollectionArticle'
+import LastRessources from '../../flow-ui-widgets/LastRessources/LastRessources'
 
 const styles = {
   heroThumbsContainer: {
@@ -29,9 +31,9 @@ const styles = {
   }
 }
 
-const Posts = ({...props}) => {
+const Posts = ({ ...props }) => {
   const intl = useIntl()
-  
+
   return (
     <Layout {...props}>
       <Seo title={intl.formatMessage({ id: "accueil" })} />
@@ -50,7 +52,11 @@ const Posts = ({...props}) => {
           <LastNews />
         </Main>
         <Sidebar pl={4}>
+          <NewsletterCompact />
+          <Divider />
           <Categories />
+          <Divider />
+          <LastRessources />
           <Divider />
           <Sponsor />
         </Sidebar>
@@ -66,8 +72,8 @@ const Posts = ({...props}) => {
       <CollectionArticle />
       <Stack>
         <Main>
-           <Divider />
-           <NewsletterExpanded/>
+          <Divider />
+          <NewsletterExpanded />
         </Main>
       </Stack>
     </Layout>

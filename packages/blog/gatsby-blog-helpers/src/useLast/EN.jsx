@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 const useLastEN = () => {
 
   const { allWpPost } = useStaticQuery(lastENQuery)
-  
+
   return allWpPost
 }
 
@@ -19,6 +19,7 @@ const lastENQuery = graphql`
       slug
       title
       date
+      excerpt
       categories {
           nodes {
             id
