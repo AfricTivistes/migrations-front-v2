@@ -87,14 +87,26 @@ module.exports = {
         environments: ['production', 'development']
       },
     },
+     {
+       resolve: 'gatsby-plugin-algolia',
+       options: {
+         appId: process.env.GATSBY_ALGOLIA_APP_ID,
+         apiKey: process.env.ALGOLIA_ADMIN_KEY,
+         chunkSize: 10000,
+         queries: require('@africtivistes/gatsby-blog-algolia/src/queries')
+       }
+     },
     {
-      resolve: 'gatsby-plugin-algolia',
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_ADMIN_KEY,
-        chunkSize: 10000,
-        queries: require('@africtivistes/gatsby-blog-algolia/src/queries')
-      }
+        name: `GatsbyJS`,
+        short_name: `GatsbyJS`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+        icon: 'src/@africtivistes/assets/favicon.png', // This path is relative to the root of the site.
+      },
     },
   ],
   // Customize your site metadata:
@@ -105,7 +117,7 @@ module.exports = {
     description: 'Plateforme d’informations sur les migrations',
     address: 'Dakar, Sénégal',
     email: 'info@africtivistes.org',
-    phone: '+221 33 864 00 90',
+    phone: '+221 33 837 51 24',
 
     //Site Social Media Links
     social: [
