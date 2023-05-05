@@ -96,6 +96,18 @@ module.exports = {
         queries: require('@africtivistes/gatsby-blog-algolia/src/queries')
       }
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `GatsbyJS`,
+        short_name: `GatsbyJS`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+        icon: 'content/assets/favicon.png', // This path is relative to the root of the site. 
+      },
+    }, 
   ],
   // Customize your site metadata:
   siteMetadata: {
