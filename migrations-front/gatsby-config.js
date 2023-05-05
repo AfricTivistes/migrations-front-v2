@@ -105,7 +105,7 @@ module.exports = {
         background_color: `#f7f0eb`,
         theme_color: `#a2466c`,
         display: `standalone`,
-        icon: 'src/@africtivistes/assets/favicon.png', // This path is relative to the root of the site. 
+        icon: 'content/assets/favicon.png', // This path is relative to the root of the site. 
       },
     }, 
   ],
