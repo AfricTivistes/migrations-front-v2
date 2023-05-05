@@ -105,7 +105,7 @@ module.exports = {
     description: 'Plateforme d’informations sur les migrations',
     address: 'Dakar, Sénégal',
     email: 'info@africtivistes.org',
-    phone: '+221 33 864 00 90',
+    phone: '+221 33 837 51 24',
 
     //Site Social Media Links
     social: [
