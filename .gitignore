@@ -81,3 +81,6 @@ yarn-error.log
 # Wordpress cache
 .wordpress-cache
 migrations-front/.wordpress-cache
+
+# lock
+package-lock.json
