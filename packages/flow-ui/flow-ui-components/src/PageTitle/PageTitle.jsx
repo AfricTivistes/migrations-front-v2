@@ -22,15 +22,9 @@ const PageTitle = ({ header, subheader, running, totalCount }) => {
     <div>
       <Heading variant='h1' as='h1'>
         {header}{' '}
-        {totalCount && (
-          <Badge variant='tag-white' sx={styles.count}>
-            {' '}
-            {totalCount}
-          </Badge>
-        )}
       </Heading>
       {subheader && (
-        <Text variant='h3' sx={styles.subheader} dangerouslySetInnerHTML={{ __html: subheader }}/>
+        <Text variant='h3' sx={styles.subheader} dangerouslySetInnerHTML={{ __html: subheader }} />
       )}
       {running && (
         <Text variant='h4' sx={styles.runninghead}>
