@@ -9,8 +9,10 @@ const useCategoriesFR = () => {
 
 const categoriesFRQuery = graphql`
   query categoriesFRQuery {
-    allWpCategory(
-    filter: {language: {code: {eq: FR}}, affichage: {widget: {eq: true}}}
+  allWpCategory(
+    filter: {language: {code: {eq: FR}}, 
+    affichage: {widget: {eq: true}}, 
+    slug: {in: ["contribution", "temoignage", "verification"]}}
   ) {
     nodes {
       id
@@ -23,13 +25,12 @@ const categoriesFRQuery = graphql`
       }
     }
   }
-
   allArticleCategory {
     nodes {
       ...ArticleCategory
     }
   }
-  }
+}
 `
 
 export default useCategoriesFR
