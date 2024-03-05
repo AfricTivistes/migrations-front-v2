@@ -49,7 +49,6 @@ export const Layout = ({ children, pageContext, location }) => {
               width: '100%',
               backgroundColor: '#1a5474',
               color: 'white',
-              zIndex: 999,
             }}
           >
             <p style={{ marginLeft:'30px'}}>
