@@ -58,5 +58,8 @@
   "subscribe": "Subscribe",
   "newsletterTitle": "Subscribe to our newsletter!",
   "newsletterText": "Stay connected to our platform and be among the first to receive our news",
-  "ressourcesetdonnees": "Resources & Data"
+  "ressourcesetdonnees": "Resources & Data",
+  "popup_desc": "As part of the evaluation of Migration Dialogue project, we are asking visitors to the platform to give us their views on how they use the website.",
+  "popup_accept": "Submit",
+  "popup_decline": "Close"
 }

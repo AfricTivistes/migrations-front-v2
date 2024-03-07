@@ -8,6 +8,7 @@ import pageContextProvider from '@helpers/pageContextProvider'
 import { Header } from '../Header/Header'
 import { Footer } from '../Footer/Footer'
 import FormfacadePopup from '../FormfacadePopup'
+import HomePopup from '../HomePopup'
 
 export const Layout = ({ children, pageContext, location }) => {
   const [showForm, setShowForm] = useState(false);
@@ -27,6 +28,8 @@ export const Layout = ({ children, pageContext, location }) => {
         <Global styles={css(theme => theme.global)} />
         <Header />
         <Box variant='layout.body'>{children}</Box>
+        <HomePopup handleFormOpen={handleFormOpen} handleFormClose={handleFormClose} />
+        <FormfacadePopup showForm={showForm} handleFormClose={handleFormClose} />
         <Footer />
         <CookieConsent
           location="bottom"
@@ -40,24 +43,6 @@ export const Layout = ({ children, pageContext, location }) => {
         >
           <FormattedMessage id="cookieconsent" />
         </CookieConsent>
-          <FormfacadePopup showForm={showForm} handleFormClose={handleFormClose} />
-          <Box
-            sx={{
-              position: 'fixed',
-              bottom: 0,
-              left: 0,
-              width: '100%',
-              backgroundColor: '#1a5474',
-              color: 'white',
-            }}
-          >
-            <p style={{ marginLeft:'30px'}}>
-              Dans le cadre de l’évaluation du projet Dialogue Migration, il est demandé de recueillir les avis des visiteurs de la plateforme sur leurs usages du site web.
-              <button onClick={handleFormOpen} style={{ marginLeft: '10px', color: 'black', background: "#ffd42d" }}>
-                Votre Avis
-              </button>
-            </p>
-          </Box>
       </Flex>
     </pageContextProvider.Provider>
   </ThemeProvider>
