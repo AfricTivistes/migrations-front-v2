@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FormattedMessage } from "gatsby-plugin-react-intl"
 
 const HomePopup = ({ handleFormOpen }) => {
   const [showPopup, setShowPopup] = useState(false);
+  const popupRef = useRef(null);
   const handleOpenAndClose = () => {
     handleFormOpen();
     handleClose();
@@ -28,13 +29,27 @@ const HomePopup = ({ handleFormOpen }) => {
     }
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        handleClose();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   if (!showPopup) {
     return null;
   }
 
   return (
     <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0, 0, 0, 0.5)', zIndex: 999, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', maxWidth: '400px', overflowY: 'auto' }}>
+      <div ref={popupRef} style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', maxWidth: '400px', overflowY: 'auto' }}>
         <p style={{ marginLeft: '30px' }} >
           <FormattedMessage id="popup_desc" />
         <button onClick={handleOpenAndClose} style={{ color: 'black', background: "#ffd42d" }}>
