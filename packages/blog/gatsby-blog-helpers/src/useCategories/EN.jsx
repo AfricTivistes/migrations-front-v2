@@ -8,9 +8,13 @@ const useCategoriesEN = () => {
 }
 
 const categoriesENQuery = graphql`
-  query categoriesENQuery {
-    allWpCategory(
-    filter: {language: {code: {eq: EN}}, affichage: {widget: {eq: true}}}
+query categoriesENQuery {
+  allWpCategory(
+    filter: {
+      language: { code: { eq: EN } }
+      affichage: { widget: { eq: true } }
+      slug: { in: ["papers", "testimony", "fact-checking"] }
+    }
   ) {
     nodes {
       id
@@ -29,7 +33,7 @@ const categoriesENQuery = graphql`
       ...ArticleCategory
     }
   }
-  }
+}
 `
 
 export default useCategoriesEN

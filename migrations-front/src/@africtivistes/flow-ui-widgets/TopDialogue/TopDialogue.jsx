@@ -7,7 +7,6 @@ import useTopDialogueEN from '@helpers-blog/useTopDialogue/EN'
 const Card = ({data}) => {
   
   const intl = useIntl()
-  console.log(data)
   return(<CardList
     nodes={data}
     variant={['horizontal-md', 'horizontal']}

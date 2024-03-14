@@ -20,6 +20,9 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-plugin-sitemap`,
+    },
+    {
       resolve: `gatsby-source-wordpress`,
       options: {
         url: `https://migration.africtivistes.org/graphql`,
@@ -112,8 +115,9 @@ module.exports = {
   // Customize your site metadata:
   siteMetadata: {
     //General Site Metadata
+    siteUrl: `https://dialoguemigration.com`,
     title: 'Dialogue Migration',
-    name: 'Migrations',
+    name: 'Dialogue Migrations',
     description: 'Plateforme d’informations sur les migrations',
     address: 'Dakar, Sénégal',
     email: 'info@africtivistes.org',

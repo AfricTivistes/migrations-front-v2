@@ -58,6 +58,9 @@
   "subscribe": "S'inscrire",
   "newsletterTitle": "S'abonner à notre newsletter !",
   "newsletterText": "Restez connecté(e) à notre plateforme et soyez parmi les premiers à recevoir nos actualités",
-  "ressourcesetdonnees": "Ressources & Données"
+  "ressourcesetdonnees": "Ressources & Données",
+  "popup_desc": "Dans le cadre de l’évaluation du projet Dialogue Migration, il est demandé de recueillir les avis des visiteurs de la plateforme sur leurs usages du site web.",
+  "popup_accept": "Soumettre",
+  "popup_decline": "Fermer"
 
 }
