@@ -43,7 +43,8 @@ const Hits = ({ searchState, searchResults }) => {
             ...hit,
             key: hit.objectID,
             title: <Highlight hit={hit} tagName='mark' attribute='title' />,
-            // excerpt: <Snippet hit={hit} tagName='mark' attribute='excerpt' />
+            excerpt: <Snippet hit={hit} tagName='mark' attribute='excerpt' />,
+            link: hit.link
           }
           return (
             <Card
@@ -52,6 +53,7 @@ const Hits = ({ searchState, searchResults }) => {
               omitCategory
               omitFooter
               omitMedia
+              href={node.link}
             />
           )
         })}
