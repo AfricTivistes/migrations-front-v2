@@ -1,0 +1,8 @@
+modules = ["nodejs-14", "php-8.2", "web"]
+run = "cd migrations-front && gatsby develop"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "cd migrations-front && gatsby develop"]
