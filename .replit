@@ -1,8 +1,12 @@
 modules = ["nodejs-20", "php-8.2", "web"]
-run = "cd migrations-front && gatsby develop"
+run = "cd migrations-front && gatsby develop --host 0.0.0.0"
 
 [nix]
 channel = "stable-24_05"
 
 [deployment]
 run = ["sh", "-c", "cd migrations-front && gatsby develop"]
+
+[[ports]]
+localPort = 8000
+externalPort = 80
