@@ -1,4 +1,4 @@
-modules = ["nodejs-14", "php-8.2", "web"]
+modules = ["nodejs-20", "php-8.2", "web"]
 run = "cd migrations-front && gatsby develop"
 
 [nix]
