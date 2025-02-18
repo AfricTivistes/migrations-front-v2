@@ -1,0 +1,86 @@
+warn Plugin gatsby-plugin-mdx is not compatible with your gatsby version 5.14.1 - It
+requires gatsby@^4.0.0-next
+warn Plugin gatsby-plugin-catch-links is not compatible with your gatsby version 5.14.1
+- It requires gatsby@^4.0.0-next
+warn Plugin gatsby-transformer-json is not compatible with your gatsby version 5.14.1 -
+It requires gatsby@^4.0.0-next
+warn Plugin gatsby-source-filesystem is not compatible with your gatsby version 5.14.1 -
+ It requires gatsby@^4.0.0-next
+warn Plugin gatsby-source-filesystem is not compatible with your gatsby version 5.14.1 -
+ It requires gatsby@^4.0.0-next
+warn Plugin gatsby-source-filesystem is not compatible with your gatsby version 5.14.1 -
+ It requires gatsby@^4.0.0-next
+warn Plugin gatsby-source-filesystem is not compatible with your gatsby version 5.14.1 -
+ It requires gatsby@^4.0.0-next
+warn Plugin gatsby-plugin-emotion is not compatible with your gatsby version 5.14.1 - It
+ requires gatsby@^2.0.0
+warn Plugin gatsby-plugin-preconnect is not compatible with your gatsby version 5.14.1 -
+ It requires gatsby@^2.0.0 || ^3.0.0 || ^4.0.0
+warn Plugin gatsby-plugin-react-helmet is not compatible with your gatsby version 5.14.1
+ - It requires gatsby@^4.0.0-next
+warn Plugin @africtivistes/gatsby-theme-flexiblog-beauty is not compatible with your
+gatsby version 5.14.1 - It requires gatsby@^4.1.0
+warn Plugin gatsby-plugin-catch-links is not compatible with your gatsby version 5.14.1
+- It requires gatsby@^4.0.0-next
+warn Plugin gatsby-source-wordpress is not compatible with your gatsby version 5.14.1 -
+It requires gatsby@^4.0.0-zz-next.1
+warn Plugin gatsby-plugin-react-intl is not compatible with your gatsby version 5.14.1 -
+ It requires gatsby@^3.0.0
+warn Plugin gatsby-plugin-netlify is not compatible with your gatsby version 5.14.1 - It
+ requires gatsby@^4.0.0
+warn Plugin gatsby-plugin-gdpr-cookies is not compatible with your gatsby version 5.14.1
+ - It requires gatsby@^2.24.77 || ^3.0.0 || ^4.0.0
+warn Plugin gatsby-remark-images is not compatible with your gatsby version 5.14.1 - It
+requires gatsby@^4.0.0-next
+warn Plugin gatsby-remark-responsive-iframe is not compatible with your gatsby version
+5.14.1 - It requires gatsby@^4.0.0-next
+warn Plugin gatsby-remark-copy-linked-files is not compatible with your gatsby version
+5.14.1 - It requires gatsby@^4.0.0-next
+warn Plugin gatsby-remark-smartypants is not compatible with your gatsby version 5.14.1
+- It requires gatsby@^4.0.0-next
+warn Plugin gatsby-remark-images is not compatible with your gatsby version 5.14.1 - It
+requires gatsby@^4.0.0-next
+warn Plugin gatsby-remark-responsive-iframe is not compatible with your gatsby version
+5.14.1 - It requires gatsby@^4.0.0-next
+warn Plugin gatsby-remark-copy-linked-files is not compatible with your gatsby version
+5.14.1 - It requires gatsby@^4.0.0-next
+warn Plugin gatsby-remark-smartypants is not compatible with your gatsby version 5.14.1
+- It requires gatsby@^4.0.0-next
+warn Plugin gatsby-remark-images is not compatible with your gatsby version 5.14.1 - It
+requires gatsby@^4.0.0-next
+warn Plugin gatsby-remark-responsive-iframe is not compatible with your gatsby version
+5.14.1 - It requires gatsby@^4.0.0-next
+warn Plugin gatsby-remark-copy-linked-files is not compatible with your gatsby version
+5.14.1 - It requires gatsby@^4.0.0-next
+warn Plugin gatsby-remark-smartypants is not compatible with your gatsby version 5.14.1
+- It requires gatsby@^4.0.0-next
+warn Plugin gatsby-plugin-catch-links is not compatible with your gatsby version 5.14.1
+- It requires gatsby@^4.0.0-next
+warn Plugin gatsby-transformer-json is not compatible with your gatsby version 5.14.1 -
+It requires gatsby@^4.0.0-next
+warn Plugin gatsby-source-filesystem is not compatible with your gatsby version 5.14.1 -
+ It requires gatsby@^4.0.0-next
+warn Plugin gatsby-source-filesystem is not compatible with your gatsby version 5.14.1 -
+ It requires gatsby@^4.0.0-next
+warn Plugin gatsby-source-filesystem is not compatible with your gatsby version 5.14.1 -
+ It requires gatsby@^4.0.0-next
+warn Plugin gatsby-source-filesystem is not compatible with your gatsby version 5.14.1 -
+ It requires gatsby@^4.0.0-next
+warn Plugin gatsby-plugin-emotion is not compatible with your gatsby version 5.14.1 - It
+ requires gatsby@^2.0.0
+warn Plugin gatsby-plugin-preconnect is not compatible with your gatsby version 5.14.1 -
+ It requires gatsby@^2.0.0 || ^3.0.0 || ^4.0.0
+warn Plugin gatsby-plugin-react-helmet is not compatible with your gatsby version 5.14.1
+ - It requires gatsby@^4.0.0-next
+warn Plugin @africtivistes/gatsby-theme-flexiblog-beauty is not compatible with your
+gatsby version 5.14.1 - It requires gatsby@^4.1.0
+warn Plugin gatsby-plugin-catch-links is not compatible with your gatsby version 5.14.1
+- It requires gatsby@^4.0.0-next
+warn Plugin gatsby-source-wordpress is not compatible with your gatsby version 5.14.1 -
+It requires gatsby@^4.0.0-zz-next.1
+warn Plugin gatsby-plugin-react-intl is not compatible with your gatsby version 5.14.1 -
+ It requires gatsby@^3.0.0
+warn Plugin gatsby-plugin-netlify is not compatible with your gatsby version 5.14.1 - It
+ requires gatsby@^4.0.0
+warn Plugin gatsby-plugin-gdpr-cookies is not compatible with your gatsby version 5.14.1
+ - It requires gatsby@^2.24.77 || ^3.0.0 || ^4.0.0
