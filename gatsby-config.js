@@ -1,4 +1,10 @@
+require('dotenv').config()
+const adapter = require("gatsby-adapter-netlify")
+
 module.exports = {
+  adapter: adapter({
+    excludeDatastoreFromEngineFunction: false
+  }),
   siteMetadata: {
     title: `My Gatsby Site`,
     siteUrl: `https://www.yoursite.com`,
