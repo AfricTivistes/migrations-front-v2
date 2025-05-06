@@ -15,7 +15,7 @@ const teamENQuery = graphql`
   query TeamENQuery  {
   allWpAuteur (
         filter: {language: {slug: {eq: "en"}}, nom_type: {type: {eq: "team"}}} 
-        sort: {fields: excerpt, order: DESC}){
+        sort: {fields: excerpt, order: ASC}){
     nodes {
               id
               slug
