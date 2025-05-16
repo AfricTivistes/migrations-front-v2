@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useIntl, FormattedMessage } from "gatsby-plugin-react-intl"
 import CookieConsent from 'react-cookie-consent'
 import { Global } from '@emotion/core'
@@ -13,6 +13,25 @@ import HomePopup from '../HomePopup'
 export const Layout = ({ children, pageContext, location }) => {
   const [showForm, setShowForm] = useState(false);
   const intl = useIntl();
+
+  useEffect(() => {
+    // Charger le script du chatbot
+    const script1 = document.createElement('script');
+    script1.src = 'https://cdn.botpress.cloud/webchat/v2/inject.js';
+    script1.async = true;
+    document.body.appendChild(script1);
+
+    const script2 = document.createElement('script');
+    script2.src = 'https://files.bpcontent.cloud/2025/03/24/09/20250324095529-XWB4QYTU.js';
+    script2.async = true;
+    document.body.appendChild(script2);
+
+    // Nettoyage lors du démontage du composant
+    return () => {
+      document.body.removeChild(script1);
+      document.body.removeChild(script2);
+    };
+  }, []);
 
   const handleFormOpen = () => {
     setShowForm(true);
