@@ -111,7 +111,7 @@ const AuthorBio = ({ excerpt, content }) =>
 content  ? (
   <Box sx={styles.bio}>
     <Subheader><div dangerouslySetInnerHTML={{ __html: excerpt }} /></Subheader>
-    <Text> <div dangerouslySetInnerHTML={{ __html: content.substring(0,250) }} />...</Text>
+    <Text> <div dangerouslySetInnerHTML={{ __html: content }} /></Text>
   </Box>
 ): null
 
