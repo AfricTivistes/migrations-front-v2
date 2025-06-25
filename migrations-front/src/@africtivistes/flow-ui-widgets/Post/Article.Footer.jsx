@@ -30,14 +30,19 @@ const styles = {
   },
 }
 
-const PostLink = ({ title, post }) => (
-  <>
-    <Text sx={styles.guide}>{title}</Text>
-    <Heading variant='h4' as={Link} to={`/${post.categories.nodes[0].slug}/${post.slug}`}>
-      {post.title}
-    </Heading>
-  </>
-)
+const PostLink = ({ title, post }) => {
+  // Vérifier si l'article a des catégories
+  const categorySlug = post.categories?.nodes?.[0]?.slug || 'uncategorized'
+  
+  return (
+    <>
+      <Text sx={styles.guide}>{title}</Text>
+      <Heading variant='h4' as={Link} to={`/${categorySlug}/${post.slug}`}>
+        {post.title}
+      </Heading>
+    </>
+  )
+}
 
 export const ArticleFooter = ({ previous, next }) => {
   if (!next && !previous) return null

@@ -51,7 +51,7 @@ const CardMedia = ({
       }
     : {
         as: GLink,
-        to: categories ? `/${categories.nodes[0].slug}/${slug}` : slug
+        to: categories?.nodes?.[0]?.slug ? `/${categories.nodes[0].slug}/${slug}` : `/${slug}`
       }
 
   return (

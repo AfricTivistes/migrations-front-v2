@@ -12,7 +12,7 @@ const CardBodyTitle = ({ variant, title, slug, link, categories }) => {
       }
     : {
         as: GLink,
-        to: categories ? `/${categories.nodes[0].slug}/${slug}` : slug
+        to: categories?.nodes?.[0]?.slug ? `/${categories.nodes[0].slug}/${slug}` : `/${slug}`
       }
   return (
     <Heading {...linkProps} sx={{ variant: rv(variant, 'title') }}>

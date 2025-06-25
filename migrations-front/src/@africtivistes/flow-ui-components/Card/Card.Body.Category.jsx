@@ -10,23 +10,28 @@ const styles = {
   }
 }
 
-const CardBodyCategory = ({ variant, categories, omitCategory }) =>
-  !omitCategory && categories && (categories.nodes[0].slug && categories.nodes[0].affichage) ? (
+const CardBodyCategory = ({ variant, categories, omitCategory }) => {
+  // Vérifier si les catégories existent et ont les propriétés nécessaires
+  const category = categories?.nodes?.[0]
+  const hasValidCategory = category && category.slug && category.affichage
+  
+  return !omitCategory && categories && hasValidCategory ? (
     <Box css={css(styles.badge)} sx={{ variant: rv(variant, 'category') }}>
       <Badge
         variant='tag'
         as={Link}
-        to={`/${categories.nodes[0].slug}`}
+        to={`/${category.slug}`}
         sx={
-          categories.nodes[0].affichage.color && {
-            bg: categories.nodes[0].affichage.color,
-            color: getReadableColor(categories.nodes[0].affichage.color)
+          category.affichage.color && {
+            bg: category.affichage.color,
+            color: getReadableColor(category.affichage.color)
           }
         }
       >
-        {categories.nodes[0].name}
+        {category.name}
       </Badge>
     </Box>
   ) : null
+}
 
 export default CardBodyCategory
