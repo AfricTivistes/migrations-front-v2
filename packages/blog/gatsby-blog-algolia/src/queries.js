@@ -24,12 +24,20 @@ const postQuery = `{
 `
 
 const flatten = arr =>
-  arr.map(({ ...rest }) => ({
-    category: { name: rest.categories.nodes[0].name},
-    link: `/${rest.language.slug}/${rest.categories.nodes[0].slug}/${rest.slug}`,
-    excerpt: rest.excerpt.replace(/(<([^>]+)>)/gi, ""),
-    ...rest
-  }))
+  arr.map(({ ...rest }) => {
+    // Vérifier si les catégories existent
+    const category = rest.categories?.nodes?.[0]
+    const categoryName = category?.name || 'Uncategorized'
+    const categorySlug = category?.slug || 'uncategorized'
+    const languageSlug = rest.language?.slug || 'fr'
+    
+    return {
+      category: { name: categoryName },
+      link: `/${languageSlug}/${categorySlug}/${rest.slug}`,
+      excerpt: rest.excerpt ? rest.excerpt.replace(/(<([^>]+)>)/gi, "") : "",
+      ...rest
+    }
+  })
 
 const settings = {
   attributesToSnippet: ['excerpt:20'],
