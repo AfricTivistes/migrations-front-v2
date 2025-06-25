@@ -26,20 +26,25 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         url: `https://migration.africtivistes.org/graphql`,
+        schema: {
+          perPage: 5,
+          requestConcurrency: 1,
+          previewRequestConcurrency: 1,
+        },
         presets: [
           {
             presetName: `DEVELOP`,
             useIf: () => process.env.NODE_ENV === `development`,
             options: {
               develop: {
-                nodeUpdateInterval: 60000, // Update nodes every 60 seconds 
+                nodeUpdateInterval: 300000,
                 hardCacheMediaFiles: true,
-                hardCacheData: false,
+                hardCacheData: true,
               },
               type: {
                 MediaItem: {
                   localFile: {
-                    requestConcurrency: 5, // Amount of images to download concurrently. Try lowering this if wordpress server crashes on import.
+                    requestConcurrency: 1,
                   },
                 },
               },
@@ -118,7 +123,7 @@ module.exports = {
     siteUrl: `https://dialoguemigration.com`,
     title: 'Dialogue Migration',
     name: 'Dialogue Migrations',
-    description: 'Plateforme d’informations sur les migrations',
+    description: "Plateforme d'informations sur les migrations",
     address: 'Dakar, Sénégal',
     email: 'info@africtivistes.org',
     phone: '+221 33 837 51 24',
