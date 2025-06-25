@@ -1,12 +1,46 @@
 [build]
-  base = "/"
-  publish = "migrations-front/public/"
-  command = "cd migrations-front && yarn build"
+  base = "."
+  command = "cd migrations-front && npm run build:netlify"
+  publish = "migrations-front/public"
+
+[build.environment]
+  NODE_VERSION = "18.20.8"
+  NPM_VERSION = "10.8.2"
+  SHARP_IGNORE_GLOBAL_LIBVIPS = "1"
+  NODE_OPTIONS = "--max_old_space_size=4096"
+  NPM_FLAGS = "--legacy-peer-deps"
+  YARN_FLAGS = "--ignore-engines"
+
+[[build.processing]]
+  skip_processing = false
+
+[[build.processing.css]]
+  bundle = true
+  minify = true
+
+[[build.processing.js]]
+  bundle = true
+  minify = true
+
+[[build.processing.html]]
+  pretty_urls = true
+
+[[build.processing.images]]
+  compress = true
+
+[build.processing.images.optimization_settings]
+  quality = 80
+  progressive = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[functions]
+  directory = "functions"
 
 [[plugins]]
   # Installs the Lighthouse Build Plugin for all deploy contexts
   package = "@netlify/plugin-gatsby"
-
-[functions]
-  directory = "functions/"
   
