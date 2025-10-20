@@ -19,17 +19,30 @@ export const Layout = ({ children, pageContext, location }) => {
     const script1 = document.createElement('script');
     script1.src = 'https://cdn.botpress.cloud/webchat/v3.3/inject.js';
     script1.async = true;
+    
+    // Attendre que le script principal soit chargé avant de charger la configuration
+    script1.onload = () => {
+      const script2 = document.createElement('script');
+      script2.src = 'https://files.bpcontent.cloud/2025/10/15/15/20251015151538-WNYHXSK8.js';
+      script2.defer = true;
+      document.body.appendChild(script2);
+    };
+    
+    script1.onerror = () => {
+      console.error('Erreur lors du chargement du script Botpress principal');
+    };
+    
     document.body.appendChild(script1);
-
-    const script2 = document.createElement('script');
-    script2.src = 'https://files.bpcontent.cloud/2025/10/15/15/20251015151538-WNYHXSK8.js';
-    script2.defer = true;
-    document.body.appendChild(script2);
 
     // Nettoyage lors du démontage du composant
     return () => {
-      document.body.removeChild(script1);
-      document.body.removeChild(script2);
+      // Supprimer tous les scripts Botpress
+      const scripts = document.querySelectorAll('script[src*="botpress"], script[src*="bpcontent"]');
+      scripts.forEach(script => {
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+      });
     };
   }, []);
 
