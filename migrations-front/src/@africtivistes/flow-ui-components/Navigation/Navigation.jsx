@@ -25,13 +25,17 @@ const NavigationDivider = ({ index }) =>
 
 const NavigationItem = ({
   name,
+  label,
   slug,
+  path,
   url,
   Icon,
   color,
   variant,
   iconOnly
 }) => {
+  const itemLabel = label || name
+  const itemPath = path || slug
   let linkProps = {
     sx: { variant: iconOnly ? 'icon' : variant }
   }
@@ -47,40 +51,42 @@ const NavigationItem = ({
     }
   }
   //Internal link
-  if (slug) {
+  if (itemPath) {
     linkProps = {
       ...linkProps,
       as: Link,
-      to: slug
+      to: itemPath
     }
   }
 
   return iconOnly ? (
-    <IconButton {...linkProps} title={name}>
+    <IconButton {...linkProps} title={itemLabel}>
       {Icon && <Icon color={color} />}
     </IconButton>
   ) : (
     <NavLink {...linkProps}>
       {Icon && <Icon color={color} />}
-      {name}
+      {itemLabel}
     </NavLink>
   )
 }
 
 const Navigation = ({
   items,
+  nodes,
   variant,
   headingProps,
   wrapperStyle,
   ...props
 }) => {
-  if (!items || !items.length) return null
+  const normalizedItems = items || nodes
+  if (!normalizedItems || !normalizedItems.length) return null
 
   const wrapperVariant = buildResponsiveVariant('lists.links', variant)
   const linkVariant = buildResponsiveVariant('links', variant)
   
   const navKey = `${hashCode(
-    items.map(node => node.title || node.name).join()
+    normalizedItems.map(node => node.title || node.label || node.name).join()
   )}-nav`
 
   const wrapperProps = {
@@ -88,27 +94,47 @@ const Navigation = ({
     key: navKey
   }
 
-  const hasGroupedItems = Array.isArray(items[0].items)
+  const hasGroupedItems = normalizedItems.some(
+    node =>
+      Array.isArray(node.items) ||
+      Array.isArray(node.childItems?.nodes)
+  )
   
   return hasGroupedItems ? (
-    items.map((node, i) => (
+    normalizedItems.map((node, i) => {
+      const groupItems = node.items || node.childItems?.nodes || []
+      const groupLabel = node.title || node.label || node.name
+      if (!groupItems.length) {
+        return (
+          <NavigationList
+            key={`nav-menu-${i}`}
+            navKey={navKey}
+            wrapperProps={wrapperProps}
+            items={[node]}
+            variant={linkVariant}
+            {...props}
+          />
+        )
+      }
+      return (
       <Fragment key={`nav-menu-${i}`}>
         <NavigationDivider index={i} />
-        <Heading {...headingProps}>{node.title}</Heading>
+        <Heading {...headingProps}>{groupLabel}</Heading>
         <NavigationList
           navKey={navKey}
           wrapperProps={wrapperProps}
-          items={node.items}
+          items={groupItems}
           variant={linkVariant}
           {...props}
         />
       </Fragment>
-    ))
+      )
+    })
   ) : (
     <NavigationList
       navKey={navKey}
       wrapperProps={wrapperProps}
-      items={items}
+      items={normalizedItems}
       variant={linkVariant}
       {...props}
     />
@@ -140,6 +166,23 @@ Navigation.propTypes = {
       PropTypes.shape({
         title: PropTypes.string,
         items: itemsShape
+      })
+    ),
+    PropTypes.arrayOf(itemsShape)
+  ]),
+  nodes: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        label: PropTypes.string,
+        path: PropTypes.string,
+        childItems: PropTypes.shape({
+          nodes: PropTypes.arrayOf(
+            PropTypes.shape({
+              label: PropTypes.string,
+              path: PropTypes.string
+            })
+          )
+        })
       })
     ),
     PropTypes.arrayOf(itemsShape)

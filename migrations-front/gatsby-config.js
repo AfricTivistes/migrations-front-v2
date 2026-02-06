@@ -14,6 +14,7 @@ module.exports = {
         darkMode: false,
         includeTimeToRead: false,
         imageQuality: 80,
+        deferPagesAfter: 1,
         services: {
           algolia: true,
         },
@@ -27,9 +28,18 @@ module.exports = {
       options: {
         url: `https://migration.africtivistes.org/graphql`,
         schema: {
-          perPage: 5,
+          perPage: 2,
           requestConcurrency: 1,
           previewRequestConcurrency: 1,
+          timeout: 600000
+        },
+        html: {
+          useGatsbyImage: false
+        },
+        type: {
+          MediaItem: {
+            createFileNodes: false
+          }
         },
         presets: [
           {

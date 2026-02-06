@@ -10,14 +10,18 @@ const useMenuHeaderEN = () => {
 const menuENQuery = graphql`
   query menuHeaderENQuery {
     allWpMenuItem(
-    filter: {locations: {eq: GATSBY_HEADER_MENU___EN}, parentId: {eq: null}}
-    sort: {fields: order, order: ASC}
-  ) {
-    nodes {
-      name: label
-      slug: path
+      filter: { locations: { eq: GATSBY_HEADER_MENU___EN } }
+      sort: { fields: order, order: ASC }
+    ) {
+      nodes {
+        id
+        databaseId
+        parentDatabaseId
+        label
+        path
+        url
+      }
     }
-  }
   }
 `
 

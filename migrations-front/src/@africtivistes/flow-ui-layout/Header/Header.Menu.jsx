@@ -23,10 +23,77 @@ export const HeaderMenu = ({ mobileMenu = {} }) => {
   const { nodes: nodesFR  } = useMenuHeaderFR()
   const { nodes: nodesEN  } = useMenuHeaderEN()
 
+  const normalizeItem = item => ({
+    ...item,
+    label: item.label || item.name,
+    path: item.path || item.slug,
+    childItems: { nodes: [] }
+  })
+
+  const buildMenuTree = items => {
+    if (!items || !items.length) return []
+    const byId = new Map()
+    items.forEach(item => {
+      const key = item.databaseId || item.id
+      if (key) {
+        byId.set(key, normalizeItem(item))
+      }
+    })
+
+    const roots = []
+    items.forEach(item => {
+      const key = item.databaseId || item.id
+      const parentKey = item.parentDatabaseId || null
+      const node = byId.get(key) || normalizeItem(item)
+
+      if (parentKey && byId.has(parentKey)) {
+        byId.get(parentKey).childItems.nodes.push(node)
+      } else {
+        roots.push(node)
+      }
+    })
+
+    return roots
+  }
+
+  const normalizeItems = items =>
+    (items || []).map(item => ({
+      ...item,
+      label: item.label || item.name,
+      path: item.path || item.slug,
+      childItems: item.childItems?.nodes
+        ? {
+            nodes: item.childItems.nodes.map(child => ({
+              ...child,
+              label: child.label || child.name,
+              path: child.path || child.slug
+            }))
+          }
+        : undefined
+    }))
+
+  const buildMobileNodes = menuItems => {
+    const groups = [
+      {
+        label: 'Main Menu',
+        childItems: { nodes: normalizeItems(menuItems) }
+      }
+    ]
+
+    if (mobileMenu?.items?.length) {
+      groups.push({
+        label: mobileMenu.title || 'Topics',
+        childItems: { nodes: normalizeItems(mobileMenu.items) }
+      })
+    }
+
+    return groups
+  }
+
   const DesktopMenuNav = ({data}) => (
     <Navigation
       variant='horizontal'
-      items={data}
+      nodes={buildMenuTree(data)}
       wrapperStyle={styles.desktopMenuWrapper}
     />
   )
@@ -36,13 +103,7 @@ export const HeaderMenu = ({ mobileMenu = {} }) => {
       <Navigation
         variant='vertical'
         headingProps={{ variant: 'h3' }}
-        items={[
-          {
-            title: 'Main Menu',
-            items: data
-          },
-          mobileMenu
-        ]}
+        nodes={buildMobileNodes(buildMenuTree(data))}
       />
     </Drawer>
   )

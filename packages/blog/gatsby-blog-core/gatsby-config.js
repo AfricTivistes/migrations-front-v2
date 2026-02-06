@@ -14,10 +14,11 @@ module.exports = options => {
       resolve: '@africtivistes/gatsby-plugin-proxy-directives',
       options
     },
-    {
-      resolve: '@africtivistes/gatsby-plugin-proxy-schema',
-      options
-    },
+    // Temporairement désactivé pour éviter l'erreur de parse
+    // {
+    //   resolve: '@africtivistes/gatsby-plugin-proxy-schema',
+    //   options
+    // },
     {
       resolve: '@africtivistes/gatsby-plugin-utility-directives',
       options

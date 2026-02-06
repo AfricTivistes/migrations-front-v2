@@ -1,6 +1,6 @@
 const glob = require('glob')
 const nodePath = require('path')
-const { parse } = require('gatsby/graphql')
+const { parse } = require('gatsby')
 const withDefaults = require('./utils/default.options')
 const throwError = require('./errors')
 

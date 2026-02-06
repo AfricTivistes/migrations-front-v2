@@ -21,6 +21,8 @@
     "node": ">=14.15.0"
   },
   "dependencies": {
-    "gatsby-plugin-sitemap": "^6.12.3"
+    "babel-plugin-remove-graphql-queries": "^4.25.0",
+    "gatsby-plugin-sitemap": "^6.12.3",
+    "graphql": "^16.11.0"
   }
 }
