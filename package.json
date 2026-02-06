@@ -9,7 +9,8 @@
   "scripts": {
     "clean": "lerna clean",
     "release": "lerna version",
-    "prettier:windows": "./node_modules/.bin/prettier --write \"{packages,starters}/**/*.{jsx,js}\""
+    "prettier:windows": "./node_modules/.bin/prettier --write \"{packages,starters}/**/*.{jsx,js}\"",
+    "wp:snapshot": "node scripts/fetch-wp-snapshot.js"
   },
   "devDependencies": {
     "conventional-changelog-conventionalcommits": "^4.6.0",
