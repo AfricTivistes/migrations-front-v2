@@ -16,12 +16,18 @@ const Card = ({data}) => {
 
   return (<CardList
     nodes={lexiques}
-    limit={5}
+    limit={8}
     variant='vertical-cover'
     title={intl.formatMessage({ id: "lexique" })}
     slider
     columns={[1, 2, 3, 4]}
     autoPlay
+    autoplaySpeed={3500}
+    smoothAutoScroll={false}
+    centerMode
+    centerPadding='24px'
+    dots={false}
+    arrows={false}
   />)
 }
 

@@ -8,6 +8,7 @@ module.exports = options => {
   )
   const mdxSource = options.sources.find(source => source.name == 'mdx')
   const mdxExtensions = mdxSource && mdxSource.extensions
+  const isNetlify = process.env.NETLIFY === 'true'
 
   const plugins = [
     {
@@ -27,7 +28,20 @@ module.exports = options => {
       resolve: '@africtivistes/gatsby-plugin-mkdir',
       options
     },
+    'gatsby-plugin-catch-links',
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
     {
+      resolve: 'gatsby-transformer-sharp',
+      options: {
+        checkSupportedExtensions: false
+      }
+    }
+  ].filter(Boolean)
+
+  // Désactiver gatsby-plugin-mdx sur Netlify pour éviter l'erreur setParserPlugins
+  if (!isNetlify && mdxExtensions) {
+    plugins.splice(3, 0, {
       resolve: 'gatsby-plugin-mdx',
       options: {
         extensions: mdxExtensions,
@@ -54,17 +68,8 @@ module.exports = options => {
         ],
         remarkPlugins: [require('remark-slug')]
       }
-    },
-    'gatsby-plugin-catch-links',
-    'gatsby-plugin-image',
-    'gatsby-plugin-sharp',
-    {
-      resolve: 'gatsby-transformer-sharp',
-      options: {
-        checkSupportedExtensions: false
-      }
-    }
-  ].filter(Boolean)
+    })
+  }
 
   // Resolve local paths
   if (isLocalSourceEnabled) {
