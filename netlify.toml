@@ -4,12 +4,13 @@
   publish = "migrations-front/public"
 
 [build.environment]
- NODE_VERSION = "24"
+  NODE_VERSION = "24"
   NPM_VERSION = "10.8.2"
   SHARP_IGNORE_GLOBAL_LIBVIPS = "1"
   NODE_OPTIONS = "--max_old_space_size=4096"
   NPM_FLAGS = "--legacy-peer-deps"
   YARN_FLAGS = "--ignore-engines"
+  YARN_NETWORK_TIMEOUT = "300000"
 
 [[build.processing]]
   skip_processing = false
