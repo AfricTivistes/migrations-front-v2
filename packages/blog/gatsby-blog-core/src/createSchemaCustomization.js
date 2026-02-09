@@ -6,8 +6,27 @@ module.exports = async ({ actions, schema }, pluginOptions) => {
   pluginOptions = withDefaults(pluginOptions)
 
   const imageNodeTypes = []
-  pluginOptions.sources.forEach(({ imageNodeType }) => {
-    imageNodeType && imageNodeTypes.push(imageNodeType)
+  const extraTypeDefs = []
+
+  pluginOptions.sources.forEach(source => {
+    const { enabled, imageNodeType, typeDefs, typeDefsFallback } = source
+
+    if (imageNodeType) {
+      imageNodeTypes.push(imageNodeType)
+    }
+
+    // Quand une source (Contentful / Sanity / Strapi / local) est active,
+    // on enregistre ses définitions de schéma natives.
+    if (enabled && typeDefs) {
+      extraTypeDefs.push(typeDefs)
+    }
+
+    // Quand une source n'est pas active mais que le thème attend quand même
+    // certains types (ex: ContentfulAsset, SanityImageAsset),
+    // on utilise les types "fallback" pour éviter les erreurs du schema.
+    if (!enabled && typeDefsFallback) {
+      extraTypeDefs.push(typeDefsFallback)
+    }
   })
 
   const allTypeDefs = [
@@ -27,7 +46,9 @@ module.exports = async ({ actions, schema }, pluginOptions) => {
       name: 'ImageAsset',
       types: imageNodeTypes,
       resolveType: node => node.internal && node.internal.type
-    })
+    }),
+    // Types spécifiques aux différentes sources (ou leurs fallbacks)
+    ...extraTypeDefs
   ]
 
   createTypes(allTypeDefs)
