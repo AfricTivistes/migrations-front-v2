@@ -68,6 +68,15 @@ module.exports = {
                 hardCacheMediaFiles: true,
                 allow404Images: true,
                 allow401Images: true,
+          },
+          type: {
+            MediaItem: {
+              localFile: {
+                // Limite fortement le nombre de requêtes simultanées de médias
+                // pendant les builds de production (Netlify)
+                requestConcurrency: 2,
+              },
+            },
               },
             },
           },
