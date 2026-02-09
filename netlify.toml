@@ -41,7 +41,8 @@
 [functions]
   directory = "functions"
 
+# Cache Gatsby + WordPress entre les builds (réduit fortement le temps après le 1er déploiement).
+# Si le timeout 18 min est dépassé : Site settings > Build & deploy > Build time limit (plan payant).
 [[plugins]]
-  # Installs the Lighthouse Build Plugin for all deploy contexts
   package = "@netlify/plugin-gatsby"
-  
+
