@@ -1,6 +1,7 @@
 [build]
   base = "."
-  command = "cd migrations-front && npm run build:netlify"
+  # Génère wp-snapshot.json (menus + lexique) requis par gatsby-blog-helpers, puis build Gatsby.
+  command = "npm run wp:snapshot && cd migrations-front && npm run build:netlify"
   publish = "migrations-front/public"
 
 [build.environment]

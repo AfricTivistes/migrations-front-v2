@@ -15,6 +15,7 @@ const path = require('path')
 
 const ENDPOINT =
   process.env.WP_GRAPHQL_URL ||
+  process.env.WPGRAPHQL_ENDPOINT ||
   'https://migration.africtivistes.org/graphql'
 
 const SNAPSHOT_PATH = path.join(
