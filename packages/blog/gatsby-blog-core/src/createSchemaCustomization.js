@@ -29,6 +29,15 @@ module.exports = async ({ actions, schema }, pluginOptions) => {
     }
   })
 
+  // Type minimaliste pour Mdx, utilisé uniquement comme "hook" pour les directives
+  // de proxy (@proxyResolver, @link, etc.) lorsque gatsby-plugin-mdx n'est pas présent.
+  // Si gatsby-plugin-mdx est installé, ce type sera automatiquement étendu.
+  const mdxFallbackTypeDef = `
+    type Mdx implements Node {
+      id: ID!
+    }
+  `
+
   const allTypeDefs = [
     /**
      * Schema Interfaces
@@ -47,6 +56,8 @@ module.exports = async ({ actions, schema }, pluginOptions) => {
       types: imageNodeTypes,
       resolveType: node => node.internal && node.internal.type
     }),
+    // Type Mdx de base pour satisfaire les extensions de schéma du thème
+    mdxFallbackTypeDef,
     // Types spécifiques aux différentes sources (ou leurs fallbacks)
     ...extraTypeDefs
   ]
