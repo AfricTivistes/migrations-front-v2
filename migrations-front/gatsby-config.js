@@ -36,12 +36,11 @@ module.exports = {
         html: {
           useGatsbyImage: false
         },
-        // Limites pour tenir dans le timeout Netlify (18 min) au premier build.
-        // Une fois le cache Gatsby/WordPress actif, vous pouvez les augmenter ou les retirer.
+        // Limite Post pour tenir dans le timeout Netlify (18 min) au premier build.
+        // Une fois le cache actif, vous pouvez retirer type.Post.limit pour tout récupérer.
         type: {
           MediaItem: {
-            createFileNodes: false,
-            limit: 400
+            createFileNodes: false
           },
           Post: {
             limit: 600
