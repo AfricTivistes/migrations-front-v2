@@ -4,7 +4,7 @@
   publish = "migrations-front/public"
 
 [build.environment]
-  NODE_VERSION = "24"
+  NODE_VERSION = "20"
   NPM_VERSION = "10.8.2"
   SHARP_IGNORE_GLOBAL_LIBVIPS = "1"
   NODE_OPTIONS = "--max_old_space_size=4096"
