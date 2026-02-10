@@ -20,21 +20,26 @@ const CardFooterAuthorAvatar = ({ variant, omitAuthor, author }) => {
     false
   )
 
-  return visibility ? (
-    author && author.auteur && author.auteur[0].featuredImage.node.localFile.childImageSharp ? (
-      <Link
-        as={GLink}
-        to={author.auteur[0].slug}
-        aria-label={author.auteur[0].title}
-        sx={{ variant: responsiveVariant }}
-      >
-        <AvatarSimple
-          avatar={author.auteur[0].featuredImage.node.localFile.childImageSharp}
-          alt={author.auteur[0].title}
-          size='small'
-        />
-      </Link>
-    ) : null
-  ) : null
+  if (!visibility) return null
+
+  const mainAuthor = author?.auteur?.[0]
+  const avatarImage = mainAuthor?.featuredImage?.node?.localFile?.childImageSharp
+
+  if (!mainAuthor || !avatarImage) return null
+
+  return (
+    <Link
+      as={GLink}
+      to={mainAuthor.slug}
+      aria-label={mainAuthor.title}
+      sx={{ variant: responsiveVariant }}
+    >
+      <AvatarSimple
+        avatar={avatarImage}
+        alt={mainAuthor.title}
+        size='small'
+      />
+    </Link>
+  )
 }
 export default CardFooterAuthorAvatar
