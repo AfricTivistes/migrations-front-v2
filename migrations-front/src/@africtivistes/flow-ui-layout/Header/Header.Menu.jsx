@@ -14,7 +14,8 @@ const styles = {
     display: [`block`, null, `none`]
   },
   desktopMenuWrapper: {
-    justifyContent: 'flex-end'
+    justifyContent: 'center',
+    flexWrap: 'wrap'
   }
 }
 

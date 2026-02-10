@@ -16,22 +16,24 @@ const styles = {
     zIndex: 10
   },
   logoContainer: {
-    flexBasis: [`full`, null, `1/6`]
-  },
-  searchContainer: {
-    flexBasis: [`auto`, null, `1/6`],
-    minWidth: `auto`,
-    order: [3, null, `unset`],
-    mx: 3
+    flexBasis: [`full`, null, `1/6`],
+    flexShrink: 0
   },
   menuContainer: {
     flexBasis: [`auto`, null, `auto`],
-    minWidth: `auto`,
-    order: [4, null, `unset`]
+    flexGrow: 1,
+    minWidth: 0,
+    mx: [0, null, 4]
   },
-  colorModeContainer: {
-    minWidth: `auto`,
-    order: [2, null, `unset`]
+  searchContainer: {
+    flexBasis: [`auto`, null, `1/4`],
+    minWidth: `auto`
+  },
+  searchInner: {
+    display: `flex`,
+    alignItems: `center`,
+    justifyContent: `flex-end`,
+    gap: 3
   }
 }
 
@@ -49,12 +51,14 @@ export const Header = ({ children }) => {
           <Box sx={styles.logoContainer}>
             <HeaderLogo />
           </Box>
-          <Box sx={styles.searchContainer}>{algolia && <Search />}</Box>
           <Box sx={styles.menuContainer}>
             <HeaderMenu mobileMenu={mobileMenu} />
           </Box>
-          <Box sx={styles.colorModeContainer}>
-            <HeaderLanguage />
+          <Box sx={styles.searchContainer}>
+            <Box sx={styles.searchInner}>
+              {algolia && <Search />}
+              <HeaderLanguage />
+            </Box>
           </Box>
         </Flex>
       </Container>
