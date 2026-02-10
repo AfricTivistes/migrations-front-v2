@@ -20,31 +20,33 @@ const styles = {
 }
 
 const AuthorArticle = ({ author, omitSocial, ...props }) => {
-  if (!author.auteur) return ''
-  
+  if (!author?.auteur?.length) return null
+
   return (
-   <>
-    { author.auteur.map(author => (
+    <>
+      {author.auteur.map(author => {
+        const featuredImageNode =
+          author?.featuredImage?.node?.localFile?.childImageSharp
+
+        return (
       <Section aside title='The Author' {...props} key={author.id}>
-      <Card variant='paper'>
-        <Box sx={styles.wrapper}>
-          {author.featuredImage && (
-            <Box sx={styles.avatarWrapper}>
-              
+        <Card variant='paper'>
+          <Box sx={styles.wrapper}>
+            {featuredImageNode && (
+              <Box sx={styles.avatarWrapper}>
                 <Avatar
-                  avatar={author.featuredImage.node.localFile.childImageSharp}
+                  avatar={featuredImageNode}
                   alt={author.title}
                   withPattern
                 />
-              
-            </Box>
-          )}
+              </Box>
+            )}
           
             <Heading variant='h3'>{author.title}</Heading>
           
-          <Heading variant='h4' sx={styles.title}>
-            <p dangerouslySetInnerHTML={{ __html: author.excerpt }} />
-          </Heading>
+            <Heading variant='h4' sx={styles.title}>
+              <p dangerouslySetInnerHTML={{ __html: author.excerpt }} />
+            </Heading>
           {!omitSocial && author.social && (
             <Navigation
               variant='horizontal'
@@ -57,11 +59,12 @@ const AuthorArticle = ({ author, omitSocial, ...props }) => {
               iconOnly
             />
           )}
-        </Box>
-      </Card>
-    </Section>
-    ))}
-   </> 
+          </Box>
+        </Card>
+      </Section>
+        )
+      })}
+    </>
   )
 }
 

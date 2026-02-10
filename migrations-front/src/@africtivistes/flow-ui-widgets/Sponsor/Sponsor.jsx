@@ -25,6 +25,8 @@ const Sponsor = props => {
   const image = getImage(data.banner)
   const intl = useIntl()
 
+  if (!image) return null
+
   return (
     <Section aside title={intl.formatMessage({ id: "nospartenaires" })} {...props}>
         <Img image={image} css={css(styles.image)} alt='Sponsor' />

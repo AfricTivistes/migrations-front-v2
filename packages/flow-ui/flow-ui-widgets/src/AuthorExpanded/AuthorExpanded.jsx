@@ -83,18 +83,19 @@ const Subheader = ({ children }) => (
   </Heading>
 )
 
-const AuthorAvatar = ({ name, featuredImage, slug }) =>
-  featuredImage ? (
+const AuthorAvatar = ({ name, featuredImage, slug }) => {
+  const avatarImage = featuredImage?.node?.localFile?.childImageSharp
+
+  if (!avatarImage) return null
+
+  return (
     <Box>
       <Link as={GLink} to='#' aria-label={name}>
-      <Avatar
-        avatar={featuredImage.node.localFile.childImageSharp}
-        alt={name}
-        withPattern
-      />
+        <Avatar avatar={avatarImage} alt={name} withPattern />
       </Link>
     </Box>
-  ) : null
+  )
+}
 
 
 const AuthorName = ({ name, slug }) => (
