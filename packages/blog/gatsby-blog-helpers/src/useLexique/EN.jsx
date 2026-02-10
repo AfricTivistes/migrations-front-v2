@@ -1,29 +1,7 @@
 import { useStaticQuery, graphql } from 'gatsby'
 
-const isSnapshot =
-  typeof process !== 'undefined' &&
-  process.env.GATSBY_USE_WP_SNAPSHOT === 'true'
-
-let snapshotData = null
-if (isSnapshot) {
-  // eslint-disable-next-line global-require, import/no-dynamic-require
-  snapshotData = require('../../wp-snapshot.json')
-}
-
 const useLastFR = () => {
-  if (isSnapshot && snapshotData?.lexique?.en) {
-    return {
-      nodes: snapshotData.lexique.en.map(node => ({
-        id: String(node.databaseId || node.id),
-        slug: node.slug,
-        title: node.title,
-        featuredImage: null
-      }))
-    }
-  }
-
   const { allWpLexique } = useStaticQuery(lexiqueENQuery)
-
   return allWpLexique
 }
 

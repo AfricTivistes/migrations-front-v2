@@ -15,7 +15,17 @@ const styles = {
   },
   desktopMenuWrapper: {
     justifyContent: 'center',
-    flexWrap: 'wrap'
+    alignItems: 'center',
+    flexWrap: 'nowrap',
+    columnGap: 5,
+    overflowX: 'auto',
+    whiteSpace: 'nowrap',
+    // masquer les scrollbars horizontales si ça déborde
+    '&::-webkit-scrollbar': {
+      display: 'none'
+    },
+    msOverflowStyle: 'none',
+    scrollbarWidth: 'none'
   }
 }
 
@@ -91,13 +101,22 @@ export const HeaderMenu = ({ mobileMenu = {} }) => {
     return groups
   }
 
-  const DesktopMenuNav = ({data}) => (
-    <Navigation
-      variant='horizontal'
-      nodes={buildMenuTree(data)}
-      wrapperStyle={styles.desktopMenuWrapper}
-    />
-  )
+  const DesktopMenuNav = ({ data }) => {
+    // Pour le header desktop, on n'affiche que les éléments de premier niveau
+    // sur une seule ligne, sans groupes ni sous-menus.
+    const roots = buildMenuTree(data).map(({ childItems, ...rest }) => ({
+      ...rest,
+      childItems: undefined
+    }))
+
+    return (
+      <Navigation
+        variant='horizontal'
+        nodes={roots}
+        wrapperStyle={styles.desktopMenuWrapper}
+      />
+    )
+  }
 
   const MobileMenuNav = ({data}) => (
     <Drawer>

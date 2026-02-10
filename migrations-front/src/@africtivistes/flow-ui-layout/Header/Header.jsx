@@ -8,25 +8,35 @@ import { HeaderLanguage } from './Header.Language'
 
 const styles = {
   wrapper: {
-    position: `relative`,
-    bg: `headerBg`
+    position: `sticky`,
+    top: 0,
+    zIndex: 20,
+    bg: `headerBg`,
+    boxShadow: `0 2px 8px rgba(0,0,0,0.04)`
   },
   container: {
     position: `relative`,
     zIndex: 10
   },
+  row: {
+    alignItems: `center`,
+    justifyContent: `space-between`,
+    py: 3,
+    px: [3, 4] // un peu plus large sur les côtés
+  },
   logoContainer: {
-    flexBasis: [`full`, null, `1/6`],
-    flexShrink: 0
+    flexBasis: [`auto`, null, `auto`],
+    flexShrink: 0,
+    mr: [3, 4] // rapproche le logo du bord et libère de la place au centre
   },
   menuContainer: {
     flexBasis: [`auto`, null, `auto`],
     flexGrow: 1,
     minWidth: 0,
-    mx: [0, null, 4]
+    mx: [2, null, 4]
   },
   searchContainer: {
-    flexBasis: [`auto`, null, `1/4`],
+    flexBasis: [`auto`, null, `auto`],
     minWidth: `auto`
   },
   searchInner: {
@@ -47,7 +57,7 @@ export const Header = ({ children }) => {
   return (
     <Box sx={styles.wrapper}>
       <Container variant='compact' sx={styles.container}>
-        <Flex variant='layout.header'>
+        <Flex sx={styles.row}>
           <Box sx={styles.logoContainer}>
             <HeaderLogo />
           </Box>
