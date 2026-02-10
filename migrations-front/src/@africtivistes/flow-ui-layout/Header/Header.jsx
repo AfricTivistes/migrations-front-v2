@@ -17,21 +17,19 @@ const styles = {
   },
   container: {
     position: `relative`,
-    zIndex: 10
+    zIndex: 10,
+    // réduire les marges gauche/droite pour gagner de la place (logo et bouton Vérification plus près des bords)
+    px: [2, 2]
   },
   row: {
-    alignItems: `center`,
-    justifyContent: `space-between`,
-    py: 3,
-    // padding quasi nul à gauche et aucun à droite pour coller logo et recherche aux bords
-    pl: [0, 1],
-    pr: [0, 0]
-  },
-  leftBlock: {
     display: 'flex',
+    flexWrap: 'nowrap',
     alignItems: 'center',
-    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
     gap: [2, 3],
+    py: 3,
+    pl: 0,
+    pr: 0,
     minWidth: 0
   },
   logoContainer: {
@@ -41,19 +39,14 @@ const styles = {
     flexShrink: 0,
     minWidth: 0
   },
-  searchContainer: {
-    flexBasis: [`auto`, null, `auto`],
-    minWidth: 0,
-    maxWidth: ['150px', '200px']
-  },
-  searchInner: {
-    display: `flex`,
-    alignItems: `center`,
-    justifyContent: `flex-end`,
-    gap: 2
+  searchLangBlock: {
+    display: 'flex',
+    alignItems: 'center',
+    flexShrink: 0,
+    gap: 3,
+    marginLeft: 'auto'
   },
   verifyButton: {
-    ml: 1,
     px: 5,
     py: 2,
     borderRadius: 'pill',
@@ -78,32 +71,28 @@ export const Header = ({ children }) => {
   return (
     <Box sx={styles.wrapper}>
       <Container variant='compact' sx={styles.container}>
-        <Flex sx={styles.row}>
-          <Box as="div" sx={styles.leftBlock}>
-            <Box sx={styles.logoContainer}>
-              <HeaderLogo />
-            </Box>
-            <Box sx={styles.menuContainer}>
-              <HeaderMenu mobileMenu={mobileMenu} />
-            </Box>
+        <Flex as="header" sx={styles.row}>
+          <Box sx={styles.logoContainer}>
+            <HeaderLogo />
           </Box>
-          <Box sx={styles.searchContainer}>
-            <Box sx={styles.searchInner}>
-              {algolia && <Search />}
-              <HeaderLanguage />
-              <IntlContextConsumer>
-                {({ language }) => {
-                  const isFr = language === 'fr'
-                  const label = isFr ? 'Vérification' : 'Fact-checking'
-                  const path = isFr ? '/verification' : '/fact-checking'
-                  return (
-                    <SxLink as={ILink} to={path} sx={styles.verifyButton}>
-                      {label}
-                    </SxLink>
-                  )
-                }}
-              </IntlContextConsumer>
-            </Box>
+          <Box sx={styles.menuContainer}>
+            <HeaderMenu mobileMenu={mobileMenu} />
+          </Box>
+          <Box as="div" sx={styles.searchLangBlock}>
+            {algolia && <Search />}
+            <HeaderLanguage />
+            <IntlContextConsumer>
+              {({ language }) => {
+                const isFr = language === 'fr'
+                const label = isFr ? 'Vérification' : 'Fact-checking'
+                const path = isFr ? '/verification' : '/fact-checking'
+                return (
+                  <SxLink as={ILink} to={path} sx={styles.verifyButton}>
+                    {label}
+                  </SxLink>
+                )
+              }}
+            </IntlContextConsumer>
           </Box>
         </Flex>
       </Container>
