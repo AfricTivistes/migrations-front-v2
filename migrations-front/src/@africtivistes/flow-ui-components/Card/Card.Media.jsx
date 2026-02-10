@@ -38,9 +38,12 @@ const CardMedia = ({
     get(context.theme, rv(variant, 'imageVariant')[0]) ||
     DEFAULT_IMAGE_VARIANT
 
-  const thumImage = thumbnail || (featuredImage && featuredImage.node.localFile.childImageSharp)
+  const thumImage =
+    thumbnail ||
+    featuredImage?.node?.localFile?.childImageSharp ||
+    null
 
-  const image = getImageVariant(thumImage, imageVar)
+  const image = thumImage ? getImageVariant(thumImage, imageVar) : null
 
   const linkProps = link
     ? {
