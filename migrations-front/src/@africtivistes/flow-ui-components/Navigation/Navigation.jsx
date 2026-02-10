@@ -37,7 +37,17 @@ const NavigationItem = ({
   const itemLabel = label || name
   const itemPath = path || slug
   let linkProps = {
-    sx: { variant: iconOnly ? 'icon' : variant }
+    sx: {
+      variant: iconOnly ? 'icon' : variant,
+      // couleur de texte du menu = rouge bordeaux du logo
+      color: '#87311a',
+      '&:hover,&:focus': {
+        outline: 'none',
+        boxShadow: '0 0 0 1px rgba(135,49,26,0.35)',
+        borderRadius: 'pill',
+        color: '#87311a'
+      }
+    }
   }
 
   //External link

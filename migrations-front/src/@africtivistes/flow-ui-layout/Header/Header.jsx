@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
-import { Container, Box, Flex } from 'theme-ui'
+import { Container, Box, Flex, Link as SxLink } from 'theme-ui'
+import { IntlContextConsumer, Link as ILink } from 'gatsby-plugin-react-intl'
 import pageContextProvider from '@helpers/pageContextProvider'
 import Search from '@widgets/Search'
 import { HeaderLogo } from './Header.Logo'
@@ -22,12 +23,15 @@ const styles = {
     alignItems: `center`,
     justifyContent: `space-between`,
     py: 3,
-    px: [3, 4] // un peu plus large sur les côtés
+    // padding quasi nul à gauche et aucun à droite pour coller logo et recherche aux bords
+    pl: [0, 1],
+    pr: [0, 0]
   },
   logoContainer: {
     flexBasis: [`auto`, null, `auto`],
     flexShrink: 0,
-    mr: [3, 4] // rapproche le logo du bord et libère de la place au centre
+    // espace minimal entre le logo et le menu
+    mr: [1, 1]
   },
   menuContainer: {
     flexBasis: [`auto`, null, `auto`],
@@ -37,13 +41,28 @@ const styles = {
   },
   searchContainer: {
     flexBasis: [`auto`, null, `auto`],
-    minWidth: `auto`
+    minWidth: 0,
+    maxWidth: ['150px', '200px']
   },
   searchInner: {
     display: `flex`,
     alignItems: `center`,
     justifyContent: `flex-end`,
-    gap: 3
+    gap: 2
+  },
+  verifyButton: {
+    ml: 1,
+    px: 5,
+    py: 2,
+    borderRadius: 'pill',
+    fontSize: 2,
+    fontWeight: 'bold',
+    // bouton outline bordeaux, fond transparent
+    bg: 'transparent',
+    color: '#87311a',
+    textDecoration: 'none',
+    cursor: 'pointer',
+    
   }
 }
 
@@ -68,6 +87,18 @@ export const Header = ({ children }) => {
             <Box sx={styles.searchInner}>
               {algolia && <Search />}
               <HeaderLanguage />
+              <IntlContextConsumer>
+                {({ language }) => {
+                  const isFr = language === 'fr'
+                  const label = isFr ? 'Vérification' : 'Fact-checking'
+                  const path = isFr ? '/verification' : '/fact-checking'
+                  return (
+                    <SxLink as={ILink} to={path} sx={styles.verifyButton}>
+                      {label}
+                    </SxLink>
+                  )
+                }}
+              </IntlContextConsumer>
             </Box>
           </Box>
         </Flex>

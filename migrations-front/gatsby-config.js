@@ -28,22 +28,28 @@ module.exports = {
       options: {
         url: `https://migration.africtivistes.org/graphql`,
         schema: {
-          perPage: 2,
+          perPage: 5,
           requestConcurrency: 1,
           previewRequestConcurrency: 1,
-          timeout: 600000
+          timeout: 900000
         },
         html: {
           useGatsbyImage: false
         },
         // Limite Post pour tenir dans le timeout Netlify (18 min) au premier build.
         // Une fois le cache actif, vous pouvez retirer type.Post.limit pour tout récupérer.
+        // On exclut aussi les gros fichiers audio (podcasts) pour éviter les timeouts en dev.
         type: {
-          MediaItem: {
-            createFileNodes: false
-          },
           Post: {
             limit: 600
+          },
+          Page: {
+            limit: 50
+          },
+          MediaItem: {
+            localFile: {
+              excludeByMimeTypes: [`audio/mpeg`, `audio/mp3`]
+            }
           }
         },
         presets: [

@@ -14,18 +14,14 @@ const styles = {
     display: [`block`, null, `none`]
   },
   desktopMenuWrapper: {
-    justifyContent: 'center',
+    // aligne les éléments de menu vers la droite de la zone centrale
+    justifyContent: 'flex-end',
     alignItems: 'center',
     flexWrap: 'nowrap',
-    columnGap: 5,
-    overflowX: 'auto',
+    columnGap: 3,
     whiteSpace: 'nowrap',
-    // masquer les scrollbars horizontales si ça déborde
-    '&::-webkit-scrollbar': {
-      display: 'none'
-    },
-    msOverflowStyle: 'none',
-    scrollbarWidth: 'none'
+    // taille un peu plus grande pour le texte du menu
+    fontSize: 2
   }
 }
 
@@ -104,10 +100,22 @@ export const HeaderMenu = ({ mobileMenu = {} }) => {
   const DesktopMenuNav = ({ data }) => {
     // Pour le header desktop, on n'affiche que les éléments de premier niveau
     // sur une seule ligne, sans groupes ni sous-menus.
-    const roots = buildMenuTree(data).map(({ childItems, ...rest }) => ({
-      ...rest,
-      childItems: undefined
-    }))
+    // On supprime explicitement les entrées Vérification / Fact-checking
+    // qui sont désormais gérées par un bouton dédié dans le header.
+    const roots = buildMenuTree(data)
+      .map(({ childItems, ...rest }) => ({
+        ...rest,
+        childItems: undefined
+      }))
+      .filter(item => {
+        const path = item.path || item.slug || ''
+        const label = (item.label || item.name || '').toLowerCase()
+        const isVerificationPath =
+          path === '/verification' || path === '/fact-checking'
+        const isVerificationLabel =
+          label.includes('vérification') || label.includes('fact-check')
+        return !isVerificationPath && !isVerificationLabel
+      })
 
     return (
       <Navigation
