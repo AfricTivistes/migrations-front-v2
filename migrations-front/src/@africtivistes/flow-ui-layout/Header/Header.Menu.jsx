@@ -14,8 +14,8 @@ const styles = {
     display: [`block`, null, `none`]
   },
   desktopMenuWrapper: {
-    // aligne les éléments de menu vers la droite de la zone centrale
-    justifyContent: 'flex-end',
+    // menu à gauche, juste à côté du logo
+    justifyContent: 'flex-start',
     alignItems: 'center',
     flexWrap: 'nowrap',
     columnGap: 3,

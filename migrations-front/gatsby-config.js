@@ -48,9 +48,14 @@ module.exports = {
           },
           MediaItem: {
             localFile: {
-              excludeByMimeTypes: [`audio/mpeg`, `audio/mp3`]
-            }
-          }
+              // Évite timeouts / ECONNRESET sur gros fichiers (audio, PDF)
+              excludeByMimeTypes: [
+                `audio/mpeg`,
+                `audio/mp3`,
+                `application/pdf`,
+              ],
+            },
+          },
         },
         presets: [
           {

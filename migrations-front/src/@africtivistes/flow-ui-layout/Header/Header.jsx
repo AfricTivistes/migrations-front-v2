@@ -27,17 +27,19 @@ const styles = {
     pl: [0, 1],
     pr: [0, 0]
   },
+  leftBlock: {
+    display: 'flex',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: [2, 3],
+    minWidth: 0
+  },
   logoContainer: {
-    flexBasis: [`auto`, null, `auto`],
-    flexShrink: 0,
-    // espace minimal entre le logo et le menu
-    mr: [1, 1]
+    flexShrink: 0
   },
   menuContainer: {
-    flexBasis: [`auto`, null, `auto`],
-    flexGrow: 1,
-    minWidth: 0,
-    mx: [2, null, 4]
+    flexShrink: 0,
+    minWidth: 0
   },
   searchContainer: {
     flexBasis: [`auto`, null, `auto`],
@@ -77,11 +79,13 @@ export const Header = ({ children }) => {
     <Box sx={styles.wrapper}>
       <Container variant='compact' sx={styles.container}>
         <Flex sx={styles.row}>
-          <Box sx={styles.logoContainer}>
-            <HeaderLogo />
-          </Box>
-          <Box sx={styles.menuContainer}>
-            <HeaderMenu mobileMenu={mobileMenu} />
+          <Box as="div" sx={styles.leftBlock}>
+            <Box sx={styles.logoContainer}>
+              <HeaderLogo />
+            </Box>
+            <Box sx={styles.menuContainer}>
+              <HeaderMenu mobileMenu={mobileMenu} />
+            </Box>
           </Box>
           <Box sx={styles.searchContainer}>
             <Box sx={styles.searchInner}>
