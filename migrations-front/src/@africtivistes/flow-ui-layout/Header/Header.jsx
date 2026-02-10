@@ -47,17 +47,22 @@ const styles = {
     marginLeft: 'auto'
   },
   verifyButton: {
-    px: 5,
+    px: 4,
     py: 2,
     borderRadius: 'pill',
     fontSize: 2,
     fontWeight: 'bold',
-    // bouton outline bordeaux, fond transparent
-    bg: 'transparent',
-    color: '#87311a',
+    bg: '#87311a',
+    color: '#ffffff !important',
     textDecoration: 'none',
     cursor: 'pointer',
-    
+    boxShadow: '0 2px 8px rgba(135, 49, 26, 0.35)',
+    transition: 'box-shadow 0.2s ease, transform 0.2s ease',
+    '&:hover,&:visited,&:focus': {
+      color: '#ffffff !important',
+      bg: '#6b2815',
+      boxShadow: '0 4px 12px rgba(135, 49, 26, 0.45)'
+    }
   }
 }
 
