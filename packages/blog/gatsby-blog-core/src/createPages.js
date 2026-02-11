@@ -43,7 +43,9 @@ module.exports = async (helpers, pluginOptions) => {
    */
   await createCollectionArticle(helpers, pluginOptions, {
     template: require.resolve('./templates/collection.article'),
-    slugField: 'categories___nodes___slug'
+    // Les catégories WP ne sont plus exposées, on regroupe
+    // désormais par termes génériques (tags, etc.) pour ces pages.
+    slugField: 'terms___nodes___slug'
   })
 
   /**
