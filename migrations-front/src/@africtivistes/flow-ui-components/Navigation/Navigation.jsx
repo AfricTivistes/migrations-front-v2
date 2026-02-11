@@ -39,13 +39,12 @@ const NavigationItem = ({
   let linkProps = {
     sx: {
       variant: iconOnly ? 'icon' : variant,
-      // couleur de texte du menu = rouge bordeaux du logo
-      color: '#87311a',
+      // On laisse le variant gérer la couleur (links.mute = bordeaux),
+      // et on ajoute seulement un traitement de focus/hover uniforme.
       '&:hover,&:focus': {
         outline: 'none',
         boxShadow: '0 0 0 1px rgba(135,49,26,0.35)',
-        borderRadius: 'pill',
-        color: '#87311a'
+        borderRadius: 'pill'
       }
     }
   }
