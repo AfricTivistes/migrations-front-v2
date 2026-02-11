@@ -1,39 +1,19 @@
 import { useStaticQuery, graphql } from 'gatsby'
 
 const useCategoriesEN = () => {
-
-  const { allWpCategory, allArticleCategory } = useStaticQuery(categoriesENQuery)
-  
-  return {nodes: allWpCategory.nodes, categories: allArticleCategory.nodes}
+  const { allArticleCategory } = useStaticQuery(categoriesENQuery)
+  // WpCategory exclu du schéma WordPress : nodes vides pour compatibilité UI
+  return { nodes: [], categories: allArticleCategory?.nodes ?? [] }
 }
 
 const categoriesENQuery = graphql`
-query categoriesENQuery {
-  allWpCategory(
-    filter: {
-      language: { code: { eq: EN } }
-      affichage: { widget: { eq: true } }
-      slug: { in: ["papers", "testimony", "fact-checking"] }
-    }
-  ) {
-    nodes {
-      id
-      name
-      slug
-      totalCount: count
-      affichage {
-        color
-        icon
+  query categoriesENQuery {
+    allArticleCategory {
+      nodes {
+        ...ArticleCategory
       }
     }
   }
-
-  allArticleCategory {
-    nodes {
-      ...ArticleCategory
-    }
-  }
-}
 `
 
 export default useCategoriesEN
