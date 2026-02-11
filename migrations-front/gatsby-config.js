@@ -28,9 +28,10 @@ module.exports = {
       options: {
         url: `https://migration.africtivistes.org/graphql`,
         schema: {
-          perPage: 50,
-          requestConcurrency: 1,
-          previewRequestConcurrency: 1,
+          // Réglages conseillés par le log Netlify pour soulager WPGraphQL
+          perPage: 20,
+          requestConcurrency: 5,
+          previewRequestConcurrency: 2,
           timeout: 900000
         },
         html: {
