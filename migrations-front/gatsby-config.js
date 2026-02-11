@@ -41,6 +41,12 @@ module.exports = {
         // Si erreur 500 sur Category : vérifier WordPress (WP_DEBUG, debug.log) ou tester perPage: 20.
         // Si timeout Netlify : remettre type.Post.limit / type.Page.limit.
         type: {
+          // Contournement temporaire : ne pas récupérer les catégories
+          // (le serveur WP renvoie une erreur 500 sur Category).
+          // À supprimer dès que WPGraphQL/WordPress est corrigé.
+          Category: {
+            limit: 0
+          },
           MediaItem: {
             localFile: {
               // Évite timeouts / ECONNRESET sur gros fichiers (audio, PDF)
