@@ -28,7 +28,7 @@ module.exports = {
       options: {
         url: `https://migration.africtivistes.org/graphql`,
         schema: {
-          perPage: 5,
+          perPage: 50,
           requestConcurrency: 1,
           previewRequestConcurrency: 1,
           timeout: 900000
@@ -36,16 +36,10 @@ module.exports = {
         html: {
           useGatsbyImage: false
         },
-        // Limite Post pour tenir dans le timeout Netlify (18 min) au premier build.
-        // Une fois le cache actif, vous pouvez retirer type.Post.limit pour tout récupérer.
-        // On exclut aussi les gros fichiers audio (podcasts) pour éviter les timeouts en dev.
+        // Build tout le contenu en ligne (sans limite Post/Page).
+        // Si erreur 500 sur Category : vérifier WordPress (WP_DEBUG, debug.log) ou tester perPage: 20.
+        // Si timeout Netlify : remettre type.Post.limit / type.Page.limit.
         type: {
-          Post: {
-            limit: 600
-          },
-          Page: {
-            limit: 50
-          },
           MediaItem: {
             localFile: {
               // Évite timeouts / ECONNRESET sur gros fichiers (audio, PDF)
