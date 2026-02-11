@@ -9,12 +9,6 @@ const postQuery = `{
       title
       slug
       excerpt
-      categories {
-        nodes {
-          name
-          slug
-        }
-      }
       language {
         slug
       }
@@ -25,23 +19,17 @@ const postQuery = `{
 
 const flatten = arr =>
   arr.map(({ ...rest }) => {
-    // Vérifier si les catégories existent
-    const category = rest.categories?.nodes?.[0]
-    const categoryName = category?.name || 'Uncategorized'
-    const categorySlug = category?.slug || 'uncategorized'
     const languageSlug = rest.language?.slug || 'fr'
-    
+
     return {
-      category: { name: categoryName },
-      link: `/${languageSlug}/${categorySlug}/${rest.slug}`,
-      excerpt: rest.excerpt ? rest.excerpt.replace(/(<([^>]+)>)/gi, "") : "",
+      link: `/${languageSlug}/${rest.slug}`,
+      excerpt: rest.excerpt ? rest.excerpt.replace(/(<([^>]+)>)/gi, '') : '',
       ...rest
     }
   })
 
 const settings = {
-  attributesToSnippet: ['excerpt:20'],
-  attributeForDistinct: 'category.name'
+  attributesToSnippet: ['excerpt:20']
 }
 
 const queries = [
