@@ -10,7 +10,7 @@ const useHeroDialogueEN = () => {
 const heroDialogueENQuery = graphql`
   query heroDialogueENQuery {
     allWpPost(
-    filter: {status: {eq: "publish"}, language: {slug: {eq: "en"}}, tags: {nodes: {elemMatch: {name: {eq: "featured"}}}}, categories: {nodes: {elemMatch: {slug: {ne: "news"}}}}}
+    filter: {status: {eq: "publish"}, language: {slug: {eq: "en"}}, tags: {nodes: {elemMatch: {name: {eq: "featured"}}}}}
     sort: {fields: [date], order: DESC}
     limit: 10
   ) {
@@ -19,16 +19,6 @@ const heroDialogueENQuery = graphql`
       slug
       title
       date
-      categories {
-          nodes {
-            id
-            name
-            slug
-            affichage {
-              color
-            }
-          }
-        }
       featuredImage {
         node {
           localFile {

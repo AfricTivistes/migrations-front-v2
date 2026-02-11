@@ -10,7 +10,7 @@ const useTopDialogueEN = () => {
 const topDialogueENQuery = graphql`
   query topDialogueENQuery {
     allWpPost(
-    filter: {status: {eq: "publish"}, language: {slug: {eq: "en"}}, tags: {nodes: {elemMatch: {slug: {eq: "top"}}}}, categories: {nodes: {elemMatch: {slug: {ne: "news"}}}}}
+    filter: {status: {eq: "publish"}, language: {slug: {eq: "en"}}, tags: {nodes: {elemMatch: {slug: {eq: "top"}}}}}
     sort: {fields: [date], order: DESC}
     limit: 10
   ) {
@@ -19,16 +19,6 @@ const topDialogueENQuery = graphql`
       slug
       title
       date
-      categories {
-          nodes {
-            id
-            name
-            slug
-            affichage {
-              color
-            }
-          }
-        }
       featuredImage {
         node {
           localFile {

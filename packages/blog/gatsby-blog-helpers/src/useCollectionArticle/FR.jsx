@@ -10,24 +10,17 @@ const useCollectionArticleEN = () => {
 const collectionArticleFRQuery = graphql`
   query collectionArticleFRQuery {
     allWpPost(
-    filter: {status: {eq: "publish"}, language: {code: {eq: FR}}, categories: {nodes: {elemMatch: {slug: {ne: "actualites"}}}}}
+    filter: {status: {eq: "publish"}, language: {code: {eq: FR}}}
     sort: {fields: [date], order: DESC}
     limit: 1000
   ) {
-    group(field: categories___nodes___name, limit: 10) {
+    group(field: language___code, limit: 10) {
       categoryName: fieldValue
       nodes {
         id
         title
         slug
         date(formatString: "MMMM DD, YYYY")
-        categories {
-          nodes {
-            id
-            name
-            slug
-          }
-        }
         featuredImage {
           node {
             localFile {

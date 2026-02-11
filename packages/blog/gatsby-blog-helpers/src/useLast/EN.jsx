@@ -20,16 +20,6 @@ const lastENQuery = graphql`
       title
       date
       excerpt
-      categories {
-          nodes {
-            id
-            name
-            slug
-            affichage {
-              color
-            }
-          }
-        }
       featuredImage {
         node {
           localFile {

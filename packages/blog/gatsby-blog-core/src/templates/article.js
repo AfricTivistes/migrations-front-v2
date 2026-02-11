@@ -16,7 +16,7 @@ export const pageQuery = graphql`
     # $includeTableOfContents: Boolean!
     $imageQuality: Int!
   ) {
-    post: allWpPost(filter: {id: {eq: $id}}) {
+    post: allWpPost(filter: { id: { eq: $id } }) {
       nodes {
         id
         title
@@ -99,16 +99,6 @@ export const pageQuery = graphql`
           }
         }
       }
-        categories {
-          nodes {
-            id
-            name
-            slug
-            affichage {
-              color
-            }
-          }
-        }
         tags {
           nodes {
             id
@@ -119,31 +109,19 @@ export const pageQuery = graphql`
       }
     }
 
-    previous: allWpPost(filter: {id: {eq: $previousId}}) {
+    previous: allWpPost(filter: { id: { eq: $previousId } }) {
       nodes {
         id
         slug
         title
-        categories {
-          nodes {
-            id
-            slug
-          }
-        }
       }
     }
 
-    next: allWpPost(filter: {id: {eq: $nextId}}) {
+    next: allWpPost(filter: { id: { eq: $nextId } }) {
       nodes {
         id
         slug
         title
-        categories {
-          nodes {
-            id
-            slug
-          }
-        }
       }
     }
     

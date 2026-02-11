@@ -10,7 +10,7 @@ const useHeroDialogueFR = () => {
 const heroDialogueFRQuery = graphql`
   query heroDialogueFRQuery {
     allWpPost(
-    filter: {status: {eq: "publish"}, language: {slug: {eq: "fr"}}, tags: {nodes: {elemMatch: {name: {eq: "une"}}}}, categories: {nodes: {elemMatch: {slug: {ne: "actualites"}}}}}
+    filter: {status: {eq: "publish"}, language: {slug: {eq: "fr"}}, tags: {nodes: {elemMatch: {name: {eq: "une"}}}}}
     sort: {fields: [date], order: DESC}
     limit: 10
   ) {
@@ -19,16 +19,6 @@ const heroDialogueFRQuery = graphql`
       slug
       title
       date
-      categories {
-          nodes {
-            id
-            name
-            slug
-            affichage {
-              color
-            }
-          }
-        }
       featuredImage {
         node {
           localFile {

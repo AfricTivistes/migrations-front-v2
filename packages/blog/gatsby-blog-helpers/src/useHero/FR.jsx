@@ -19,16 +19,6 @@ const heroFRQuery = graphql`
       slug
       title
       date
-      categories {
-          nodes {
-            id
-            name
-            slug
-            affichage {
-              color
-            }
-          }
-        }
       featuredImage {
         node {
           localFile {

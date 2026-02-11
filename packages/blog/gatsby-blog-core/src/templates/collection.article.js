@@ -3,50 +3,26 @@ import { IntlContextConsumer } from "gatsby-plugin-react-intl"
 import Collection from '../containers/Collection.Article'
 import NotFound from '../Pages/404'
 
-export default ({ data, ...props }) => {
-  
-  const langue = data.collectionInfo.nodes[0].language.slug
-
-  return (
-    <IntlContextConsumer>
-      {({ language: currentLocale }) =>
-        currentLocale === langue ? <Collection {...props} data={data} /> : <NotFound {...props} />
-      }
-    </IntlContextConsumer>
-  )
-}
+export default ({ data, ...props }) => (
+  <IntlContextConsumer>
+    {({ language: currentLocale }) =>
+      // Avec les catégories désactivées côté WPGraphQL, on n'applique plus de
+      // filtrage par catégorie ici. On affiche simplement la collection telle
+      // qu'elle est fournie au template.
+      <Collection {...props} data={data} />
+    }
+  </IntlContextConsumer>
+)
 
 export const pageQuery = graphql`
   query allArticleByCategoryQ(
     $skip: Int!
     $limit: Int!
-    $slug: String!
     $includeExcerpt: Boolean!
-    # $includeTimeToRead: Boolean!
     $imageQuality: Int!
   ) {
-    collectionInfo: allWpCategory(filter: {slug: {eq: $slug}}) {
-    nodes {
-      id
-      name
-      slug
-      description
-      affichage {
-        color
-        icon
-        widget
-      }
-      language {
-        slug
-      }
-    }
-  }
-
     posts: allWpPost(
-      filter: {
-        categories: {nodes: {elemMatch: {slug: {eq: $slug}}}}
-        status: {eq: "publish"}
-      }
+      filter: { status: { eq: "publish" } }
       sort: { fields: date, order: DESC }
       limit: $limit
       skip: $skip
@@ -116,16 +92,6 @@ export const pageQuery = graphql`
                 )
               }
             }
-          }
-        }
-      }
-      categories {
-        nodes {
-          id
-          name
-          slug
-          affichage {
-            color
           }
         }
       }
