@@ -6,31 +6,41 @@ import Divider from '@components/Divider'
 const styles = {
   wrapper: {
     justifyContent: `space-between`,
-    alignItems: `end`
+    alignItems: `flex-end`
   },
-  //Section title
   section: {
     position: `relative`,
     pl: [0, 4],
     mx: [`auto`, 0],
     mb: 0,
+    fontSize: [3, 4],
+    fontWeight: 700,
+    color: `omegaDark`,
+    letterSpacing: `-0.02em`,
+    lineHeight: 1.25,
     '::before': {
       display: [`none`, `block`],
-      bg: `omegaLight`,
+      bg: `#87311a`,
       content: `""`,
       borderRadius: `full`,
       position: `absolute`,
       height: `full`,
-      width: 5,
+      width: 4,
       top: 0,
       left: 0
     }
   },
-  //Section aside title
   'section-aside': {
-    color: `omegaDark`,
-    mx: `auto`,
-    mb: 0
+    color: `#87311a`,
+    fontSize: [2, 3],
+    fontWeight: 700,
+    letterSpacing: `0.04em`,
+    textTransform: `uppercase`,
+    mx: 0,
+    mb: 2,
+    pb: 2,
+    borderBottom: `3px solid`,
+    borderBottomColor: `#87311a`
   },
   badge: {
     display: [`none`, `block`],

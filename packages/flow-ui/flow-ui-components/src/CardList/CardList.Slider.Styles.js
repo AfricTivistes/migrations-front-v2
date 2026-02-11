@@ -1,4 +1,28 @@
 export default {
+  arrowPrev: {
+    bg: 'rgba(255,255,255,0.92)',
+    color: '#87311a',
+    borderRadius: 'circle',
+    width: 40,
+    height: 40,
+    transition: 'background 0.2s ease, color 0.2s ease',
+    '&:hover': {
+      bg: '#87311a',
+      color: 'white'
+    }
+  },
+  arrowNext: {
+    bg: 'rgba(255,255,255,0.92)',
+    color: '#87311a',
+    borderRadius: 'circle',
+    width: 40,
+    height: 40,
+    transition: 'background 0.2s ease, color 0.2s ease',
+    '&:hover': {
+      bg: '#87311a',
+      color: 'white'
+    }
+  },
   slide: {
     width: `full`,
     '.slick-slide': {

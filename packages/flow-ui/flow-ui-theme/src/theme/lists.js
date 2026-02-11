@@ -85,7 +85,8 @@ export default {
         m: [-3, -2],
         '.blog_card': {
           maxWidth: `none`,
-          p: 2
+          px: 0,
+          py: 2
         }
       },
       'horizontal-aside': {

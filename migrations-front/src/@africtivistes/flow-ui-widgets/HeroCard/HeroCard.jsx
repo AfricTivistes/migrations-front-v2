@@ -15,9 +15,11 @@ const Card = ({data}) => {
     omitFooter
     slider
     autoPlay
+    autoplaySpeed={5000}
     fade
-    dots={false}
-    arrows={false}
+    dots
+    arrows
+    controlPosition='over'
     ref={sliderRef}
     loading='eager'
   />)}

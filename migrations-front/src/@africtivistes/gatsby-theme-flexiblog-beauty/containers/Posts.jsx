@@ -18,6 +18,10 @@ import CollectionArticle from '@widgets/CollectionArticle'
 import LastRessources from '../../flow-ui-widgets/LastRessources/LastRessources'
 
 const styles = {
+  heroWrapper: {
+    minHeight: ['50vh', '65vh'],
+    position: 'relative'
+  },
   heroThumbsContainer: {
     left: `50%`,
     top: `50%`,
@@ -37,7 +41,7 @@ const Posts = ({ ...props }) => {
   return (
     <Layout {...props}>
       <Seo title={intl.formatMessage({ id: "accueil" })} />
-      <Hero full sx={{ position: `relative` }}>
+      <Hero full sx={styles.heroWrapper}>
         <HeroCard />
         <Container sx={styles.heroThumbsContainer}>
           <Box sx={styles.heroThumbsInner}>

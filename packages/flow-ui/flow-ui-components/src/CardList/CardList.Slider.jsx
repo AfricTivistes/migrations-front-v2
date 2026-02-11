@@ -39,8 +39,8 @@ const CardListSlider = React.forwardRef((props, ref) => {
   }
 
   const mobileSettings = {
-    centerMode: fade ? false : true,
-    centerPadding: '40px',
+    centerMode: fade ? false : centerMode,
+    centerPadding: centerPadding || '40px',
     swipeToSlide: true,
     arrows: false,
     dots: dots && fade ? true : false
